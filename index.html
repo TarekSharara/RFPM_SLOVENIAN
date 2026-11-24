@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F3A68">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="RFPM Final">
+<meta name="author" content="T.SHARARA">
+<meta name="designer" content="First design by: Ahmed MURAD; Finalized by: Tarek SHARARA">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAGnUlEQVR4nO2dPXLcOBCF4a29h5U58wFWga+zOpHO40AXcOZMR3HAKhbLo9aAYP+81/O+UDUCgcaHBsgZAl++/vf/EOIj/qmugMBFcggTySFMJIcwkRzCRHIIE8khTCSHMJEcwkRyCBPJIUwkhzCRHMJEcggTySFMJIcwkRzCRHIIE8khTCSHMJEcwkRyCBPJIUwkhzD5t7oCNby/vZ76/NPzS1BNkPnyCG+8nVVhhkfQpa0cEUJYdBWlmxyZTtzSzJImctQ6cUsPS+jlQNPiCLsixHIga3GEVxFKOVi0OMKoCJkcjFoc4VKERg52LY6wKMLx+LyTGYOnOeiZgyWOa4CnEOjM0duMAd9AXDnAA+cFcjMRp5WceM2ndLT6pAEnR1xPeEUfv4ZeYMnhHvfocNNV+BRAcvgGOjPKvDX/HBQ5vOJbG9kerdiBkMMlpiABHY2aUy/H9VAixPGWBu0qfs7RIIIW1ytW/gikMnNcbDysFn/B28yyzMEbsrNcrGph/qjJHFcaTKTFX9C1Gve7lQ/hNWMQVr4gcywPIPfgztSk5KI5NblLthy1oQG5OWLxI1WOqqAAvg5J4QfBmuNKON7fXoNW+xdLplh/5GWOtVAuB5HiXdnkmJwlSY7MKFQ9GMisbY4fuNMKlxnLl0aeXzIyx0LUFkJW/k3ETk7lE6xCzBzUZgzUnl4gXI6EboMyY6NHq+Eyx9kxBGjGRoNtx2LXHNEBin7imf9EFUop4t0EEx4yHj+5drn3t1fAlDBJYOYIHQRV940J18VJHihrjmgznp5fXIK4Vs6pCuNkmig54taJCwPLPdwLZeIEZB6IzBH32mroKIzzAyR5EC9IPycnvttVYG+nLxKSOYKmWNiRV96EIDshppUZYM04e1GiNEMjxySFszXIQsERfzki5pTJMsu7p7A5EQmp7YJ0np/ffn349x+/vyfXBA3/J6Tui4OgtGE5cctZS3wrXLjYarLmOBWXn99+zZux8Pny2c0LZzncZz73Ak91s8s/WuDHqkPmmB+pFzt4/t97JI8yOfLD5zL03fPHXR5xC4YZHN9ldezUyaJmKgb+QAxaDi/ch3t+/iiBW46Z0RnUkTPFsq88POUAT5KPgG8X1GSOtCEVmv/TJpeqDIQ7rTxIHkJuJq4cd6GY0SkqaUEsx10S0n7v25bOcoiLSA5hIjmEieQQJpJDmEgOYSI5hElnORJ+Idz7R8jEciA/eN6hqKQFrhzUD57nQW5mjRxp4yk07afNKVXpx1MO5EHwIPh2Ae60MsPMkAoa3zPFUi84Brsck7j70fsmZQdaDscfcDt252RRJcdA+cJ6OuQCLn7k54zCuQk6c0wyH76LXTv/7+yrjQ1nOSL27fMtcNkP95yBH6sOmWOcHKk/fn8/1dNnP98jbYza/TlG9RYdG76bt1RtzjFf5jza2edR7ksX8J9WInayihhnEXRKG6PNmmOH7ow3ZGjkAN/oE3yb1DVC5AjaIxHWj/ImBAnXdkG6BTd6mPabSo5ATCtxOTm08+KOcABxLkqOuCG74EfEvn04h3v0P6kpeor1UmStnPKNqtcgPh0y4QDA/MvhJKRBvSB9en5ZPrHxWMjkJ9cgunG9Jfwse/yjZeOgPlR24Kw5dtACtEwDy8PlSOg8QD96tBouc4zVY2MjarJG9MGzaYSvOTbS+rs2yml1zhkMiJljo+pA8mUYbf6cpMwx0js7M+jJlUwbAHlyjIpYRCuSX7fM1Ig7rexc6eCIg+xdSkaeTXZSM8dIf+btdXWQaiSvqLLlGEihKXljEaf5dymQY1AFyBeuhhOsOY5QTNUWdJWvyRzjcqS4UghpY1lPhyQahaRmjMLMsQFy+xAEe+uK1xzXGw+bQtjNGOWZY8Olg8tDudOmORByDL8EUBvTHq3YQZFjeE8QmfHlrfnnAMkxAhYQdG+84Zgx0OQYkQtMr7jj19ALODlG1g0I2suJaGYMTDk2YO9R3QHUYgP3uxXYkPmC3ExcOQZ24FwAbyDutHKk3xQDrsUGdObYoQjlPCzN4cgcO+wphEWLDTI5NhgV4dJig1KODRZFGLXYIJZjA1kRXi026OXYQFOEXYuNJnLsML5IDUs3OXYo3pUFp60cRyJE6SrEkYeQ45Y2m0uF8qByiBk4Hp+LEiSHMJEcwkRyCBPJIUwkhzCRHMJEcggTySFMJIcwkRzCRHIIE8khTCSHMJEcwkRyCBPJIUwkhzCRHMJEcggTySFMJIcwkRzCRHIIkz8QEiJqN8aAxgAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>RFPM Final Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: field card + step panel side by side; results card, rule cards and source note full width below. */
+:root{
+  --bg:#EEF0F3; --panel:#FFFFFF; --panel2:#F6F7F9; --ink:#1B2230; --muted:#5E6878; --line:#DADFE6;
+  --accent:#E0613A; --accent-ink:#FFFFFF; --navy:#1F3A68; --navy-ink:#FFFFFF;
+  --field:#3D69B0; --field2:#33599A; --fp:#1F3A68; --wait:#F2C4AE; --ammo:#D9E4F2; --ammo-ink:#1F3A68; --target:#FFFFFF;
+  --hit:#2FB463; --miss:#D93B36; --good:#1E8E4E; --bad:#C2332E; --warn:#B86A00;
+  --f-body:"IBM Plex Sans", Arial, "Segoe UI", sans-serif;
+  --f-disp:"IBM Plex Sans", Arial, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, "Roboto Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F141C; --panel:#171E2A; --panel2:#1D2533; --ink:#E7ECF3; --muted:#9AA6B6; --line:#2A3445;
+  --accent:#F07A52; --accent-ink:#1A0D07; --navy:#22457E; --navy-ink:#FFFFFF;
+  --field:#2C4F88; --field2:#25446F; --fp:#152B4E; --wait:#D9A08A; --ammo:#B9CBE3; --ammo-ink:#132B52; --target:#F1F4F8;
+  --hit:#3CCB75; --miss:#FF6A63; --good:#49C27E; --bad:#FF6A63; --warn:#E5A23A; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F141C; --panel:#171E2A; --panel2:#1D2533; --ink:#E7ECF3; --muted:#9AA6B6; --line:#2A3445;
+  --accent:#F07A52; --accent-ink:#1A0D07; --navy:#22457E; --navy-ink:#FFFFFF;
+  --field:#2C4F88; --field2:#25446F; --fp:#152B4E; --wait:#D9A08A; --ammo:#B9CBE3; --ammo-ink:#132B52; --target:#F1F4F8;
+  --hit:#3CCB75; --miss:#FF6A63; --good:#49C27E; --bad:#FF6A63; --warn:#E5A23A; color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--bg)}
+body{color:var(--ink); font-family:var(--f-body); font-size:15px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); padding-block:18px 36px}
+.wrap{max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:16px}
+button,select,input{font:inherit; color:inherit}
+button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.hdr{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-start}
+.eyebrow{font-size:13px; color:var(--muted); margin:0}
+h1{font-family:var(--f-disp); font-weight:700; font-size:clamp(28px,4vw,42px); line-height:1.15; margin:2px 0 4px; text-wrap:balance}
+.lead{margin:0; color:var(--muted); max-width:62ch}
+.hdr-side{display:flex; flex-direction:column; gap:10px; align-items:flex-end}
+.langbtn{border:1px solid var(--line); background:var(--panel); border-radius:999px; padding:6px 16px; font-weight:700; cursor:pointer}
+.phasechips{display:flex; gap:6px; flex-wrap:wrap}
+.pchip{border:1px solid var(--line); background:var(--panel); color:var(--muted); border-radius:999px; padding:4px 12px; font-size:13px; cursor:pointer}
+.pchip[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+nav.tabs{display:flex; gap:4px; border-bottom:1px solid var(--line)}
+nav.tabs button{border:0; background:none; padding:9px 14px; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; font-weight:500}
+nav.tabs button[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--accent); font-weight:700}
+.main{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:16px; align-items:start}
+@media (max-width:960px){.main{grid-template-columns:minmax(0,1fr)}}
+.col{display:flex; flex-direction:column; gap:16px; min-width:0}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; min-width:0}
+.card h2{font-family:var(--f-disp); font-size:18px; margin:0 0 8px; font-weight:700}
+.fieldcard{padding:10px}
+#field{display:block; width:100%; height:auto; border-radius:10px}
+.tok{transition:transform .8s cubic-bezier(.4,.1,.2,1), opacity .4s}
+@media (prefers-reduced-motion:reduce){.tok{transition:none}}
+.timer{display:flex; align-items:center; gap:10px; padding:8px 6px 2px; font-size:13px; color:var(--muted)}
+.timer .t{font-family:var(--f-mono); font-weight:600; color:var(--ink); min-width:4.2ch; direction:ltr}
+.timer .bar{flex:1; height:8px; border-radius:6px; background:var(--panel2); border:1px solid var(--line); overflow:hidden}
+.timer .bar i{display:block; height:100%; width:0; background:var(--hit)}
+.legend{display:flex; flex-wrap:wrap; gap:4px 16px; font-size:12.5px; color:var(--muted); padding:6px}
+.legend span{display:inline-flex; gap:6px; align-items:center}
+.sw{width:12px; height:12px; border-radius:3px; display:inline-block}
+.sw.c{border-radius:50%}
+.stephead{display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+.tag{font-family:var(--f-mono); font-size:11.5px; border:1px dashed var(--line); padding:2px 8px; border-radius:6px; color:var(--muted)}
+.steptitle{font-family:var(--f-disp); font-size:22px; font-weight:700; margin:6px 0 10px; line-height:1.35}
+.cmdbox{background:var(--navy); color:var(--navy-ink); border-radius:10px; padding:10px 14px; margin-bottom:10px}
+.cmdbox .cap{font-size:12px; opacity:.8; margin-bottom:4px}
+.cmdrow{display:grid; grid-template-columns:1fr auto; gap:2px 12px; padding:5px 0; border-top:1px solid rgba(255,255,255,.12)}
+.cmdrow:first-of-type{border-top:0}
+.cmdrow .c{font-family:var(--f-mono); font-weight:600; font-size:14px; direction:ltr; text-align:start; overflow-wrap:anywhere}
+body[dir="rtl"] .cmdrow .c{text-align:right}
+.cmdrow .at{font-family:var(--f-mono); font-size:12.5px; opacity:.85; direction:ltr}
+.desc{margin:0 0 10px}
+.chip{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; font-size:12px; font-weight:700; border:1px solid rgba(0,0,0,.25); vertical-align:-5px; font-family:var(--f-mono)}
+.ref{font-size:12px; color:var(--muted); font-family:var(--f-mono)}
+.trainbtn{width:100%; border:1px solid var(--line); background:var(--panel); border-radius:10px; padding:9px 12px; cursor:pointer; font-weight:700}
+.trainbtn:hover{border-color:var(--accent)}
+.trainer{border:1.5px solid #7FA6E0; border-radius:12px; padding:14px; margin-top:10px; background:var(--panel)}
+.trainer[hidden]{display:none!important}
+.trow{display:flex; justify-content:space-between; align-items:center; gap:10px}
+.tcount{font-family:var(--f-mono); font-weight:600; font-size:30px; line-height:1; direction:ltr}
+.tstage{display:flex; align-items:center; gap:8px; font-weight:700}
+.tdot{width:16px; height:16px; border-radius:50%; background:var(--line)}
+.tdot.red{background:var(--miss)} .tdot.green{background:var(--hit)}
+.saybox{background:var(--navy); color:var(--navy-ink); border-radius:10px; padding:10px 14px; margin:10px 0 6px; transition:background .2s}
+.saybox.now{background:var(--accent); color:var(--accent-ink)}
+.saybox.idle{background:color-mix(in srgb, var(--navy) 55%, var(--panel))}
+.saybox .cap{font-size:12px; opacity:.85}
+.saybox .say{font-family:var(--f-mono); font-weight:600; font-size:clamp(16px,2vw,20px); direction:ltr; text-align:start; overflow-wrap:anywhere; min-height:1.4em}
+body[dir="rtl"] .saybox .say{text-align:right}
+.thint{font-size:12.5px; color:var(--muted); margin:0 0 10px}
+.tbtns{display:flex; gap:8px; flex-wrap:wrap}
+.checks{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; font-size:13px}
+.checks label{display:inline-flex; gap:6px; align-items:center; cursor:pointer}
+.ctrls{display:flex; flex-direction:column; gap:12px}
+.navrow{display:grid; grid-template-columns:auto auto 1fr auto auto; gap:8px}
+.navrow .btn{white-space:nowrap}
+#bstart .bt,#bplay .bt,#bpause .bt{display:none}
+#bstart,#bplay,#bpause{min-width:48px; font-size:17px}
+#pensnd[aria-pressed="false"]{color:var(--muted); border-style:dashed}
+#bpause[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:var(--navy-ink)}
+.btn{border:1px solid var(--line); background:var(--panel); border-radius:10px; padding:9px 14px; cursor:pointer; font-weight:500}
+.btn:hover:not(:disabled){border-color:var(--accent)}
+.btn:disabled{opacity:.45; cursor:not-allowed}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink); font-weight:700}
+input[type="range"]{width:100%; accent-color:var(--accent)}
+.row{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.seg{display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden}
+.seg button{border:0; background:var(--panel); padding:4px 10px; cursor:pointer; font-family:var(--f-mono); font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--bg)}
+select, input[type="text"]{border:1px solid var(--line); background:var(--panel); border-radius:8px; padding:7px 9px; min-width:0}
+.grow{flex:1; min-width:0}
+.small{font-size:12.5px; color:var(--muted)}
+details summary{cursor:pointer; font-weight:700}
+.names{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:4px}
+.names label{display:flex; gap:6px; align-items:center}
+.names .noc{flex:0 0 64px; width:64px; text-transform:uppercase; text-align:center; font-family:var(--f-mono)}
+.toggle{display:flex; gap:10px; align-items:center; font-weight:700; cursor:pointer; min-height:44px}
+.toggle input{width:22px; height:22px}
+#namespaste{width:100%; margin-top:10px; border:1px solid var(--line); background:var(--panel); border-radius:8px; padding:8px; font:inherit; font-size:16px; resize:vertical; unicode-bidi:plaintext; text-align:start}
+.namesopt{border-top:1px solid var(--line); padding-top:6px}
+.names input{width:100%}
+.gate{border:1.5px solid var(--accent); border-radius:12px; padding:12px; margin-top:10px; background:color-mix(in srgb, var(--accent) 6%, var(--panel))}
+.gate[hidden]{display:none!important}
+.gate h3{margin:0 0 8px; font-size:15px}
+.opts{display:flex; flex-direction:column; gap:6px}
+.opt{text-align:start; border:1px solid var(--line); background:var(--panel); border-radius:9px; padding:8px 11px; cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--good); background:color-mix(in srgb, var(--good) 14%, var(--panel))}
+.opt.wrong{border-color:var(--bad); background:color-mix(in srgb, var(--bad) 12%, var(--panel))}
+.tw{overflow-x:auto}
+table{border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums}
+th{font-size:12px; color:var(--muted); font-weight:500; padding:6px; border-bottom:1px solid var(--line); text-align:start; white-space:nowrap}
+td{padding:6px; border-bottom:1px solid var(--line); white-space:nowrap}
+tr.shoot td{background:color-mix(in srgb, var(--accent) 12%, transparent)}
+tr.out td{color:var(--muted)}
+.dots{display:inline-flex; gap:3px; direction:ltr}
+.dots i{width:10px; height:10px; border-radius:50%; border:1.5px solid var(--line); display:inline-block}
+.dots i.h{background:var(--hit); border-color:var(--hit)}
+.dots i.m{border-color:var(--miss)}
+.pill{display:inline-block; font-size:12px; border:1px solid var(--line); border-radius:999px; padding:1px 9px}
+.pill.shoot{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
+.pill.g{border-color:#C9A227; color:#9A7A0E} .pill.s{border-color:#8E99A6} .pill.b{border-color:#B57A44; color:#9A5E2A}
+.pill.out{color:var(--muted)}
+.tot{font-weight:700}
+.rescard td,.rescard th{text-align:center}
+.rescard td:first-child,.rescard th:first-child{text-align:start}
+.cur{background:color-mix(in srgb, var(--accent) 10%, transparent)}
+.infos{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px}
+.info h3{font-family:var(--f-disp); font-size:17px; margin:0 0 6px}
+.info p{margin:0; font-size:13.5px; color:var(--muted)}
+.src{font-size:12.5px; color:var(--muted); margin:0}
+.langbtn[aria-pressed="false"]{color:var(--muted); border-style:dashed}
+.byline{margin:6px 0 0; font-size:13px; font-weight:700; color:var(--accent); letter-spacing:.02em}
+.byline-foot{font-weight:700}
+.designer{white-space:pre-line; margin:2px 0 0; font-size:12.5px; color:var(--muted)}
+.pencard{max-width:1000px; margin:0 auto; width:100%}
+.penbar{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:4px 0 12px}
+.penbar input{flex:1 1 220px; font-size:16px}
+.pengrp{margin-top:14px}
+.pengrp h3{font-family:var(--f-disp); font-size:16px; margin:0 0 6px; color:var(--muted)}
+.pen{padding:4px 0}
+.penq{display:flex; width:100%; align-items:center; gap:10px; text-align:start; border:1px solid var(--line); background:var(--panel); border-radius:10px; padding:10px 12px; cursor:pointer; font-weight:700; min-height:48px}
+.penq:hover{border-color:var(--accent)}
+.penq .pn{flex:0 0 auto; font-family:var(--f-mono); font-size:12px; color:var(--muted); min-width:2.2ch}
+.penq .px{flex:1; min-width:0}
+.penq .chev{flex:0 0 auto; font-size:13px; color:var(--muted); transition:transform .2s}
+.penq[aria-expanded="true"]{border-color:var(--accent); background:color-mix(in srgb, var(--accent) 7%, var(--panel))}
+.penq[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.pena{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 14px; align-items:start; padding:10px 12px 6px}
+.pena .pp{font-size:14.5px}
+.pena .pr{font-family:var(--f-mono); font-size:12.5px; font-weight:600; color:var(--navy); direction:ltr; white-space:nowrap; text-align:end}
+.pena .say{grid-column:1/-1; justify-self:start; border:1px solid var(--line); background:var(--panel); border-radius:8px; padding:4px 12px; cursor:pointer; font-size:13px; min-height:36px}
+.pena .say:hover{border-color:var(--accent)}
+@keyframes penin{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
+.pena:not([hidden]){animation:penin .25s ease}
+@media (prefers-reduced-motion:reduce){.pena:not([hidden]){animation:none} .penq .chev{transition:none}}
+.pb{display:inline-block; font-size:12px; font-weight:700; border-radius:6px; padding:1px 8px; margin-bottom:3px; border:1px solid transparent}
+.pb.hit1{background:color-mix(in srgb, var(--warn) 18%, var(--panel)); color:var(--warn); border-color:var(--warn)}
+.pb.hit2,.pb.first2{background:color-mix(in srgb, var(--bad) 14%, var(--panel)); color:var(--bad); border-color:var(--bad)}
+.pb.dsq{background:var(--bad); color:#fff}
+.pb.maydsq{color:var(--bad); border-color:var(--bad); border-style:dashed}
+.pb.dns{background:var(--ink); color:var(--bg)}
+.pb.none,.pb.ok{color:var(--good); border-color:var(--good)}
+.pb.rpt{background:var(--navy); color:var(--navy-ink)}
+.pb.no{color:var(--muted); border-color:var(--line)}
+.pb.info{color:var(--navy); border-color:var(--navy)}
+.penempty{color:var(--muted); padding:12px 0}
+.info .ref{display:block; margin-top:6px}
+@media (max-width:640px){ .pena{grid-template-columns:minmax(0,1fr)} .pena .pr{text-align:start} }
+.casecard{max-width:760px; margin:0 auto; width:100%}
+.shots{display:flex; gap:10px; margin:10px 0; direction:ltr; justify-content:flex-start}
+body[dir="rtl"] .shots{justify-content:flex-end}
+.shot{display:flex; flex-direction:column; align-items:center; gap:2px; font-size:11px; color:var(--muted); font-family:var(--f-mono)}
+.shot b{width:30px; height:30px; border-radius:50%; border:2px solid #222; background:var(--target); display:block}
+.shot b.h{background:var(--hit); border-color:#145c32}
+.shot b.m{border-color:var(--miss); border-width:4px}
+.shot b.u{background:repeating-linear-gradient(45deg,#bbb 0 3px,#e4e4e4 3px 6px)}
+.shot b.l{background:var(--warn); border-color:#6b3d00}
+.q{font-weight:700; margin:8px 0}
+.ex{margin-top:10px; font-size:14px}
+.casenav{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+.casenav .primary{flex:1}
+.score{font-family:var(--f-mono); font-size:13px; color:var(--muted)}
+/* computers */
+.kbd{display:none}
+@media (hover:hover) and (pointer:fine){ .kbd{display:block} }
+.kbd kbd{font-family:var(--f-mono); font-size:11.5px; border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; padding:0 5px; background:var(--panel2)}
+@media (min-width:1500px){ .wrap{max-width:1480px} .steptitle{font-size:24px} body{font-size:16px} }
+:fullscreen body, body.fs{padding-block:12px} 
+:fullscreen .wrap{max-width:none}
+/* touch + phones */
+button,select,summary,.opt,input[type="checkbox"]{touch-action:manipulation}
+.btn,.trainbtn,select,.langbtn,nav.tabs button{min-height:44px}
+.pchip,.seg button{min-height:36px}
+input[type="checkbox"]{width:20px; height:20px; accent-color:var(--accent)}
+.opt{min-height:44px}
+@media (max-width:640px){
+  body{font-size:15.5px; padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+  select,input[type="text"]{font-size:16px}
+  .hdr-side{align-items:stretch; width:100%}
+  .langbtn{align-self:flex-start}
+  .phasechips{flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px}
+  .pchip{white-space:nowrap}
+  .steptitle{font-size:20px}
+  .card{padding:13px}
+  .fieldcard{padding:6px}
+  .navrow{position:fixed; z-index:30; left:0; right:0; bottom:0; margin:0; padding:10px max(12px, env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px, env(safe-area-inset-left,0px)); background:color-mix(in srgb, var(--panel) 94%, transparent); border-top:1px solid var(--line); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px)}
+  .navrow .btn{min-height:50px; font-size:16px}
+  .navrow .bt{display:none}
+  #bplay,#bpause,#bstart{min-width:48px; padding-inline:8px}
+  .navrow{gap:6px}
+  th,td{padding:6px 5px; font-size:13.5px}
+  .names{grid-template-columns:minmax(0,1fr)}
+  .casenav .btn{flex:1 1 40%}
+  .tcount{font-size:36px}
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="hdr">
+    <div>
+      <p class="eyebrow" id="eyebrow"></p>
+      <h1 id="h1"></h1>
+      <p class="lead" id="lead"></p>
+      <p class="byline" id="byline"></p>
+      <p class="designer" id="designer">First design by: Ahmed MURAD
+Finalized by: Tarek SHARARA</p>
+    </div>
+    <div class="hdr-side">
+      <div class="row"><button class="langbtn" id="dlbtn"></button><button class="langbtn" id="sndbtn" aria-pressed="true"></button><button class="langbtn" id="fsbtn" hidden></button><button class="langbtn" id="langbtn"></button></div>
+      <div class="phasechips" id="phasechips"></div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tab-sim" aria-selected="true"></button>
+    <button role="tab" id="tab-cases" aria-selected="false"></button>
+    <button role="tab" id="tab-pen" aria-selected="false"></button>
+  </nav>
+
+<style>
+/* Full results card sits under the field of play (left column) */
+.rescard{padding:12px 10px}
+.rescard .tw{overflow-x:auto}
+#results th,#results td{padding:4px 3px;font-size:12px}
+#results td:first-child{font-size:12.5px}
+</style>
+<style>
+/* ===== mobile phones ===== */
+/* phones and small tablets: field, then the step panel and controls, then the full results card */
+@media (max-width:960px){
+  .main{display:flex; flex-direction:column; align-items:stretch; gap:16px}
+  .main .card{max-width:100%}
+  .main>.col:first-child{display:contents}
+  .main .fieldcard{order:1}
+  .main>.col:last-child{order:2}
+  .main .rescard{order:3}
+}
+/* results table: athlete column stays visible while the table scrolls sideways */
+.rescard .tw{-webkit-overflow-scrolling:touch; overscroll-behavior-x:contain}
+#results th:first-child,#results td:first-child{position:sticky; inset-inline-start:0; z-index:1; background:var(--panel); box-shadow:inset -1px 0 0 var(--line)}
+body[dir="rtl"] #results th:first-child,body[dir="rtl"] #results td:first-child{box-shadow:inset 1px 0 0 var(--line)}
+@media (max-width:640px){
+  html{-webkit-text-size-adjust:100%; text-size-adjust:100%}
+  button,select,input,label{touch-action:manipulation}
+  input[type="range"]{height:36px; width:100%}
+  input[type="checkbox"]{width:24px; height:24px}
+  .hdr-side .row{flex-wrap:wrap; gap:6px}
+  .langbtn{min-height:40px}
+  nav.tabs{overflow-x:auto; scrollbar-width:none}
+  nav.tabs button{white-space:nowrap; flex:1 0 auto; min-height:44px}
+  #results th,#results td{font-size:12.5px; padding:6px 4px}
+  .rescard{padding:10px 6px}
+}
+</style>
+<style>
+/* ===== Full Results Card + Scoreboard side by side under the field (Scoreboard on the right) ===== */
+.resrow{display:flex; gap:12px; align-items:stretch; min-width:0}
+.resrow>.card{min-width:0}
+.resrow .rescard{flex:1 1 0; order:1}
+.resrow .boardcard{flex:0 0 auto; order:2; padding:12px 8px}
+body[dir="rtl"] .resrow .boardcard{order:0}
+/* every cell of the results card visible, no sideways scrolling */
+.resrow .rescard{padding:12px 8px}
+.resrow .rescard .tw,.resrow .boardcard .tw{overflow-x:visible}
+.resrow #results{width:100%; table-layout:auto}
+.resrow #results th,.resrow #results td{padding:5px 2px; font-size:12px; text-align:center; white-space:nowrap}
+.resrow #results th:first-child,.resrow #results td:first-child{text-align:start; padding-inline-end:4px}
+.resrow #board th,.resrow #board td{padding:5px 3px; font-size:12px; white-space:nowrap}
+.resrow #board .dots{gap:3px}
+.resrow h2{font-size:16px}
+.resrow .small{display:block}
+@media (max-width:960px){
+  .main .resrow{order:3; flex-direction:column}
+  .resrow .boardcard{order:2 !important}
+  .resrow .rescard .tw,.resrow .boardcard .tw{overflow-x:auto}
+}
+</style>
+  <section id="view-sim" class="col">
+    <div class="main">
+      <div class="col">
+        <div class="card fieldcard">
+          <svg id="field" viewBox="0 0 1000 560" role="img" aria-label="Field of play"></svg>
+          <div class="timer"><span id="timerlbl"></span><span class="bar"><i id="timerbar"></i></span><span class="t" id="timert">4.0s</span></div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <div class="resrow">
+          <div class="card rescard">
+            <div class="row" style="justify-content:space-between"><h2 id="resh"></h2><span class="small" id="ressub"></span></div>
+            <div class="tw"><table id="results"></table></div>
+          </div>
+          <div class="card boardcard">
+            <div class="row" style="justify-content:space-between"><h2 id="boardh"></h2><span class="small" id="boardsub"></span></div>
+            <div class="tw"><table id="board"></table></div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="stepcard">
+          <div class="stephead"><span id="stepno"></span><span class="tag" id="steptag"></span></div>
+          <div class="steptitle" id="steptitle"></div>
+          <div class="cmdbox" id="cmdbox"><div class="cap" id="cmdcap"></div><div id="cmdlist"></div></div>
+          <p class="desc" id="stepdesc"></p>
+          <p class="ref" id="stepref"></p>
+          <button class="trainbtn" id="trainbtn"></button>
+          <div class="trainer" id="trainer" hidden>
+            <div class="trow"><span class="tcount" id="tcount">0</span><span class="tstage"><span id="tstage"></span><span class="tdot" id="tdot"></span></span></div>
+            <div class="saybox" id="saybox"><div class="cap" id="saycap"></div><div class="say" id="say"></div></div>
+            <p class="thint" id="thint"></p>
+            <div class="tbtns"><button class="btn" id="tpause"></button><button class="btn" id="tnext"></button><button class="btn" id="tclose"></button></div>
+            <div class="checks"><label><input type="checkbox" id="tauto" checked><span id="tautol"></span></label><label><input type="checkbox" id="tbeep" checked><span id="tbeepl"></span></label></div>
+          </div>
+          <div class="gate" id="gate" hidden>
+            <h3 id="gateq"></h3>
+            <div class="opts" id="gateopts"></div>
+            <div class="row" style="margin-top:8px"><span class="small grow" id="gatefb"></span><button class="btn primary" id="gatego" hidden></button></div>
+          </div>
+        </div>
+        <div class="card ctrls">
+          <div class="navrow"><button class="btn" id="bstart"></button><button class="btn" id="bprev"></button><button class="btn primary" id="bnext"></button><button class="btn" id="bplay"></button><button class="btn" id="bpause" aria-pressed="false"></button></div>
+          <input type="range" id="seek" min="0" max="1" value="0" aria-label="Step">
+          <div class="row"><span class="small" id="speedl"></span><div class="seg" role="group"><button id="sp1" aria-pressed="true">×1</button><button id="sp2" aria-pressed="false">×2</button></div>
+            <label class="row small" style="margin-inline-start:auto"><input type="checkbox" id="quizme"><span id="quizmel"></span></label></div>
+          <div class="row"><button class="btn" id="bvoice"></button><select class="grow" id="vmode" aria-label="Narration"></select></div>
+          <div class="row"><select class="grow" id="vrate" aria-label="Rate"></select><select class="grow" id="vvoice" aria-label="Voice"></select></div>
+          <div class="row"><select class="grow" id="scen" aria-label="Scenario"></select></div>
+          <p class="small" id="scennote" style="margin:0"></p>
+          <p class="small kbd" id="kbdhint" style="margin:0"></p>
+          <div class="namesopt">
+            <label class="toggle"><input type="checkbox" id="usenames"><span id="usenamesl"></span></label>
+            <div id="namespanel" hidden>
+              <p class="small" id="nameshelp" style="margin:8px 0"></p>
+              <div class="names" id="names"></div>
+              <textarea id="namespaste" rows="4" aria-label="Paste names"></textarea>
+              <div class="row" style="margin-top:8px"><button class="btn" id="bfill"></button><button class="btn" id="bclear"></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-cases" hidden>
+    <div class="card casecard">
+      <div class="stephead"><span id="caseno"></span><span class="tag" id="casetag"></span></div>
+      <div class="steptitle" id="casetitle"></div>
+      <p class="desc" id="casetext"></p>
+      <div class="shots" id="caseshots"></div>
+      <div class="q" id="caseq"></div>
+      <div class="opts" id="caseopts"></div>
+      <div class="ex" id="caseex"></div>
+      <div class="casenav"><button class="btn" id="cprev"></button><button class="btn primary" id="cnext"></button><button class="btn" id="crestart"></button><button class="btn" id="clisten"></button></div>
+      <p class="score" id="cscore"></p>
+    </div>
+  </section>
+
+  <section id="view-pen" hidden>
+    <div class="card pencard">
+      <div class="row" style="justify-content:space-between"><h2 id="penh"></h2><span class="small" id="pensub"></span></div>
+      <div class="penbar"><input type="text" id="pensearch" autocomplete="off"><button class="btn" id="penall" aria-pressed="false"></button><button class="btn" id="pensnd" aria-pressed="true"></button><div class="phasechips" id="penchips"></div></div>
+      <div id="penlist"></div>
+      <p class="small" id="pennote" style="margin:12px 0 0"></p>
+    </div>
+  </section>
+
+  <div class="infos" id="infos"></div>
+  <p class="src" id="src"></p>
+  <p class="src byline-foot" id="bylinefoot"></p>
+  <p class="src" id="designerfoot" style="margin-top:-12px; white-space:pre-line">First design by: Ahmed MURAD
+Finalized by: Tarek SHARARA</p>
+</div>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const SRC="<!doctype html>\n"+document.documentElement.outerHTML;
+const COLORS={1:"#F2B630",2:"#E04848",3:"#3E8FD8",4:"#E0559A",5:"#B8BEC6",6:"#4CBB6A",7:"#EE8A3C",8:"#7A63E0"};
+const INK={1:"#1b1b1b",2:"#fff",3:"#fff",4:"#fff",5:"#1b1b1b",6:"#1b1b1b",7:"#1b1b1b",8:"#fff"};
+const SIDE={1:"A",2:"B",3:"C",4:"D",5:"A",6:"B",7:"C",8:"D"};
+const BANK={A:1,B:1,C:2,D:2};
+let lang="en";
+try{const v=localStorage.getItem("rfpm2-lang-ensl"); if(v==="en"||v==="sl") lang=v;}catch(e){}
+const L=o=>o==null?"":(typeof o==="string"?o:(o[lang]??o.en));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ================= UI strings ================= */
+const T={
+sl:{eyebrow:"Hitrostrelna pištola 25 m moški · finale ISSF · 8 serij × 5 strelov v 4 sekundah",h1:"Simulator finala hitrostrelne pištole",
+ lead:"Spremljaj osem finalistov med prostorom za strelivo, prostorom za čakanje in strelskim mestom, korak za korakom, z ukazom glavnega sodnika (CRO) in razlogom za vsak premik.",
+ dl:"⬇ Shrani za uporabo brez povezave",dlt:"Shrani celotno kopijo simulatorja na tvojo napravo. Odpri jo kadar koli brez povezave.",dlok:"✓ Shranjeno — odpri datoteko v Prenosih",dlloc:"⬇ Shrani še eno kopijo",snd1:"🔊 Zvok: vklopljen",snd0:"🔇 Zvok: izklopljen",snd1t:"Zvok vklopljen",snd0t:"Zvok izklopljen",fs:"⛶ Celoten zaslon",fsx:"⛶ Izhod iz celotnega zaslona",kbd:"Tipkovnica: <kbd>→</kbd> naprej · <kbd>←</kbd> nazaj · <kbd>Preslednica</kbd> predvajaj/ustavi · <kbd>K</kbd> premor/nadaljuj · <kbd>T</kbd> trening CRO · <kbd>F</kbd> celoten zaslon · <kbd>L</kbd> jezik · <kbd>M</kbd> zvok · <kbd>S</kbd> shrani za uporabo brez povezave · <kbd>R</kbd> znova od začetka",
+ by:"T.SHARARA",byf:"© T.SHARARA",des:"Prvotna zasnova: Ahmed MURAD\nKončna različica: Tarek SHARARA",
+ lang:"English",ph:["Vstop in poskusna serija","Pari · serije 1–3","Posamezno · serije 4–8"],tabSim:"Simulator",tabCases:"Sodniški primeri",tabPen:"Kršitve in kazni",penh:"Kršitve in kazni v finalu",pensub:"S številko pravila ISSF",penSearch:"Išči: OT, okvara, trener, 6.17.4 n…",penAll:"Vse",penNone:"Ni zadetkov iskanja.",penShow:"Pokaži vse kazni",penHide:"Skrij kazni",penTap:"Tapni katero koli kršitev, da se pokaže kazen. Odločitev se prebere na glas, ko je zvok kršitev vklopljen; glavni gumb za zvok nanj ne vpliva.",penSay:"🔊 Poslušaj znova",penSnd1:"🔊 Zvok kršitev: vklopljen",penSnd0:"🔇 Zvok kršitev: izklopljen",penRule:"Pravilo",pennote:"V finalu se odbitek odšteje v seriji, v kateri je nastala kršitev, rezultat pod nič pa se ne beleži (6.17.1.5). Kršitve pred prvim TEKMOVALNIM strelom se odštejejo od prvih zadetkov (6.17.4 d). O vsem, kar ni zajeto, odloči žirija po splošnih tehničnih pravilih (6.17.1.14 t, u).",
+ step:"Korak",of:"od",cmdcap:"Ukazi glavnega sodnika (CRO) in časi",nocmd:"V tem koraku ni ukaza",train:"⏱ Treniraj kot CRO v realnem času od tu",
+ sayAt:"Ob nič reci:",sayNow:"Reci zdaj",wait:"Počakaj",pause:"Premor",resume:"Nadaljuj",nextStage:"Naslednja faza",close:"Zapri",auto:"Samodejno nadaljuj",beep:"Zvočni signal",
+ prev:"← Nazaj",next:"Naprej →",play:"▶ Predvajaj",stop:"■ Ustavi",pauseB:"❚❚ Premor",resumeB:"▶ Nadaljuj",speed:"Hitrost",quizme:"Preizkusi me pred vsakim korakom",
+ voiceOn:"🔊 Predvajaj razlago",voiceOff:"🔇 Ustavi razlago",vmode:["Razlaga in ukazi","Samo ukazi"],vrate:["Običajna hitrost","Počasi","Hitro"],novoice:"Privzeti glas naprave",
+ scen:["Novi naključni rezultati…","Izenačenje, ki ga odloči startna številka (8.–5.)","Dodatno streljanje za 4. mesto","Dodatno streljanje za bron","Dodatno streljanje po 8. seriji (zlato)"],fromStart:"↺ Znova od začetka",
+ names:"Imena finalistov (neobvezno)",usenames:"Uporabi imena finalistov",nameshelp:"Vpiši priimek vsakega tekmovalca po startni številki finala (1 = najboljša uvrstitev v kvalifikacijah). Oznaka države je neobvezna. CRO pokliče priimek, ki se prikaže na tekmovališču in na semaforju.",pasteph:"Ali prilepi seznam sem, eno ime na vrstico po vrsti:\nMUELLER GER\nPETER GER\n…",fill:"Izpolni s seznama",clearn:"Počisti imena",famph:"Priimek",nocph:"NOK",board:"Semafor",boardsub:"Zadetek / zgrešek · zadnja serija",res:"Celoten list z rezultati",ressub:"Zadetki po serijah, posodobljeno ob vsakem koraku",
+ col:{rk:"Mesto",sh:"Tekmovalec",last:"Zadnja serija",tot:"Skupaj",st:"Stanje",so:"Dodatno"},
+ st:{fp:"Na strelskem mestu",shoot:"Strelja",wait:"Čaka",ammo:"Prostor za strelivo",out:"Izpadel",g:"Zlato",s:"Srebro",b:"Bron"},
+ timer:"Čas serije",lg:["Strelsko mesto","Prostor za čakanje","Prostor za strelivo","Zadetek","Zgrešek"],
+ f:{bank:"Tarče · mesto",line:"Linija tarč — 25 m",fp:"Strelsko mesto",wait:"Čakanje",ammo:"Prostor za strelivo",size:"1,5 m × 1,5 m"},
+ gateQ:"Preden nadaljuješ: kaj se zgodi naslednje?",right:"Pravilno.",wrong:"Ne ta. Pravilen odgovor:",go:"Nadaljuj",
+ scenNote:{none:"Naključni rezultati brez izenačenja, ki bi zahtevalo posebno odločitev.",t85:"V tem scenariju je izenačenje, ki ga odloči startna številka, po seriji",so:"V tem scenariju je dodatno streljanje po seriji"},
+ caseTag:"Preizkusi svojo odločitev",caseNo:"Primer",cprev:"← Prejšnji",cnext:"Naslednji →",crestart:"Začni znova",clisten:"🔊 Preberi primer",cscore:"Pravilni odgovori:",
+ src:"Vir: Pravilnik ISSF A-678 V2 (izdaja 2025, drugi natis 07/2026, velja od 1. julija 2026), Rev 2 z dne 17. 10. 2026, pravilo 6.17.4 (a do q) ter pravila 6.17.1, 6.2.2.5, 8.7.2, 8.7.3 in 8.8.2.3. Številke pravil sledijo angleškemu besedilu, ki velja, če se slovenski prevod razlikuje. Rezultati v simulatorju so izmišljeni, časi pa okvirni. Pravilo ne določa, kaj se zgodi, če je dodatno streljanje spet izenačeno; simulator ga ponavlja, dokler izenačenje ni razrešeno."},
+en:{eyebrow:"25m Rapid Fire Pistol Men · ISSF Final · 8 series × 5 shots in 4 seconds",h1:"Rapid Fire Pistol Final Simulator",
+ lead:"Follow the eight finalists between the Ammunition Area, the Waiting Area and the firing point, step by step, with the CRO command and the reason for every move.",
+ dl:"⬇ Save for offline use",dlt:"Saves a complete copy of the simulator to your device. Open it any time without a connection.",dlok:"✓ Saved — open the file from Downloads",dlloc:"⬇ Save another copy",snd1:"🔊 Sound: on",snd0:"🔇 Sound: off",snd1t:"Sound on",snd0t:"Sound off",fs:"⛶ Full screen",fsx:"⛶ Exit full screen",kbd:"Keyboard: <kbd>→</kbd> next · <kbd>←</kbd> back · <kbd>Space</kbd> play/stop · <kbd>K</kbd> pause/resume · <kbd>T</kbd> CRO trainer · <kbd>F</kbd> full screen · <kbd>L</kbd> language · <kbd>M</kbd> sound · <kbd>S</kbd> save for offline · <kbd>R</kbd> restart",
+ by:"T.SHARARA",byf:"© T.SHARARA",des:"First design by: Ahmed MURAD\nFinalized by: Tarek SHARARA",
+ lang:"Slovenščina",ph:["Entry & sighting","Pairs · series 1–3","Single · series 4–8"],tabSim:"Simulator",tabCases:"Judging cases",tabPen:"Irregularities & penalties",penh:"Irregularities and penalties in the Final",pensub:"With the ISSF rule number",penSearch:"Search: OT, malfunction, coach, 6.17.4 n…",penAll:"All",penNone:"No matches.",penShow:"Show all penalties",penHide:"Hide penalties",penTap:"Tap any irregularity to reveal the penalty. The ruling is read aloud while the irregularities sound is on; the main sound button does not affect it.",penSay:"🔊 Listen again",penSnd1:"🔊 Irregularities sound: on",penSnd0:"🔇 Irregularities sound: off",penRule:"Rule",pennote:"In a Final a deduction is taken from the series where the violation occurred, and no score below zero is recorded (6.17.1.5). Violations before the first MATCH shot come off the first hits (6.17.4 d). Anything not covered is decided by the Jury under the General Technical Rules (6.17.1.14 t, u).",
+ step:"Step",of:"of",cmdcap:"CRO commands and timing",nocmd:"No command in this step",train:"⏱ Train as CRO in real time from here",
+ sayAt:"At zero, say:",sayNow:"Say now",wait:"Wait",pause:"Pause",resume:"Resume",nextStage:"Next stage",close:"Close",auto:"Continue automatically",beep:"Sound cue",
+ prev:"← Back",next:"Next →",play:"▶ Play",stop:"■ Stop",pauseB:"❚❚ Pause",resumeB:"▶ Resume",speed:"Speed",quizme:"Quiz me before each step",
+ voiceOn:"🔊 Play narration",voiceOff:"🔇 Stop narration",vmode:["Explanation and commands","Commands only"],vrate:["Normal speed","Slow","Fast"],novoice:"Device default voice",
+ scen:["New random results…","Tie decided by start number (8th–5th)","Shoot-off for 4th place","Shoot-off for bronze","Shoot-off after series 8 (gold)"],fromStart:"↺ Restart",
+ names:"Finalists' names (optional)",usenames:"Use finalists' names",nameshelp:"Enter each athlete's family name by Final Start Number (1 = best qualification rank). Country code is optional. The CRO calls the family name, and it shows on the field and the scoreboard.",pasteph:"Or paste the list here, one name per line in order:\nMUELLER GER\nPETER GER\n…",fill:"Fill from list",clearn:"Clear names",famph:"Family name",nocph:"NOC",board:"Scoreboard",boardsub:"Hit / miss · last series",res:"Full results card",ressub:"Hits per series, updated at every step",
+ col:{rk:"Rank",sh:"Athlete",last:"Last series",tot:"Total",st:"Status",so:"Shoot-off"},
+ st:{fp:"At firing point",shoot:"Firing",wait:"Waiting",ammo:"Ammunition Area",out:"Out",g:"Gold",s:"Silver",b:"Bronze"},
+ timer:"Series time",lg:["Firing point","Waiting area","Ammunition area","Hit","Miss"],
+ f:{bank:"Targets · point",line:"Target line — 25 m",fp:"Firing point",wait:"Wait",ammo:"Ammunition Area",size:"1.5 m × 1.5 m"},
+ gateQ:"Before you continue: what happens next?",right:"Correct.",wrong:"Not this one. Correct answer:",go:"Continue",
+ scenNote:{none:"Random results with no tie that needs a special decision.",t85:"This scenario has a tie decided by start number after series",so:"This scenario has a shoot-off after series"},
+ caseTag:"Test your call",caseNo:"Case",cprev:"← Previous",cnext:"Next →",crestart:"Start again",clisten:"🔊 Read the case",cscore:"Correct answers:",
+ src:"Source: ISSF Rule book A-678 V2 (Edition 2025, second print 07/2026, effective 1 July 2026), Rev 2 dated 17.10.2026, Rule 6.17.4 (a to q), plus Rules 6.17.1, 6.2.2.5, 8.7.2, 8.7.3 and 8.8.2.3. Rule numbers follow the English text, which governs if the Slovenian text differs. Results in the simulator are hypothetical and timings are indicative. The rule does not say what happens if a shoot-off is tied again; the simulator repeats it until the tie is broken."}
+};
+const t=()=>T[lang];
+
+/* ================= scenario plans ================= */
+const rnd=p=>Math.random()<p;
+function makePlan(){
+  const p={hits:{},so:{}};
+  for(let n=1;n<=8;n++){
+    const prob=0.82-(n-1)*0.012;
+    p.hits[n]=[]; for(let s=0;s<=8;s++){const h=[];for(let k=0;k<5;k++)h.push(rnd(prob));p.hits[n].push(h);}
+    p.so[n]=[]; for(let r=0;r<12;r++){const h=[];for(let k=0;k<5;k++)h.push(rnd(prob));p.so[n].push(h);}
+  }
+  return p;
+}
+function planFor(kind){
+  for(let i=0;i<6000;i++){
+    const p=makePlan(); const ev=simulate(p,NAMES,true).events;
+    if(kind===0 && !ev.length) return p;
+    if(kind===1 && ev.some(e=>e.t==="t85")) return p;
+    if(kind===2 && ev.some(e=>e.t==="so"&&e.place===4)) return p;
+    if(kind===3 && ev.some(e=>e.t==="so"&&e.place===3)) return p;
+    if(kind===4 && ev.some(e=>e.t==="so"&&e.place===1)) return p;
+  }
+  return makePlan();
+}
+
+/* ================= simulation → steps ================= */
+const cnt=h=>h?h.filter(Boolean).length:0;
+const WORDS=["ZERO","ONE","TWO","THREE","FOUR","FIVE"];
+function simulate(plan,names,quick){
+  const A={}; for(let n=1;n<=8;n++) A[n]={no:n,status:"active",ser:{},so:[],soIdx:0,place:null,medal:null,last:null,elimOrder:null};
+  const steps=[], events=[]; let elimCount=0;
+  const nm=n=>names[n-1];
+  const act=()=>Object.values(A).filter(a=>a.status==="active");
+  const total=a=>Object.values(a.ser).reduce((x,h)=>x+cnt(h),0);
+  const pm=f=>{const m={};for(let n=1;n<=8;n++)m[n]=f(n);return m};
+  function push(o){
+    if(quick){steps.push(0);return}
+    const board={},res={};
+    for(let n=1;n<=8;n++){const a=A[n]; board[n]={status:a.status,place:a.place,medal:a.medal,last:a.last?a.last.slice():null,total:total(a),elimOrder:a.elimOrder};
+      res[n]={ser:Object.fromEntries(Object.entries(a.ser).map(([k,h])=>[k,cnt(h)])),so:a.so.map(cnt),total:total(a),place:a.place,status:a.status};}
+    o.board=board; o.res=res; steps.push(o);
+  }
+  const names2=sh=>sh.map(nm).join(", ");
+  const report=(sh,get)=>sh.map(n=>{const v=cnt(get(n));return `${nm(n)} – ${WORDS[v]} ${v===1?"HIT":"HITS"}`}).join(". ");
+  const fireStages=(sh,get,firstWait,firstLbl,noReport)=>[
+    {lbl:firstLbl||{sl:"Tarče pripravljene",en:"Targets ready"},secs:firstWait,say:names2(sh)+" – READY",hint:firstWait===30?{sl:"30 sekund po ukazu LOAD, nato pokliči priimke.",en:"30 seconds after LOAD, then call the family names."}:{sl:"Počakaj na znak tehničnega vodje, da so tarče pripravljene, nato pokliči tekmovalce.",en:"Wait for the Technical Officer's signal that the targets are ready, then call the athletes."}},
+    {lbl:{sl:"Priprava na strel",en:"Getting ready"},secs:20,say:"ATTENTION",hint:{sl:"Po READY tekmovalec vstavi nabojnik in se pripravi. Po 20 sekundah: ATTENTION, prižgejo se rdeče luči.",en:"After READY the athlete inserts the magazine and prepares. After 20 seconds: ATTENTION, red lights on."}},
+    {lbl:{sl:"Rdeče luči",en:"Red lights"},secs:7,say:null,light:"red",hint:{sl:"Tekmovalec v položaju READY. Zelene luči po 7 sekundah.",en:"Athlete in the READY position. Green lights after 7 seconds."}},
+    {lbl:{sl:"Streljanje",en:"Firing"},secs:4,say:null,light:"green",hint:{sl:"5 strelov v 4 sekundah.",en:"5 shots in 4 seconds."}},
+    noReport
+      ?{lbl:{sl:"Ponastavitev tarč",en:"Target recycling"},secs:4,say:null,light:"red",hint:{sl:"Rezultat poskusne serije se ne razglasi.",en:"The sighting series score is not announced."}}
+      :{lbl:{sl:"Ponastavitev tarč",en:"Target recycling"},secs:4,say:report(sh,get),light:"red",hint:{sl:"V 10–14 sekundah rdeče luči razglasi rezultat serije.",en:"During the 10–14 seconds of red light, report the score."}}
+  ];
+  const cmdsFrom=stages=>stages.filter(s=>s.say).map(s=>({c:s.say,at:"+"+s.secs+"s"}));
+  const BEFORE={sl:"Pred tekmo",en:"Before the match"};
+
+  // ---- entry ----
+  const sightGet=n=>plan.hits[n][0];
+  push({ph:0,tag:BEFORE,title:{sl:"Poziv na linijo in predstavitev",en:"Call to the line and introductions"},
+    desc:{sl:"Približno 11 minut pred začetkom tekmovalce pokličejo enega za drugim in jih predstavijo ob vstopu na tekmovališče (FOP). Obrnjeni proti gledalcem ostanejo do ukaza TAKE YOUR POSITIONS. Vsako strelsko mesto ima za seboj svoj prostor za strelivo za svoje štiri tekmovalce.",en:"About 11 minutes before the start, athletes are called one by one and introduced as they enter the FOP. They keep facing the audience until TAKE YOUR POSITIONS. Each firing point has its Ammunition Area behind it for its four athletes."},
+    ref:"6.17.4 c, g",pos:pm(()=>"ammo"),stages:[{lbl:{sl:"Predstavitev",en:"Introductions"},secs:10,say:null,hint:{sl:"Napovedovalec predstavi tekmovalce.",en:"The Announcer introduces the athletes."}}],cmds:[]});
+  const typ=(grp,wait,title,desc,ref)=>{const stg=[{lbl:{sl:"Zavzemite položaje",en:"Take positions"},secs:wait,say:"TAKE YOUR POSITIONS",hint:{sl:"Ukaz za zavzetje položajev.",en:"Command to take positions."}}];
+    push({ph:0,tag:BEFORE,title,desc,ref,pos:pm(n=>grp.includes(n)?"fp":"ammo"),stages:stg,cmds:cmdsFrom(stg)});};
+  const prep=(grp,wait)=>{const la=grp.join(", "), le=grp.join(", ");const stg=[
+      {lbl:{sl:"Začetek priprave",en:"Preparation starts"},secs:wait,say:"PREPARATION BEGINS NOW",hint:{sl:wait+" s po zavzetju položajev.",en:wait+" seconds after taking positions."}},
+      {lbl:{sl:"Priprava",en:"Preparation"},secs:60,say:"END OF PREPARATION",hint:{sl:"Ena minuta. Vaje merjenja, dviganje roke in suho proženje na strelskem mestu so dovoljeni samo zdaj.",en:"One minute. Aiming exercises, arm lifts and dry firing at the firing point are allowed only now."}},
+      {lbl:{sl:"Polnjenje",en:"Loading"},secs:2,say:"FOR THE SIGHTING SERIES … LOAD",hint:{sl:"Takoj po koncu priprave.",en:"Right after the end of preparation."}}];
+    push({ph:0,tag:BEFORE,title:{sl:"Priprava, nato polnjenje za poskusno serijo · "+la,en:"Preparation, then loading for sighting · "+le},
+      desc:{sl:"Ena minuta priprave za tekmovalce "+la+". Vaje merjenja, dviganje roke in suho proženje na strelskem mestu so dovoljeni samo med pripravo. Nato napolnijo en nabojnik s petimi naboji, ki so na strelskem mestu.",en:"One minute of preparation for athletes "+le+". Aiming exercises, arm lifts and dry firing at the firing point are allowed only during preparation. Then they load the one magazine and five cartridges kept at the firing point."},
+      ref:"6.17.4 f, h, q",pos:pm(n=>grp.includes(n)?"fp":"ammo"),stages:stg,cmds:cmdsFrom(stg)});};
+  const sight=(pair,grp,first)=>{
+    pair.forEach(n=>{A[n].last=sightGet(n)});
+    const stg=fireStages(pair,sightGet,first?30:20,null,true);
+    const desc=first
+      ?{sl:`{${pair[0]}} in {${pair[1]}} na levi strani vsakega mesta streljata prva. {${pair[0]+1}} in {${pair[1]+1}} na desni smeta po READY vzeti pištolo za pripravo, vendar brez vaj merjenja, dviganja roke ali suhega proženja. Poskusna serija se ne šteje, njen rezultat se ne razglasi in okvare ni mogoče uveljavljati.`,
+        en:`{${pair[0]}} and {${pair[1]}} on the left of each point fire first. {${pair[0]+1}} and {${pair[1]+1}} on the right may take the pistol to prepare after READY, but no aiming exercises, arm lifts or dry firing. Sighting does not count, its score is not announced, and no malfunction may be claimed.`}
+      :{sl:`Zdaj {${pair[0]}} in {${pair[1]}} na desni strani obeh mest (B in D). Rezultat poskusne serije se ne razglasi. Ko vsi štirje odstreljajo, se vrnejo v prostor za strelivo.`,
+        en:`Now {${pair[0]}} and {${pair[1]}} on the right of the two points (B and D). The sighting score is not announced. When all four have fired they return to the Ammunition Area.`};
+    push({ph:0,tag:{sl:"Poskusna serija",en:"Sighting"},title:{sl:"Poskusna serija: "+pair.join(" in "),en:"Sighting series: "+pair.join(" & ")},desc,
+      ref:"6.17.4 h, o",pos:pm(n=>grp.includes(n)?"fp":"ammo"),fire:{shooters:pair,hits:Object.fromEntries(pair.map(n=>[n,sightGet(n)])),kind:"sight"},stages:stg,cmds:cmdsFrom(stg)});
+  };
+  typ([1,2,3,4],5,{sl:"Tekmovalci 1, 2, 3, 4 na strelska mesta, 5, 6, 7, 8 v prostore za strelivo",en:"Athletes 1, 2, 3, 4 to the firing points, 5, 6, 7, 8 to the Ammunition Areas"},
+    {sl:"{1} in {2} skupaj na mestu 1 (levo A, desno B), {3} in {4} na mestu 2 (C in D). Na vsakem mestu sta en nabojnik in 5 nabojev samo za poskusno serijo.",en:"{1} and {2} together on point 1 (left A, right B), {3} and {4} on point 2 (C and D). Each point holds one magazine and 5 cartridges for the sighting series only."},"6.17.4 b, f, g");
+  prep([1,2,3,4],10);
+  sight([1,3],[1,2,3,4],true); sight([2,4],[1,2,3,4],false);
+  typ([5,6,7,8],5,{sl:"1, 2, 3, 4 v prostor za strelivo, 5, 6, 7, 8 na strelska mesta",en:"1, 2, 3, 4 to the Ammunition Area, 5, 6, 7, 8 to the firing points"},
+    {sl:"Štirje so končali poskusno serijo: vrnejo se v prostor za strelivo in smejo napolniti do dva nabojnika. Nadaljnjega ukaza LOAD v finalu ni. {5} in {6} gresta na mesto 1, {7} in {8} na mesto 2.",en:"The four have finished sighting: they return to the Ammunition Area and may load up to two magazines. There is no further LOAD command in the Final. {5} and {6} go to point 1, {7} and {8} to point 2."},"6.17.4 h");
+  prep([5,6,7,8],20);
+  sight([5,7],[5,6,7,8],true); sight([6,8],[5,6,7,8],false);
+  {const stg=[{lbl:{sl:"Položaji za tekmo",en:"Match positions"},secs:20,say:null,hint:{sl:"Po 20 sekundah se pokliče prvi par.",en:"After 20 seconds the first pair is called."}}];
+   push({ph:1,tag:{sl:"Tekma",en:"Match"},title:{sl:"Položaji za 1. serijo: levi na mestu, desni korak zadaj",en:"Series 1 positions: left on the point, right one step back"},
+    desc:{sl:"5, 6, 7, 8 prenesejo preostalo strelivo za poskusno serijo v prostor za strelivo. {1} in {3} (A in C) stojita na strelskem mestu; {2} in {4} (B in D) čakata korak zadaj v prostoru za čakanje. Tekmovalno streljanje se začne ob 0:00.",en:"5, 6, 7, 8 move their remaining sighting ammunition to the Ammunition Area. {1} and {3} (A and C) stand at the firing point; {2} and {4} (B and D) wait one step back in the Waiting Area. Competition firing starts at 0:00."},
+    ref:"6.17.4 i",pos:pm(n=>[1,3].includes(n)?"fp":[2,4].includes(n)?"wait":"ammo"),stages:stg,cmds:[]});}
+
+  // ---- match ----
+  const PLACE={1:{sl:"zlato",en:"gold"},2:{sl:"srebro",en:"silver"},3:{sl:"bron",en:"bronze"},4:{sl:"4. mesto",en:"4th place"}};
+  function elim(n){const a=A[n]; a.place=act().length; a.status="out"; a.elimOrder=elimCount++; if(a.place===2)a.medal="s"; if(a.place===3)a.medal="b"; return a.place;}
+  function series(s){
+    const a=act().map(x=>x.no).sort((x,y)=>x-y);
+    const groups=s<=3?[[1,3],[2,4],[5,7],[6,8]].map(g=>g.filter(n=>a.includes(n))).filter(g=>g.length):a.map(n=>[n]);
+    groups.forEach((g,gi)=>{
+      const nx=groups[gi+1]||[];
+      g.forEach(n=>{A[n].ser[s]=plan.hits[n][s]; A[n].last=plan.hits[n][s];});
+      const get=n=>plan.hits[n][s];
+      const stg=fireStages(g,get,20,gi===0&&s===1?{sl:"Po zavzetju položajev",en:"After positions"}:null);
+      const nxtTxt=nx.length?{sl:` Naslednji: ${nx.map(n=>"{"+n+"}").join(" in ")} v prostoru za čakanje.`,en:` Next: ${nx.map(n=>"{"+n+"}").join(" and ")} in the Waiting Area.`}:{sl:" Zadnji strelja v tej seriji.",en:" Last to fire in this series."};
+      push({ph:s<=3?1:2,tag:{sl:"Serija "+s,en:"Series "+s},
+        title:g.length>1?{sl:`Serija ${s}: ${g.join(" in ")} skupaj`,en:`Series ${s}: ${g.join(" & ")} together`}:{sl:`Serija ${s}: tekmovalec ${g[0]} sam`,en:`Series ${s}: athlete ${g[0]} alone`},
+        desc:{sl:(g.length>1?`${g.map(n=>"{"+n+"}").join(" in ")} streljata skupaj na obeh mestih.`:`{${g[0]}} strelja sam; vrstni red je od leve proti desni (1 do 8), položaji se ne spreminjajo.`)+" Rdeča, nato zelena po 7 sekundah, 4 sekunde za streljanje, nato se tekmovalec takoj vrne v prostor za strelivo. Zadetek je 9,7 ali več."+nxtTxt.sl,
+              en:(g.length>1?`${g.map(n=>"{"+n+"}").join(" and ")} fire together on the two points.`:`{${g[0]}} fires alone; order is left to right (1 to 8) and positions never change.`)+" Red, then green after 7 seconds, 4 seconds to fire, then the athlete goes straight back to the Ammunition Area. A hit is 9.7 or higher."+nxtTxt.en},
+        ref:s<=3?"6.17.4 d, i":"6.17.4 d, i, j",pos:pm(n=>g.includes(n)?"fp":nx.includes(n)?"wait":"ammo"),
+        fire:{shooters:g,hits:Object.fromEntries(g.map(n=>[n,get(n)])),kind:"match",series:s},stages:stg,cmds:cmdsFrom(stg)});
+    });
+    results(s);
+  }
+  function rankLine(){return act().sort((x,y)=>total(y)-total(x)||x.no-y.no).map(a=>`${a.no}: ${total(a)}`).join(" · ")}
+  function results(s){
+    const TARGET={3:6,4:5,5:4,6:3,7:2,8:1};
+    const notes={sl:[],en:[]}; const rl=rankLine();
+    if(s>=3){
+      while(act().length>TARGET[s]){
+        const AA=act().sort((x,y)=>total(x)-total(y)||y.no-x.no); const low=total(AA[0]); const tied=AA.filter(a=>total(a)===low); const need=AA.length-TARGET[s];
+        if(tied.length<=need){tied.forEach(a=>{const p=elim(a.no);notes.sl.push(`{${a.no}} izpade (${p}. mesto).`);notes.en.push(`{${a.no}} is out (place ${p}).`);});continue;}
+        if(s<=5){tied.sort((x,y)=>y.no-x.no).slice(0,need).forEach(a=>{const p=elim(a.no);events.push({t:"t85",s});notes.sl.push(`Izenačenje pri ${low}, odloči startna številka: {${a.no}} izpade (${p}. mesto).`);notes.en.push(`Tie on ${low} decided by start number: {${a.no}} is out (place ${p}).`);});continue;}
+        const pl=AA.length===2?1:AA.length; events.push({t:"so",place:pl,s});
+        notes.sl.push(`Izenačenje pri ${low} med ${tied.map(a=>"{"+a.no+"}").join(" in ")} za ${PLACE[pl]?.sl||pl+". mesto"}: dodatno streljanje.`);
+        notes.en.push(`Tie on ${low} between ${tied.map(a=>"{"+a.no+"}").join(" and ")} for ${PLACE[pl]?.en||pl+"th"}: shoot-off.`);
+        pushResults(s,notes,true,rl);
+        shootoff(s,tied.map(a=>a.no),need,pl); return;
+      }
+    }
+    pushResults(s,notes,false,rl); after(s);
+  }
+  function pushResults(s,notes,so,rl){
+    const stg=[{lbl:{sl:"Premor in komentar",en:"Pause and commentary"},secs:18,say:null,hint:{sl:"Premor 15–20 sekund; napovedovalec komentira razvrstitev in izpadle.",en:"15–20 second pause; the Announcer comments on the ranking and eliminations."}}];
+    push({ph:s<=3?1:2,tag:{sl:"Rezultat serije "+s,en:"Series "+s+" result"},title:{sl:`Konec serije ${s}`+(notes.sl.length?(so?": izenačenje":": izpadanje"):""),en:`End of series ${s}`+(notes.en.length?(so?": tie":": elimination"):"")},
+      desc:{sl:`Razvrstitev: ${rl}. `+(notes.sl.join(" ")||(s<3?"Pred koncem 3. serije ni izpadanja.":"")),en:`Ranking: ${rl}. `+(notes.en.join(" ")||(s<3?"No elimination before the end of series 3.":""))},
+      ref:"6.17.4 i, j, k",pos:pm(()=>"ammo"),stages:stg,cmds:[]});
+  }
+  function after(s){ if(s>=8){finalStep();} else series(s+1); }
+  function shootoff(s,tied,need,pl){
+    const order=tied.slice().sort((x,y)=>x-y);
+    order.forEach((n,i)=>{
+      const h=plan.so[n][A[n].soIdx++]||[true,true,true,true,false]; A[n].so.push(h); A[n].last=h;
+      const stg=fireStages([n],()=>h,20,{sl:"Dodatno streljanje",en:"Shoot-off"});
+      push({ph:2,tag:{sl:"Dodatno streljanje",en:"Shoot-off"},title:{sl:`Dodatno streljanje: tekmovalec ${n}`,en:`Shoot-off: athlete ${n}`},
+        desc:{sl:`Dodatno streljanje za ${PLACE[pl]?.sl||pl+". mesto"}. Vsak tekmovalec strelja posebej, začne najnižja startna številka. Zadetki iz dodatnega streljanja se ne prištejejo k skupnemu seštevku.`,en:`Shoot-off for ${PLACE[pl]?.en||pl+"th"}. Each athlete fires separately, starting with the lowest start number. Shoot-off hits are not added to the total.`},
+        ref:"6.17.4 k",pos:pm(m=>m===n?"fp":m===order[i+1]?"wait":"ammo"),fire:{shooters:[n],hits:{[n]:h},kind:"so"},stages:stg,cmds:cmdsFrom(stg)});
+    });
+    const sc=n=>cnt(A[n].so[A[n].so.length-1]);
+    const sorted=order.slice().sort((x,y)=>sc(x)-sc(y));
+    const cut=sc(sorted[need-1]); const below=sorted.filter(n=>sc(n)<cut), at=sorted.filter(n=>sc(n)===cut);
+    const notes={sl:[`Dodatno streljanje: ${order.map(n=>`{${n}} ${sc(n)}`).join(" · ")}.`],en:[`Shoot-off: ${order.map(n=>`{${n}} ${sc(n)}`).join(" · ")}.`]};
+    below.forEach(n=>{const p=elim(n);notes.sl.push(`{${n}} zasede ${p}. mesto.`);notes.en.push(`{${n}} takes place ${p}.`);});
+    const rem=need-below.length;
+    if(rem>0&&at.length>rem){
+      notes.sl.push("Še vedno izenačeno: nova serija dodatnega streljanja."); notes.en.push("Still tied: another shoot-off series.");
+      pushSO(notes); shootoff(s,at,rem,pl); return;
+    }
+    at.slice(0,rem).forEach(n=>{const p=elim(n);notes.sl.push(`{${n}} zasede ${p}. mesto.`);notes.en.push(`{${n}} takes place ${p}.`);});
+    pushSO(notes); after(s);
+  }
+  function pushSO(notes){
+    push({ph:2,tag:{sl:"Dodatno streljanje",en:"Shoot-off"},title:{sl:"Rezultat dodatnega streljanja",en:"Shoot-off result"},desc:{sl:notes.sl.join(" "),en:notes.en.join(" ")},ref:"6.17.4 k",pos:pm(()=>"ammo"),
+      stages:[{lbl:{sl:"Rezultat",en:"Result"},secs:8,say:null,hint:{sl:"Napovedovalec razglasi rezultat dodatnega streljanja.",en:"The Announcer gives the shoot-off result."}}],cmds:[]});
+  }
+  function finalStep(){
+    const w=act()[0]; if(w){w.place=1;w.medal="g";}
+    const stg=[{lbl:{sl:"Konec finala",en:"End of the Final"},secs:3,say:"STOP … UNLOAD",hint:{sl:"Po zadnji seriji, če ni izenačenja ali protesta.",en:"After the last series, if there is no tie or protest."}},{lbl:{sl:"Rezultati",en:"Results"},secs:3,say:"RESULTS ARE FINAL",hint:{sl:"Nato se dobitniki medalj zberejo na tekmovališču (FOP).",en:"Then the medallists are assembled on the FOP."}}];
+    push({ph:2,tag:{sl:"Konec",en:"End"},title:{sl:"STOP … UNLOAD — rezultati so dokončni",en:"STOP … UNLOAD — results are final"},
+      desc:{sl:"Ni izenačenja ali protesta. Žirija zbere prve tri na tekmovališču, napovedovalec razglasi bron, srebro in zlato. Preden katera koli pištola zapusti linijo, sodnik na strelišču preveri: zaklep odprt, varnostna zastavica vstavljena, nabojnik odstranjen in nabojniki prazni, pištola v kovčku.",en:"No tie or protest. The Jury assembles the top three on the FOP and the Announcer recognises bronze, silver and gold. Before any pistol leaves the line a Range Officer checks: action open, safety flag in, magazine removed and magazines unloaded, pistol boxed."},
+      ref:"6.17.4 l",pos:pm(()=>"ammo"),stages:stg,cmds:cmdsFrom(stg)});
+  }
+  series(1);
+  return {steps,events};
+}
+
+/* ================= state ================= */
+let NAMES=["ATHLETE 1","ATHLETE 2","ATHLETE 3","ATHLETE 4","ATHLETE 5","ATHLETE 6","ATHLETE 7","ATHLETE 8"];
+let ENTRIES=Array.from({length:8},()=>({name:"",noc:""})), USE_NAMES=false;
+try{ const sv=JSON.parse(localStorage.getItem("rfpm2-names")||"null"); if(sv&&Array.isArray(sv.e)&&sv.e.length===8){ ENTRIES=sv.e.map(x=>({name:String(x.name||"").slice(0,24),noc:String(x.noc||"").slice(0,3)})); USE_NAMES=!!sv.on; } }catch(e){}
+function saveNames(){ try{ localStorage.setItem("rfpm2-names",JSON.stringify({on:USE_NAMES,e:ENTRIES})); }catch(e){} }
+function hasName(n){ return USE_NAMES && ENTRIES[n-1].name.trim()!==""; }
+function computeNames(){ NAMES=[1,2,3,4,5,6,7,8].map(n=>hasName(n)?ENTRIES[n-1].name.trim().toUpperCase():"ATHLETE "+n); }
+computeNames();
+let SCEN=0, PLAN=null, STEPS=[], EVENTS=[], I=0, SPEED=1, playT=null;
+function rebuild(keepI){ const r=simulate(PLAN,NAMES,false); STEPS=r.steps; EVENTS=r.events; if(!keepI) I=0; I=Math.min(I,STEPS.length-1); $("seek").max=STEPS.length-1; }
+function newScenario(k){ SCEN=k; PLAN=planFor(k); rebuild(false); stopPlay(); closeTrainer(); $("gate").hidden=true; render(false); }
+
+/* ================= field ================= */
+const NS="http://www.w3.org/2000/svg";
+const el=(tag,at,p,tx)=>{const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);if(tx!=null)e.textContent=tx;if(p)p.appendChild(e);return e};
+const FP={A:[252,262],B:[348,262],C:[652,262],D:[748,262]};
+const WAIT={A:[264,382],B:[336,382],C:[664,382],D:[736,382]};
+const AMMOX={A:140,B:380,C:620,D:860};
+let TOK={}, TGT={1:[],2:[]}, BANKR={}, LBL={};
+function drawField(){
+  const s=$("field"); s.innerHTML=""; TOK={}; TGT={1:[],2:[]}; LBL={};
+  el("rect",{x:0,y:0,width:1000,height:560,rx:12,fill:"var(--field)"},s);
+  el("rect",{x:0,y:110,width:1000,height:22,fill:"var(--field2)"},s);
+  LBL.line=el("text",{x:500,y:125,"text-anchor":"middle","font-size":12,fill:"#fff",opacity:.75},s,"");
+  [[1,300],[2,700]].forEach(([b,cx])=>{
+    LBL["bank"+b]=el("text",{x:cx,y:28,"text-anchor":"middle","font-size":13,"font-weight":700,fill:"#fff"},s,"");
+    BANKR[b]=el("rect",{x:cx-92,y:38,width:184,height:46,rx:8,fill:"#0c1220",stroke:"transparent","stroke-width":3},s);
+    for(let k=0;k<5;k++){const c=el("circle",{cx:cx-68+k*34,cy:61,r:13,fill:"var(--target)",stroke:"#000","stroke-width":1.5},s); TGT[b].push(c);}
+    el("rect",{x:cx-80,y:180,width:160,height:150,rx:4,fill:"var(--fp)",stroke:"#fff","stroke-width":1.5},s);
+    LBL["fp"+b]=el("text",{x:cx,y:204,"text-anchor":"middle","font-size":14,"font-weight":700,fill:"#fff"},s,"");
+    LBL["size"+b]=el("text",{x:cx,y:320,"text-anchor":"middle","font-size":11,fill:"#fff",opacity:.7},s,"");
+  });
+  ["A","B","C","D"].forEach(sd=>{
+    const [fx]=FP[sd]; LBL["s"+sd]=el("text",{x:fx,y:170,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"#fff"},s,sd);
+    const [wx,wy]=WAIT[sd]; el("rect",{x:wx-30,y:wy-24,width:60,height:46,rx:4,fill:"var(--wait)"},s);
+    LBL["w"+sd]=el("text",{x:wx,y:wy+38,"text-anchor":"middle","font-size":11,fill:"#fff"},s,"");
+    const ax=AMMOX[sd]; el("rect",{x:ax-108,y:440,width:216,height:92,rx:8,fill:"var(--ammo)"},s);
+    LBL["a"+sd]=el("text",{x:ax,y:460,"text-anchor":"middle","font-size":12,"font-weight":700,fill:"var(--ammo-ink)"},s,"");
+  });
+  for(let n=1;n<=8;n++){
+    const g=el("g",{class:"tok"},s);
+    el("circle",{r:23,fill:"none",stroke:"#FFD84D","stroke-width":3,opacity:0,class:"ring"},g);
+    el("circle",{r:17,fill:COLORS[n],stroke:"rgba(0,0,0,.35)","stroke-width":1.5,class:"disc"},g);
+    el("text",{"text-anchor":"middle",dy:5.5,"font-size":15,"font-weight":700,fill:INK[n],"font-family":"ui-monospace, Menlo, monospace",class:"num"},g,String(n));
+    el("text",{"text-anchor":"middle",y:36,"font-size":11,"font-weight":700,fill:"#fff",stroke:"#14284a","stroke-width":3,"paint-order":"stroke",class:"tname"},g,"");
+    g.style.transition="none"; TOK[n]=g;
+  }
+}
+function tokXY(n,zone,b){
+  const sd=SIDE[n];
+  if(zone==="fp") return FP[sd];
+  if(zone==="wait") return WAIT[sd];
+  const ax=AMMOX[sd]; return [ax+(n<=4?-36:36),496];
+}
+let anim=null; const ANIM={t0:0,loop:null,pausedAt:0};
+function renderField(animate){
+  const st=STEPS[I]; const tt=t();
+  const W=$("field").getBoundingClientRect().width||1000; const narrow=W<600; const k=narrow?Math.min(2.2,560/W*1.25):1; const kS=narrow?Math.min(1.6,k):1;
+  for(const key in LBL){const e=LBL[key]; if(!e.dataset.fs) e.dataset.fs=e.getAttribute("font-size"); e.setAttribute("font-size",(+e.dataset.fs*k).toFixed(1));}
+  LBL.line.textContent=narrow?"25 m":tt.f.line;
+  [1,2].forEach(b=>{LBL["bank"+b].textContent=narrow?`${b} · 5 EST`:`${tt.f.bank} ${b} · 5 EST`; LBL["fp"+b].textContent=narrow?String(b):tt.f.fp+" "+b; LBL["size"+b].textContent=narrow?"":tt.f.size;});
+  ["A","B","C","D"].forEach(sd=>{LBL["s"+sd].textContent=sd; LBL["w"+sd].textContent=narrow?sd:tt.f.wait+" "+sd; LBL["a"+sd].textContent=narrow?(lang==="sl"?"Strelivo "+sd:"Ammo "+sd):tt.f.ammo+" "+sd;});
+  for(let n=1;n<=8;n++){const g=TOK[n]; g.querySelector(".disc").setAttribute("r",narrow?24:17); g.querySelector(".ring").setAttribute("r",narrow?30:23); const tx=g.querySelector(".num"); tx.setAttribute("font-size",narrow?21:15); tx.setAttribute("dy",narrow?7.5:5.5);}
+  [1,2].forEach(b=>TGT[b].forEach(c=>c.setAttribute("r",narrow?15:13)));
+  for(let n=1;n<=8;n++){ const tn=TOK[n].querySelector(".tname"); const nmv=hasName(n)?NAMES[n-1]:""; tn.textContent=nmv.length>11?nmv.slice(0,10)+"…":nmv; tn.setAttribute("font-size",narrow?20:11.5); tn.setAttribute("y",narrow?46:35); }
+  const sh=st.fire?st.fire.shooters:[];
+  for(let n=1;n<=8;n++){const b=st.board[n]; const [x,y]=tokXY(n,st.pos[n],b); TOK[n].style.transform=`translate(${x}px,${y}px)`; TOK[n].style.opacity=b.status==="active"?1:.3; TOK[n].querySelector(".ring").setAttribute("opacity",sh.includes(n)?1:0);}
+  if(anim){cancelAnimationFrame(anim);anim=null}
+  const show=(prog,light)=>{
+    [1,2].forEach(b=>{
+      const n=sh.find(m=>BANK[SIDE[m]]===b); const h=n?st.fire.hits[n]:null;
+      BANKR[b].setAttribute("stroke",n&&light?(light==="green"?"var(--hit)":"var(--miss)"):"transparent");
+      TGT[b].forEach((c,k)=>{
+        const fired=h && prog>(k+0.6)/5;
+        c.setAttribute("fill",fired&&h[k]?"var(--hit)":"var(--target)");
+        c.setAttribute("stroke",fired&&!h[k]?"var(--miss)":"#000"); c.setAttribute("stroke-width",fired&&!h[k]?4:1.5);
+      });
+    });
+    $("timerbar").style.width=(prog*100)+"%"; $("timert").textContent=(4-prog*4).toFixed(1)+"s";
+  };
+  if(st.fire && animate){
+    const red=900/SPEED, green=4000/SPEED; ANIM.t0=performance.now();
+    const loop=ANIM.loop=now=>{const e=now-ANIM.t0;
+      if(e<red){show(0,"red");} else if(e<red+green){show((e-red)/green,"green");} else {show(1,"red");anim=null;return;}
+      anim=requestAnimationFrame(loop);};
+    anim=requestAnimationFrame(loop);
+  } else show(st.fire?1:0, st.fire?"red":null);
+}
+
+/* ================= render ================= */
+function btnLbl(txt){ const m=String(txt).match(/^(\S+)\s+(.*)$/); return m?`${esc(m[1])} <span class="bt">${esc(m[2])}</span>`:esc(txt); }
+function chipify(s){return esc(s).replace(/\{(\d)\}/g,(m,n)=>`<span class="chip" style="background:${COLORS[n]};color:${INK[n]}">${n}</span>`)}
+function render(animate){
+  const tt=t(); const st=STEPS[I];
+  document.documentElement.lang=lang; document.documentElement.dir=document.body.dir="ltr";
+  $("eyebrow").textContent=tt.eyebrow; $("h1").textContent=tt.h1; $("lead").textContent=tt.lead; $("byline").textContent=tt.by; $("bylinefoot").textContent=tt.byf; $("designer").textContent=tt.des; $("designerfoot").textContent=tt.des; $("langbtn").textContent=tt.lang;
+  $("tab-sim").textContent=tt.tabSim; $("tab-cases").textContent=tt.tabCases;
+  const pc=$("phasechips"); pc.innerHTML="";
+  tt.ph.forEach((p,k)=>{const b=document.createElement("button");b.className="pchip";b.textContent=p;b.setAttribute("aria-pressed",st.ph===k);b.onclick=()=>{const j=STEPS.findIndex(x=>x.ph===k);if(j>=0){stopPlay();$("gate").hidden=true;go(j,true);}};pc.appendChild(b);});
+  $("stepno").innerHTML=`${tt.step} <b>${I+1}</b> ${tt.of} ${STEPS.length}`;
+  $("steptag").textContent=L(st.tag); $("steptitle").textContent=L(st.title);
+  $("cmdcap").textContent=tt.cmdcap;
+  const cl=$("cmdlist"); cl.innerHTML="";
+  if(st.cmds&&st.cmds.length) st.cmds.forEach(c=>{const d=document.createElement("div");d.className="cmdrow";d.innerHTML=`<span class="c">${esc(c.c)}</span><span class="at">${esc(c.at)}</span>`;cl.appendChild(d);});
+  else cl.innerHTML=`<div class="cmdrow"><span class="c" style="font-family:var(--f-body);font-weight:500;opacity:.85">${esc(tt.nocmd)}</span></div>`;
+  $("stepdesc").innerHTML=chipify(L(st.desc)); $("stepref").textContent="ISSF "+st.ref;
+  $("trainbtn").textContent=tt.train;
+  $("bprev").textContent=tt.prev; $("bnext").textContent=tt.next; $("bplay").innerHTML=btnLbl((playT||PAUSE.play)?tt.stop:tt.play); $("bplay").title=(playT||PAUSE.play)?tt.stop:tt.play; updPause();
+  $("bprev").disabled=I===0; $("bnext").disabled=I>=STEPS.length-1;
+  $("seek").value=I; $("speedl").textContent=tt.speed; $("quizmel").textContent=tt.quizme;
+  $("sp1").setAttribute("aria-pressed",SPEED===1); $("sp2").setAttribute("aria-pressed",SPEED===2);
+  fillSelect($("vmode"),tt.vmode); fillSelect($("vrate"),tt.vrate); fillSelect($("scen"),tt.scen,SCEN);
+  $("bvoice").textContent=VOICE_ON?tt.voiceOff:tt.voiceOn; fillVoices();
+  $("bstart").innerHTML=btnLbl(tt.fromStart); $("bstart").title=tt.fromStart; $("bstart").disabled=I===0&&!playT&&!PAUSE.on&&!TR; $("dlbtn").textContent=DL_DONE?tt.dlok:(location.protocol==="file:"?tt.dlloc:tt.dl); $("dlbtn").title=tt.dlt; $("kbdhint").innerHTML=tt.kbd; $("sndbtn").textContent=SOUND?tt.snd1:tt.snd0; $("sndbtn").setAttribute("aria-pressed",SOUND); $("bvoice").disabled=!synth; $("tbeep").disabled=!SOUND; $("clisten").disabled=!synth; $("fsbtn").textContent=document.fullscreenElement?tt.fsx:tt.fs; 
+  const PL={1:{sl:"zlato",en:"gold"},3:{sl:"bron",en:"bronze"},4:{sl:"4. mesto",en:"4th place"}};
+  const seen=new Set(); const evs=EVENTS.filter(e=>{const k=e.t+e.s+(e.place||"");if(seen.has(k))return false;seen.add(k);return true;});
+  $("scennote").textContent=!evs.length?tt.scenNote.none:evs.map(e=>e.t==="so"?`${tt.scenNote.so} ${e.s} (${L(PL[e.place])||e.place}).`:`${tt.scenNote.t85} ${e.s}.`).join(" ");
+  $("tautol").textContent=tt.auto; $("tbeepl").textContent=tt.beep; $("tnext").textContent=tt.nextStage; $("tclose").textContent=tt.close;
+  $("tpause").textContent=TR&&TR.paused?tt.resume:tt.pause;
+  $("timerlbl").textContent=tt.timer;
+  $("legend").innerHTML=`<span><i class="sw" style="background:var(--fp)"></i>${tt.lg[0]}</span><span><i class="sw" style="background:var(--wait)"></i>${tt.lg[1]}</span><span><i class="sw" style="background:var(--ammo)"></i>${tt.lg[2]}</span><span><i class="sw c" style="background:var(--hit)"></i>${tt.lg[3]}</span><span><i class="sw c" style="border:2px solid var(--miss)"></i>${tt.lg[4]}</span>`;
+  $("boardh").textContent=tt.board; $("boardsub").textContent=tt.boardsub; $("resh").textContent=tt.res; $("ressub").textContent=tt.ressub;
+  renderBoard(); renderResults(); renderField(animate); renderInfos(); $("src").textContent=tt.src;
+  if(TR) renderTrainer();
+}
+function fillSelect(sel,opts,val){const v=val!=null?val:sel.selectedIndex; sel.innerHTML=opts.map((o,i)=>`<option value="${i}">${esc(o)}</option>`).join(""); sel.selectedIndex=Math.max(0,v);}
+function statusOf(st,n){const b=st.board[n];
+  if(b.medal) return {k:b.medal,txt:t().st[b.medal]};
+  if(b.status!=="active") return {k:"out",txt:`${t().st.out} (${b.place})`};
+  if(st.fire&&st.fire.shooters.includes(n)) return {k:"shoot",txt:t().st.shoot};
+  return {k:"",txt:t().st[st.pos[n]]||""};
+}
+const nameTag=n=>hasName(n)?" "+esc(NAMES[n-1])+(ENTRIES[n-1].noc?` <span class="small">${esc(ENTRIES[n-1].noc.toUpperCase())}</span>`:""):"";
+function renderBoard(){
+  const st=STEPS[I]; const tt=t();
+  const rows=[1,2,3,4,5,6,7,8].map(n=>({n,b:st.board[n]}));
+  const started=STEPS.slice(0,I+1).some(x=>x.fire&&x.fire.kind==="match");
+  rows.sort((x,y)=>{const ax=x.b.status==="active",ay=y.b.status==="active"; if(ax!==ay) return ax?-1:1; if(!ax) return x.b.place-y.b.place; return started?(y.b.total-x.b.total||x.n-y.n):x.n-y.n;});
+  let h=`<thead><tr><th>${tt.col.rk}</th><th>${tt.col.sh}</th><th>${tt.col.last}</th><th>${tt.col.tot}</th><th>${tt.col.st}</th></tr></thead><tbody>`;
+  rows.forEach((r,i)=>{const s=statusOf(st,r.n); const rk=r.b.status!=="active"?r.b.place:(started?i+1:"–");
+    const dots=r.b.last?r.b.last.map(x=>`<i class="${x?"h":"m"}"></i>`).join(""):"<i></i><i></i><i></i><i></i><i></i>";
+    h+=`<tr class="${s.k==="shoot"?"shoot":""} ${r.b.status!=="active"?"out":""}"><td>${rk}</td><td>${SIDE[r.n]} <span class="chip" style="background:${COLORS[r.n]};color:${INK[r.n]}">${r.n}</span>${nameTag(r.n)}</td><td><span class="dots">${dots}</span></td><td class="tot">${started?r.b.total:"–"}</td><td><span class="pill ${s.k}">${esc(s.txt)}</span></td></tr>`;});
+  $("board").innerHTML=h+"</tbody>";
+}
+function renderResults(){
+  const st=STEPS[I]; const tt=t(); const cs=st.fire&&st.fire.kind==="match"?st.fire.series:null;
+  let h=`<thead><tr><th>${tt.col.sh}</th>`; for(let s=1;s<=8;s++) h+=`<th class="${cs===s?"cur":""}">${s}</th>`; h+=`<th>${tt.col.so}</th><th>${tt.col.tot}</th><th>${tt.col.rk}</th></tr></thead><tbody>`;
+  for(let n=1;n<=8;n++){const r=st.res[n];
+    h+=`<tr class="${r.status!=="active"?"out":""}"><td><span class="chip" style="background:${COLORS[n]};color:${INK[n]}">${n}</span>${nameTag(n)}</td>`;
+    for(let s=1;s<=8;s++) h+=`<td class="${cs===s?"cur":""}">${r.ser[s]!=null?r.ser[s]:""}</td>`;
+    h+=`<td>${r.so.join(" / ")}</td><td class="tot">${Object.keys(r.ser).length?r.total:"–"}</td><td>${r.place||"–"}</td></tr>`;}
+  $("results").innerHTML=h+"</tbody>";
+}
+
+/* ================= navigation ================= */
+function go(j,animate){ if(PAUSE.on){ const wasPlay=PAUSE.play; PAUSE.play=false; clearPause(); if(wasPlay) stopPlay(); } I=Math.max(0,Math.min(STEPS.length-1,j)); render(animate); speakStep(); }
+function nextStep(){ if(I>=STEPS.length-1){stopPlay();return false;}
+  if($("quizme").checked && !GATE_OK){ openGate(); return false; }
+  GATE_OK=false; go(I+1,true); return true; }
+function stopPlay(){ if(playT){clearTimeout(playT);playT=null;} PAUSE.play=false; $("bplay").innerHTML=btnLbl(t().play); $("bplay").title=t().play; updPause(); }
+function playTick(){ if(!nextStep()){stopPlay();return} const d=(STEPS[I].fire?6200:3800)/SPEED; PLAY_DUE=performance.now()+d; playT=setTimeout(playTick,d); }
+let PLAY_DUE=0;
+function play(){ if(playT||PAUSE.play){ if(PAUSE.on) clearPause(); stopPlay(); return }
+  if(PAUSE.on) clearPause();
+  PLAY_DUE=performance.now()+300; playT=setTimeout(playTick,300); $("bplay").innerHTML=btnLbl(t().stop); $("bplay").title=t().stop; updPause(); }
+
+/* ================= pause / resume ================= */
+const PAUSE={on:false,play:false,left:0,anim:false};
+function busy(){ return !!(playT||anim||(TR&&!TR.paused)||(synth&&synth.speaking&&!synth.paused)); }
+function updPause(){ const b=$("bpause"); if(!b) return; const tt=t(); ["bstart","bplay"].forEach(id=>$(id).setAttribute("aria-label",$(id).title)); b.innerHTML=btnLbl(PAUSE.on?tt.resumeB:tt.pauseB); b.title=PAUSE.on?tt.resumeB:tt.pauseB; b.setAttribute("aria-label",b.title);
+  b.setAttribute("aria-pressed",PAUSE.on); b.disabled=!PAUSE.on&&!busy(); }
+function pauseAll(){
+  if(PAUSE.on){ resumeAll(); return; } if(!busy()) return;
+  const now=performance.now(); PAUSE.on=true;
+  if(playT){ clearTimeout(playT); playT=null; PAUSE.play=true; PAUSE.left=Math.max(200,PLAY_DUE-now); }
+  if(anim){ cancelAnimationFrame(anim); anim=null; ANIM.pausedAt=now; PAUSE.anim=true; }
+  if(TR&&!TR.paused){ TR.paused=true; PAUSE.tr=true; renderTrainer(); }
+  try{ if(synth&&synth.speaking) synth.pause(); }catch(e){}
+  updPause();
+}
+function resumeAll(){
+  if(!PAUSE.on) return; const now=performance.now(); PAUSE.on=false;
+  if(PAUSE.anim&&ANIM.loop){ ANIM.t0+=now-ANIM.pausedAt; anim=requestAnimationFrame(ANIM.loop); } PAUSE.anim=false;
+  if(PAUSE.tr&&TR){ TR.paused=false; TR.last=now; renderTrainer(); } PAUSE.tr=false;
+  try{ if(synth&&synth.paused) synth.resume(); }catch(e){}
+  if(PAUSE.play){ PAUSE.play=false; PLAY_DUE=now+PAUSE.left; playT=setTimeout(playTick,PAUSE.left); }
+  updPause(); $("bplay").innerHTML=btnLbl(playT?t().stop:t().play);
+}
+function clearPause(){ if(!PAUSE.on&&!PAUSE.play) return; PAUSE.on=false; PAUSE.anim=false; PAUSE.tr=false; PAUSE.play=false; try{ synth&&synth.cancel(); }catch(e){} updPause(); }
+setInterval(updPause,400);
+
+/* ================= quiz gate ================= */
+let GATE_OK=false;
+function openGate(){
+  stopPlay(); const tt=t(); const nx=STEPS[I+1];
+  const right=L(nx.title);
+  const pool=[...new Set(STEPS.filter((x,j)=>Math.abs(j-(I+1))>1).map(x=>L(x.title)))].filter(x=>x!==right);
+  const opts=[right]; while(opts.length<3&&pool.length){opts.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);}
+  opts.sort(()=>Math.random()-.5);
+  $("gate").hidden=false; $("gateq").textContent=tt.gateQ; $("gatefb").textContent=""; $("gatego").hidden=true; $("gatego").textContent=tt.go;
+  const box=$("gateopts"); box.innerHTML="";
+  opts.forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>{
+    [...box.children].forEach(c=>{c.disabled=true; if(c.textContent===right)c.classList.add("right");});
+    if(o!==right){b.classList.add("wrong");$("gatefb").textContent=tt.wrong+" "+right;} else $("gatefb").textContent=tt.right;
+    $("gatego").hidden=false;};box.appendChild(b);});
+}
+$("gatego").onclick=()=>{$("gate").hidden=true; GATE_OK=true; nextStep();};
+
+/* ================= CRO trainer ================= */
+let TR=null, actx=null, TRID=0;
+let WAKE=null;
+async function keepAwake(on){ try{ if(on&&navigator.wakeLock&&!WAKE){ WAKE=await navigator.wakeLock.request("screen"); } else if(!on&&WAKE){ await WAKE.release(); WAKE=null; } }catch(e){WAKE=null} }
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible"&&TR) keepAwake(true); });
+function beep(f,d){ if(!SOUND||!$("tbeep").checked) return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); const o=actx.createOscillator(), g=actx.createGain(); o.frequency.value=f||880; g.gain.value=.08; o.connect(g); g.connect(actx.destination); o.start(); o.stop(actx.currentTime+(d||.18)); }catch(e){} }
+function openTrainer(){ keepAwake(true); stopPlay(); $("gate").hidden=true; $("trainer").hidden=false; const id=++TRID; TR={id,k:0,left:STEPS[I].stages[0].secs,paused:false,said:false,last:performance.now(),hold:0}; beep(660,.08); renderTrainer(); requestAnimationFrame(()=>loopTrainer(id)); }
+function closeTrainer(){ TR=null; $("trainer").hidden=true; keepAwake(false); }
+function renderTrainer(){
+  if(!TR) return; const tt=t(); const st=STEPS[I]; const sg=st.stages[TR.k];
+  $("tcount").textContent=Math.max(0,Math.ceil(TR.left));
+  $("tstage").textContent=`${TR.k+1}/${st.stages.length} · ${L(sg.lbl)}`;
+  $("tdot").className="tdot "+(sg.light||"");
+  const box=$("saybox");
+  if(sg.say){ box.className="saybox"+(TR.said?" now":""); $("saycap").textContent=TR.said?tt.sayNow:tt.sayAt; $("say").textContent=sg.say; }
+  else { box.className="saybox idle"; $("saycap").textContent=tt.wait; $("say").textContent="—"; }
+  $("thint").textContent=L(sg.hint)||""; $("tpause").textContent=TR.paused?tt.resume:tt.pause;
+}
+function advanceStage(){
+  const st=STEPS[I];
+  if(TR.k<st.stages.length-1){ TR.k++; TR.left=st.stages[TR.k].secs; TR.said=false; TR.hold=0; renderTrainer(); return; }
+  if($("tauto").checked && I<STEPS.length-1){ go(I+1,true); TR.k=0; TR.left=STEPS[I].stages[0].secs; TR.said=false; TR.hold=0; renderTrainer(); }
+  else { TR.paused=true; TR.left=0; renderTrainer(); }
+}
+function loopTrainer(id){
+  if(!TR||TR.id!==id) return; const now=performance.now(); const dt=Math.min(.5,(now-TR.last)/1000); TR.last=now;
+  if(!TR.paused){
+    const sg=STEPS[I].stages[TR.k];
+    if(TR.left>0){ const before=Math.ceil(TR.left); TR.left-=dt; if(TR.left<=3&&TR.left>0&&Math.ceil(TR.left)<before) beep(520,.06);
+      if(TR.left<=0){ TR.left=0; if(sg.say){TR.said=true; beep(990,.25); TR.hold=2.2; if(VOICE_ON&&SOUND) speak(sg.say);} else TR.hold=0.4; renderTrainer(); } }
+    else { TR.hold-=dt; if(TR.hold<=0) advanceStage(); }
+    $("tcount").textContent=Math.max(0,Math.ceil(TR.left));
+  }
+  requestAnimationFrame(()=>loopTrainer(id));
+}
+$("trainbtn").onclick=openTrainer; $("tclose").onclick=closeTrainer;
+$("tpause").onclick=()=>{ if(!TR)return; TR.paused=!TR.paused; TR.last=performance.now(); renderTrainer(); };
+$("tnext").onclick=()=>{ if(!TR)return; TR.paused=false; TR.left=0; TR.hold=0; TR.said=false; TR.last=performance.now(); advanceStage(); };
+
+/* ================= voice ================= */
+let VOICE_ON=false, VOICES=[];
+let SOUND=false; try{ if(localStorage.getItem("rfpm2-sound")==="1") SOUND=true; }catch(e){}
+const synth=("speechSynthesis" in window)?window.speechSynthesis:null;
+function voicesNow(){ try{ const v=synth?synth.getVoices():[]; if(v&&v.length) VOICES=v; }catch(e){} return VOICES; }
+function loadVoices(){ voicesNow(); fillVoices(); }
+let VOICE_PREF=null; try{ VOICE_PREF=localStorage.getItem("rfpm2-voice"); }catch(e){}
+const isEn=v=>(v.lang||"").toLowerCase().startsWith("en"), isSl=v=>/^sl/i.test(v.lang||"");
+function defaultEn(){ const en=VOICES.filter(isEn);
+  return en.find(v=>v.name==="Daniel"&&/en-GB/i.test(v.lang)) || en.find(v=>/^daniel\b/i.test(v.name)) || en.find(v=>/en-GB/i.test(v.lang)&&v.localService) || en.find(v=>/en-GB/i.test(v.lang)) || en.find(v=>v.localService) || en[0] || null; }
+function defaultSl(){ const sl=VOICES.filter(isSl); return sl.find(v=>v.localService)||sl[0]||null; }
+function fillVoices(){ const sel=$("vvoice"); const en=VOICES.filter(isEn);
+  const keep=VOICE_PREF||sel.value; const d=defaultEn();
+  sel.innerHTML=en.length?en.map(v=>`<option value="${esc(v.name)}">${esc(v.name)} (${esc(v.lang)})${d&&v.name===d.name?" ★":""}</option>`).join(""):`<option value="">${esc(t().novoice)}</option>`;
+  sel.value=en.some(v=>v.name===keep)?keep:(d?d.name:""); }
+if(synth){ loadVoices(); try{ synth.addEventListener?synth.addEventListener("voiceschanged",loadVoices):(synth.onvoiceschanged=loadVoices); }catch(e){}
+  let tries=0; const poll=setInterval(()=>{ const had=VOICES.length; voicesNow(); if(VOICES.length!==had) fillVoices(); if(VOICES.length||++tries>60) clearInterval(poll); },250); }
+function pickVoice(slov){ voicesNow();
+  if(slov) return defaultSl();
+  const want=$("vvoice").value; return VOICES.find(x=>x.name===want&&isEn(x)) || defaultEn(); }
+function speak(text,force){
+  if(!synth||!text||(!SOUND&&!force)) return;
+  const parts=String(text).split(/(?<=[.!?…])\s+/).map(x=>x.trim()).filter(Boolean);
+  const rate=[1,.8,1.2][$("vrate").selectedIndex]||1;
+  const go=()=>{ try{ window.__rfpmU=[]; parts.forEach(pt=>{ const slov=lang==="sl"&&/[a-zčšž]/.test(pt.replace(/\b(?:ISSF|EST|RTS|CRO|DNS|DSQ|OT|FOP|RFP)\b/g,"")); const v=pickVoice(slov); const u=new SpeechSynthesisUtterance(pt);
+      if(v){u.voice=v;u.lang=v.lang;} else u.lang=slov?"sl-SI":"en-GB"; if(slov&&!v) u.lang="sl-SI"; u.rate=rate; u.volume=1; window.__rfpmU.push(u); synth.speak(u); }); if(synth.paused&&synth.resume) synth.resume(); }catch(e){} };
+  try{ if(synth.speaking||synth.pending){ synth.cancel(); setTimeout(go,80); } else go(); }catch(e){}
+}
+function speakStep(){ if(!VOICE_ON||!SOUND) return; const st=STEPS[I]; const cmds=(st.cmds||[]).map(c=>c.c).join(". ");
+  const txt=$("vmode").selectedIndex===1?(cmds||L(st.title)):(L(st.title)+". "+L(st.desc).replace(/\{(\d)\}/g,"$1")+(cmds?". "+cmds:"")); speak(txt); }
+$("bvoice").onclick=()=>{ if(!SOUND){ toggleSound(); return; } VOICE_ON=!VOICE_ON; if(VOICE_ON) speakStep(); else {try{synth&&synth.cancel()}catch(e){}} render(false); };
+if(!synth){ $("bvoice").disabled=true; }
+
+/* ================= info cards ================= */
+const INFOS=[
+ {r:"6.17.4 e, f, g · 6.17.1.3",h:{sl:"Pred finalom",en:"Before the Final"},p:{sl:"Preizkus hitrosti izstrelka v 20 minutah po kvalifikacijah (sicer DNS, 8. mesto). Prijava 30 minut pred začetkom; oprema na mestih najmanj 20 minut pred začetkom. Poziv na linijo približno 11 minut pred začetkom.",en:"Velocity test within 20 minutes after qualification (otherwise DNS, 8th). Report 30 minutes before the start; equipment on the points at least 20 minutes before. Call to the line about 11 minutes before."}},
+ {r:"6.17.4 b",h:{sl:"Startne številke in mesta",en:"Start numbers & points"},p:{sl:"Od 1 do 8 po uvrstitvi v kvalifikacijah. 1, 3, 5, 7 na levi strani mest (A in C); 2, 4, 6, 8 na desni (B in D). Dve skupini po 5 elektronskih tarč (EST).",en:"1 to 8 by qualification rank. 1, 3, 5, 7 on the left of the points (A and C); 2, 4, 6, 8 on the right (B and D). Two groups of 5 EST targets."}},
+ {r:"6.17.4 d, i, j",h:{sl:"Pari, nato posamezno",en:"Pairs, then single"},p:{sl:"Serije 1–3 v parih: 1 in 3, 2 in 4, 5 in 7, 6 in 8. Od 4. serije vsak tekmovalec strelja sam od 1 do 8, strelska mesta se ne spreminjajo. Zadetek je 9,7 ali več.",en:"Series 1–3 in pairs: 1&3, 2&4, 5&7, 6&8. From series 4 each athlete fires alone from 1 to 8, and firing points never change. A hit is 9.7 or higher."}},
+ {r:"6.17.4 d, j, k",h:{sl:"Izpadanje in izenačenja",en:"Eliminations & ties"},p:{sl:"Po 3 serijah izpadeta 8. in 7., nato po en tekmovalec po vsaki seriji. Izenačenja za 8. do 5. mesto odloči startna številka. Izenačenja za 4. mesto in medalje odloči dodatno streljanje, posamezno, od najnižje startne številke.",en:"After 3 series 8th and 7th are out, then one after each series. Ties for 8th to 5th go by start number. Ties for 4th and the medals go to a shoot-off, fired one by one from the lowest start number."}},
+ {r:"6.17.4 d, m, n · 6.17.1.14 e, l",h:{sl:"Kazni",en:"Penalties"},p:{sl:"Vsak prepozen ali neizstreljen strel: −1 zadetek (OT). Dva strela na isto tarčo: drugi je zgrešek in −1 zadetek. Položaj READY: −2 zadetka brez opozorila; ponovitev pomeni DSQ. Kršitev pred prvim tekmovalnim strelom se odšteje od prvih zadetkov.",en:"Each late or unfired shot: −1 hit (OT). Two shots on one target: the second is a miss and −1 hit. READY position: −2 hits with no warning; a repeat means DSQ. A violation before the first match shot is taken from the first hits."}},
+ {r:"6.17.4 o",h:{sl:"Okvare",en:"Malfunctions"},p:{sl:"V poskusni seriji okvare ni mogoče uveljavljati. V tekmovalnih serijah samo ena: DOVOLJENA (ALLOWABLE) pomeni, da se serija takoj ponovi (20 sekund za pripravo) in šteje ponovitev; NEDOVOLJENA (NON-ALLOWABLE) je −2 zadetka. Nato ni več ponovitve.",en:"No malfunction claims in sighting. One claim only in the match series: ALLOWABLE means the series is repeated at once (20 seconds to be ready) and the repeat counts; NON-ALLOWABLE is −2 hits. After that, no repeat."}},
+ {r:"6.17.4 p, q",h:{sl:"Trenerji",en:"Coaching"},p:{sl:"Ustno svetovanje samo v prostoru za strelivo med polnjenjem. Trener se dotakne streliva ali napolni nabojnik: −2 prva zadetka. Vaje dviganja roke so v prostoru za strelivo dovoljene.",en:"Verbal coaching only in the Ammunition Area during loading. A coach touching ammunition or loading a magazine: −2 first hits. Arm-lift exercises are allowed in the Ammunition Area."}}
+];
+function renderInfos(){ $("infos").innerHTML=INFOS.map(x=>`<div class="card info"><h3>${esc(L(x.h))}</h3><p>${esc(L(x.p))}</p><span class="ref">ISSF ${x.r}</span></div>`).join(""); }
+
+/* ================= irregularities & penalties ================= */
+const PB={hit1:{sl:"−1 zadetek",en:"−1 hit"},hit2:{sl:"−2 zadetka",en:"−2 hits"},first2:{sl:"−2 prva zadetka",en:"−2 first hits"},dsq:{sl:"DSQ",en:"DSQ"},maydsq:{sl:"Možna DSQ",en:"Possible DSQ"},dns:{sl:"DNS",en:"DNS"},none:{sl:"Brez kazni",en:"No penalty"},rpt:{sl:"Ponovitev serije",en:"Series repeated"},ok:{sl:"Štejejo prikazani zadetki",en:"Displayed hits count"},no:{sl:"Ni dovoljeno",en:"Not permitted"},info:{sl:"Pravilo odbitka",en:"Deduction rule"}};
+const PEN=[
+ {g:{sl:"Pred finalom",en:"Before the Final"},items:[
+  {k:"dns",r:"6.17.4 e, f",x:{sl:"Ni se javil na preizkus hitrosti izstrelka v 20 min po koncu kvalifikacij",en:"Did not present for the velocity test within 20 min after the end of qualification"},p:{sl:"Ne sme začeti; uvrščen na 8. mesto in označen DNS.",en:"Not allowed to start; ranked 8th and marked DNS."}},
+  {k:"first2",r:"6.17.1.3",x:{sl:"Ni se prijavil pravočasno (30 min pred začetkom)",en:"Did not report on time (30 min before the Start Time)"},p:{sl:"V disciplinah 25 m se odštejeta 2 zadetka od prvih dveh zadetkov tekmovalca.",en:"In 25m events, 2 hits are deducted from the athlete's first two hits."}},
+  {k:"dns",r:"6.17.1.4",x:{sl:"Ni v pripravljalnem prostoru v 10 min po času prijave",en:"Not at the Preparation Area within 10 min after the Reporting Time"},p:{sl:"Morda ne sme začeti; zabeležen kot prvi izpadli tekmovalec (DNS), prvo izpadanje se začne s 7. mestom.",en:"May not start; recorded as the first eliminated athlete (DNS), and the first elimination begins with 7th place."}},
+  {k:"info",r:"6.17.4 d",x:{sl:"Katera koli kršitev pred prvim TEKMOVALNIM strelom (npr. v poskusni seriji)",en:"Any violation before the first MATCH shot (e.g. in the sighting series)"},p:{sl:"Odšteje se od prvih zadetkov finala. Vsaka druga kazen se odšteje v seriji, v kateri je nastala.",en:"Deducted from the first hit(s) of the Final. Any other penalty comes off the series where it occurred."}}]},
+ {g:{sl:"Polnjenje in streljanje",en:"Loading & firing"},items:[
+  {k:"dsq",r:"6.17.1.14 h",x:{sl:"Napolni in ustreli pred FOR THE SIGHTING SERIES … LOAD",en:"Loads and fires before FOR THE SIGHTING SERIES … LOAD"},p:{sl:"Mora biti diskvalificiran.",en:"Must be disqualified."}},
+  {k:"hit1",r:"6.17.1.14 j",x:{sl:"Ustreli po ATTENTION, a pred zeleno lučjo",en:"Fires after ATTENTION but before the green light"},p:{sl:"Serija se oceni na podlagi štirih preostalih strelov, s kaznijo 1 zadetka. Serija se začne z ATTENTION.",en:"The series is scored on the four remaining shots, plus a 1-hit penalty. The series starts at ATTENTION."}},
+  {k:"hit1",r:"6.17.1.14 j · 8.8.2.3",x:{sl:"Ustreli pred ATTENTION (serija se še ni začela)",en:"Fires a shot before ATTENTION (series not yet started)"},p:{sl:"Ne šteje kot tekmovalni strel; −1 zadetek v ponovljeni seriji. Tekmovalec mora prenehati, javiti sodniku na strelišču kot pri okvari in nato ponoviti. Če nadaljuje prvotno serijo, se oceni, kot da se je serija začela.",en:"Not counted as a match shot; −1 hit from the repeated series. The athlete must stop, report to the Range Officer as for a malfunction, then repeat. If he carries on with the original series, it is scored as if the series had started."}},
+  {k:"hit1",r:"6.17.4 m",x:{sl:"Prepozen strel ali ni pravočasno streljal na vseh pet tarč",en:"Late shot, or not all five targets fired at in time"},p:{sl:"−1 zadetek za vsak prepozen ali neizstreljen strel v tej seriji; označeno OT.",en:"−1 hit for each overtime or unfired shot from that series; marked OT."}},
+  {k:"hit1",r:"6.17.4 m",x:{sl:"Dva strela na isto tarčo",en:"Two shots on the same target"},p:{sl:"Drugi strel na to tarčo je zgrešek, plus kazen 1 zadetka v tej seriji.",en:"The second shot on that target is a miss, plus a 1-hit penalty for that series."}},
+  {k:"hit2",r:"6.17.1.14 l",x:{sl:"Izstreli dodaten strel v seriji",en:"Fires an extra shot in a series"},p:{sl:"Dodatni strel se razveljavi, od zadnje pravilne serije se odštejeta 2 zadetka.",en:"The extra shot is nullified and 2 hits are deducted from the last correct series."}},
+  {k:"none",r:"6.17.1.14 m",x:{sl:"Finalist, ki ni v dodatnem streljanju ali ponovitvi zaradi okvare, napolni in ustreli",en:"A finalist not in a shoot-off or malfunction refire loads and fires a shot"},p:{sl:"Strel se razveljavi; za to nenamerno napako ni kazni.",en:"The shot is nullified; no penalty for this inadvertent mistake."}}]},
+ {g:{sl:"Položaj READY in vaje",en:"READY position & exercises"},items:[
+  {k:"hit2",r:"6.17.4 n · 8.7.2, 8.7.3",x:{sl:"Prezgodaj dvigne roko, je ne spusti dovolj ali je nad 45° pred spremembo luči",en:"Raises the arm too soon, does not lower it enough, or above 45° before the light changes"},p:{sl:"−2 zadetka v tej seriji (zeleni karton), v finalu brez opozorila. Signalizirati morata najmanj dva člana tekmovalne žirije.",en:"−2 hits in that series (green card), no warning in a Final. At least two Competition Jury members must signal."}},
+  {k:"dsq",r:"6.17.4 n",x:{sl:"Ponovljena kršitev položaja READY",en:"Repeated READY position violation"},p:{sl:"Diskvalifikacija (rdeči karton).",en:"Disqualification (red card)."}},
+  {k:"hit1",r:"6.17.1.14 e · 6.17.4 q",x:{sl:"Suho proženje izven časa priprave",en:"Dry firing outside Preparation time"},p:{sl:"−1 zadetek v finalih pištole 25 m.",en:"−1 hit in 25m Pistol Finals."}},
+  {k:"no",r:"6.17.4 q · 6.17.1.14 t, u",x:{sl:"Vaje merjenja ali dviganje roke na strelskem mestu izven časa priprave",en:"Aiming exercises or arm lifts at the firing point outside Preparation time"},p:{sl:"Na strelskem mestu dovoljeno samo med pripravo; dviganje roke in vaje so dovoljeni v prostoru za strelivo. Določenega odbitka ni; žirija uporabi pravila ISSF.",en:"Allowed at the firing point only during Preparation; arm lifts and exercises are allowed in the Ammunition Area. No fixed deduction is stated; the Jury applies ISSF rules."}},
+  {k:"no",r:"6.17.4 h",x:{sl:"Tekmovalec na desni (B/D) po READY za tekmovalca na levi",en:"The right-side athlete (B/D) after READY for the left-side athlete"},p:{sl:"Sme le vzeti pištolo v roko za pripravo: brez vaj merjenja, dviganja roke ali suhega proženja.",en:"May only take the pistol in his hand to prepare: no aiming exercises, arm lifts or dry firing."}}]},
+ {g:{sl:"Okvare",en:"Malfunctions"},items:[
+  {k:"no",r:"6.17.4 o",x:{sl:"Okvara v poskusni seriji",en:"Malfunction in the sighting series"},p:{sl:"Brez uveljavljanja in brez ponovitve.",en:"No claim and no refire."}},
+  {k:"rpt",r:"6.17.4 o",x:{sl:"Prva okvara v tekmi, DOVOLJENA (ALLOWABLE)",en:"First match malfunction, ALLOWABLE"},p:{sl:"Serija se takoj ponovi, medtem ko drugi čakajo; 20 sekund za pripravo; šteje rezultat ponovitve.",en:"The series is repeated at once while the others stand by; 20 seconds to be ready; the repeat score counts."}},
+  {k:"hit2",r:"6.17.4 o",x:{sl:"Prva okvara v tekmi, NEDOVOLJENA (NON-ALLOWABLE)",en:"First match malfunction, NON-ALLOWABLE"},p:{sl:"−2 zadetka v tej seriji.",en:"−2 hits from that series."}},
+  {k:"ok",r:"6.17.4 o",x:{sl:"Vsaka nadaljnja okvara, DOVOLJENA",en:"Any further malfunction, ALLOWABLE"},p:{sl:"Brez ponovitve; štejejo prikazani zadetki.",en:"No repeat; the displayed hits count."}},
+  {k:"hit2",r:"6.17.4 o",x:{sl:"Vsaka nadaljnja okvara, NEDOVOLJENA",en:"Any further malfunction, NON-ALLOWABLE"},p:{sl:"Brez ponovitve; −2 zadetka v tej seriji.",en:"No repeat; −2 hits from that series."}},
+  {k:"rpt",r:"6.17.1.8 b, c",x:{sl:"Nepričakovana ničla (strel ni zabeležen na EST)",en:"Unexpected zero (shot not registered on the EST)"},p:{sl:"Žirija preveri. Razen če obstaja verodostojen dokaz o zgrešku, strelja ponovitveno serijo, ki nadomesti prvotno. Če tarča spet odpove, se premakne na drugo skupino tarč.",en:"The Jury checks. Unless there is credible evidence of a miss, he fires a repeat series that replaces the original. If the target still fails, he moves to the other target group."}}]},
+ {g:{sl:"Trenerji in protesti",en:"Coaching & protests"},items:[
+  {k:"first2",r:"6.17.4 p",x:{sl:"Trener pomaga, napolni nabojnik ali se dotakne streliva ali opreme v prostoru za strelivo",en:"Coach assists, loads a magazine, or touches ammunition or equipment in the Ammunition Area"},p:{sl:"−2 prva zadetka od rezultata tekmovalca.",en:"−2 first hits from the athlete's score."}},
+  {k:"no",r:"6.17.4 p · 6.17.1.14 o",x:{sl:"Ustno svetovanje, ko je tekmovalec na strelskem mestu",en:"Verbal coaching while the athlete is at the firing point"},p:{sl:"Na strelskem mestu samo neverbalno svetovanje; ustno samo med polnjenjem v prostoru za strelivo, brez motenja drugih. Določenega odbitka ni.",en:"Only non-verbal coaching at the firing point; verbal only during loading in the Ammunition Area, without disturbing others. No fixed deduction is stated."}},
+  {k:"hit2",r:"6.17.1.13 d",x:{sl:"Protest v finalu ni sprejet",en:"A protest in the Final is not upheld"},p:{sl:"−2 zadetka v seriji, na katero se protest nanaša.",en:"−2 hits from the series the protest relates to."}},
+  {k:"no",r:"6.17.1.7",x:{sl:"Protest glede vrednosti ali števila strelov",en:"Protest about the value or number of shots"},p:{sl:"V finalih ni dovoljen.",en:"Not permitted in Finals."}}]},
+ {g:{sl:"Varnost",en:"Safety"},items:[
+  {k:"none",r:"6.17.1.14 n",x:{sl:"Pozabi vstaviti varnostno zastavico (ob izpadu ali na koncu)",en:"Forgets to insert the safety flag (when eliminated or at the end)"},p:{sl:"Sodnik na strelišču popravi napako in vstavi varnostno zastavico.",en:"The Range Officer corrects it and inserts the safety flag."}},
+  {k:"maydsq",r:"6.17.4 l · 6.2.2.5",x:{sl:"Pospravi pištolo v kovček ali jo odnese z linije brez pregleda sodnika na strelišču",en:"Boxes or removes the pistol from the line without a Range Officer check"},p:{sl:"Lahko je diskvalificiran, če žirija ugotovi resno varnostno kršitev.",en:"May be disqualified if the Jury finds a significant safety violation."}}]}
+];
+let PENF=-1, PENQ="", PENALL=false; const PENOPEN=new Set();
+const PBSAY={hit1:"one hit deducted",hit2:"two hits deducted",first2:"two hits deducted from the first two hits",dsq:"disqualification",maydsq:"possible disqualification",dns:"did not start, D N S",none:"no penalty",rpt:"the series is repeated",ok:"the displayed hits count",no:"not permitted",info:"deduction rule"};
+function penSpeech(it){
+  const rule=it.r.replace(/\s*·\s*/g,", ");
+  const badge=lang==="sl"?L(PB[it.k]):PBSAY[it.k];
+  return `${L(it.x)}. ${badge}. ${L(it.p)} ${t().penRule} ${rule}.`;
+}
+let PENSND=true; try{ PENSND=localStorage.getItem("rfpm2-pensound")!=="0"; }catch(e){}
+function sayPen(it){
+  if(!synth||!PENSND) return;
+  speak(penSpeech(it),true);
+}
+function renderPen(){
+  const tt=t();
+  $("tab-pen").textContent=tt.tabPen; $("penh").textContent=tt.penh; $("pensub").textContent=tt.pensub;
+  $("pensearch").placeholder=tt.penSearch; $("pensearch").setAttribute("aria-label",tt.penSearch); $("pennote").textContent=tt.penTap+" "+tt.pennote;
+  $("pensnd").textContent=PENSND?tt.penSnd1:tt.penSnd0; $("pensnd").setAttribute("aria-pressed",PENSND); $("pensnd").hidden=!synth; $("penall").textContent=PENALL?tt.penHide:tt.penShow; $("penall").setAttribute("aria-pressed",PENALL);
+  const ch=$("penchips"); ch.innerHTML="";
+  [{g:{sl:tt.penAll,en:tt.penAll}},...PEN].forEach((grp,k)=>{const b=document.createElement("button"); b.className="pchip"; b.textContent=L(grp.g); b.setAttribute("aria-pressed",PENF===k-1); b.onclick=()=>{PENF=k-1; renderPen();}; ch.appendChild(b);});
+  const q=PENQ.trim().toLowerCase(); const box=$("penlist"); box.innerHTML=""; let n=0, num=0;
+  PEN.forEach((grp,gi)=>{
+    const all=grp.items.map((it,ii)=>({it,key:gi+"-"+ii,no:++num}));
+    if(PENF>=0&&PENF!==gi) return;
+    const its=all.filter(({it})=>!q||[L(it.x),it.x.en,it.r].concat(PENALL?[L(it.p),it.p.en,L(PB[it.k])]:[]).join(" ").toLowerCase().includes(q));
+    if(!its.length) return; n+=its.length;
+    const g=document.createElement("div"); g.className="pengrp"; g.innerHTML=`<h3>${esc(L(grp.g))}</h3>`;
+    its.forEach(({it,key,no})=>{
+      const open=PENALL||PENOPEN.has(key);
+      const row=document.createElement("div"); row.className="pen";
+      row.innerHTML=`<button class="penq" aria-expanded="${open}" aria-controls="pa-${key}"><span class="pn">${no}</span><span class="px">${esc(L(it.x))}</span><span class="chev" aria-hidden="true">▾</span></button>
+        <div class="pena" id="pa-${key}" ${open?"":"hidden"}><div class="pp"><span class="pb ${it.k}">${esc(L(PB[it.k]))}</span><br>${esc(L(it.p))}</div><div class="pr">ISSF ${esc(it.r)}</div>${synth&&PENSND?`<button class="say">${esc(tt.penSay)}</button>`:""}</div>`;
+      const q1=row.querySelector(".penq"), a=row.querySelector(".pena");
+      q1.onclick=()=>{
+        const isOpen=q1.getAttribute("aria-expanded")==="true";
+        if(isOpen){ q1.setAttribute("aria-expanded","false"); a.hidden=true; PENOPEN.delete(key); try{synth&&synth.cancel()}catch(e){} }
+        else { q1.setAttribute("aria-expanded","true"); a.hidden=false; PENOPEN.add(key); sayPen(it); }
+      };
+      const sb=row.querySelector(".say"); if(sb) sb.onclick=()=>sayPen(it);
+      g.appendChild(row);
+    });
+    box.appendChild(g);
+  });
+  if(!n) box.innerHTML=`<p class="penempty">${esc(tt.penNone)}</p>`;
+}
+$("pensnd").onclick=()=>{ PENSND=!PENSND; try{localStorage.setItem("rfpm2-pensound",PENSND?"1":"0")}catch(e){} if(!PENSND){ try{synth&&synth.cancel()}catch(e){} } renderPen(); };
+$("penall").onclick=()=>{ PENALL=!PENALL; if(!PENALL) PENOPEN.clear(); try{synth&&synth.cancel()}catch(e){} renderPen(); };
+$("pensearch").oninput=e=>{PENQ=e.target.value; renderPen();};
+
+/* ================= judging cases ================= */
+const CASES=[
+ {h:{sl:"Neizstreljen strel",en:"A shot not fired"},x:{sl:"V 4. seriji tekmovalec pravočasno zadene tarče 1 do 4 in ne strelja na tarčo 5.",en:"In series 4 the athlete hits targets 1 to 4 in time and does not fire at target 5."},shots:"hhhhu",
+  q:{sl:"Koliko zadetkov se mu šteje v tej seriji?",en:"How many hits count for this series?"},o:[{sl:"4",en:"4"},{sl:"3",en:"3"},{sl:"Nič, serija se ponovi",en:"Zero, and the series is repeated"},{sl:"5",en:"5"}],a:1,
+  e:{sl:"Vsak neizstreljen ali prepozen strel stane en zadetek in je označen OT: 4 − 1 = 3.",en:"Each unfired or late shot costs one hit and is marked OT: 4 − 1 = 3."},r:"6.17.4 m"},
+ {h:{sl:"Strel po zeleni luči",en:"Shot after the green light"},x:{sl:"Tekmovalčev peti strel gre iz cevi, ko zelena luč že ugasne, in doseže 10,1.",en:"The athlete's fifth shot leaves after the green light goes off and scores 10.1."},shots:"hhhhl",
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Šteje kot zadetek (10,1)",en:"It counts as a hit (10.1)"},{sl:"−1 zadetek, označeno OT",en:"−1 hit, marked OT"},{sl:"−2 zadetka",en:"−2 hits"},{sl:"Serija se ponovi",en:"The series is repeated"}],a:1,
+  e:{sl:"Prepozen strel stane en zadetek v tej seriji in je označen OT.",en:"A late shot costs one hit from that series and is marked OT."},r:"6.17.4 m"},
+ {h:{sl:"Dva strela na eno tarčo",en:"Two shots on one target"},x:{sl:"Tekmovalec izstreli dva strela na tarčo 3, oba nad 9,7.",en:"The athlete fires two shots at target 3, both above 9.7."},
+  q:{sl:"Kako se obravnava drugi strel na tarčo 3?",en:"How is the second shot on target 3 treated?"},o:[{sl:"Običajen zadetek",en:"A normal hit"},{sl:"Zgrešek, plus kazen 1 zadetka v seriji",en:"A miss, plus a 1-hit penalty for the series"},{sl:"Samo zgrešek",en:"A miss only"},{sl:"Diskvalifikacija",en:"Disqualification"}],a:1,
+  e:{sl:"Drugi strel na isto tarčo šteje kot zgrešek, v tej seriji pa se uporabi še kazen 1 zadetka.",en:"The second shot on the same target counts as a miss, and a 1-hit penalty is applied to that series."},r:"6.17.4 m"},
+ {h:{sl:"9,6 na tarči",en:"9.6 on the target"},x:{sl:"En strel doseže 9,6 na elektronski tarči.",en:"One shot scores 9.6 on the electronic target."},shots:"hhmhh",
+  q:{sl:"Je to zadetek?",en:"Is it a hit?"},o:[{sl:"Da",en:"Yes"},{sl:"Ne, zadetek je 9,7 ali več",en:"No, a hit is 9.7 or higher"},{sl:"Odloči žirija",en:"The Jury decides"},{sl:"Pol zadetka",en:"Half a hit"}],a:1,
+  e:{sl:"V finalu je vsak strel 9,7 ali več na tarči za hitrostrelno pištolo zadetek; vse nižje je zgrešek.",en:"In the Final any shot of 9.7 or higher on the rapid fire target is a hit; anything lower is a miss."},r:"6.17.4 d"},
+ {h:{sl:"Izenačenje za 5. mesto",en:"Tie for 5th place"},x:{sl:"Po 5. seriji sta tekmovalca 3 in 6 izenačena z najnižjim seštevkom.",en:"After series 5 athletes 3 and 6 are tied on the lowest total."},
+  q:{sl:"Kdo izpade?",en:"Who is eliminated?"},o:[{sl:"Odloči dodatno streljanje",en:"A shoot-off decides"},{sl:"Tekmovalec 6",en:"Athlete 6"},{sl:"Tekmovalec 3",en:"Athlete 3"},{sl:"Oba nadaljujeta",en:"Both continue"}],a:1,
+  e:{sl:"Izenačenja za 8. do 5. mesto odloči startna številka finala, brez dodatnega streljanja. Št. 1 je najboljša uvrstitev v kvalifikacijah, zato 3 ostane, 6 izpade.",en:"Ties for 8th to 5th are broken by Final Start Number with no shoot-off. No. 1 is the best qualification rank, so 3 stays and 6 is out."},r:"6.17.4 d, j, k"},
+ {h:{sl:"Trije izenačeni po 3. seriji",en:"Three tied after series 3"},x:{sl:"Po 3. seriji imajo tekmovalci 4, 6 in 8 enak najnižji seštevek; dva morata izpasti.",en:"After series 3 athletes 4, 6 and 8 share the lowest total; two must go."},
+  q:{sl:"Kdo izpade?",en:"Who is eliminated?"},o:[{sl:"4 in 6",en:"4 and 6"},{sl:"8 (8.) in 6 (7.)",en:"8 (8th) and 6 (7th)"},{sl:"Dodatno streljanje med tremi",en:"A shoot-off between the three"},{sl:"Samo 8",en:"Only 8"}],a:1,
+  e:{sl:"Odloči startna številka: najvišja izpade prva, zato je 8 osmi, 6 sedmi, 4 pa nadaljuje.",en:"Start number decides: the highest number goes first, so 8 is 8th, 6 is 7th and 4 continues."},r:"6.17.4 d, k"},
+ {h:{sl:"Izenačenje za 4. mesto",en:"Tie for 4th place"},x:{sl:"Po 6. seriji sta tekmovalca 2 in 7 izenačena za 4. mesto.",en:"After series 6 athletes 2 and 7 are tied for 4th place."},
+  q:{sl:"Kako se odloči in kdo strelja prvi?",en:"How is it decided, and who fires first?"},o:[{sl:"Po startni številki",en:"By start number"},{sl:"Dodatno streljanje, tekmovalec 2 strelja prvi, sam",en:"Shoot-off, athlete 2 fires first, alone"},{sl:"Dodatno streljanje, oba streljata skupaj",en:"Shoot-off, both fire together"},{sl:"Žreb",en:"A draw"}],a:1,
+  e:{sl:"Izenačenje za 4. mesto ali medaljo odloči dodatno streljanje, vsak tekmovalec sam, začne najnižja startna številka.",en:"A tie for 4th or a medal is broken by a shoot-off, each athlete alone, starting with the lowest start number."},r:"6.17.4 j, k"},
+ {h:{sl:"Zadetki v dodatnem streljanju",en:"Shoot-off hits"},x:{sl:"Tekmovalec v dodatnem streljanju za bron zadene 4 od 5.",en:"An athlete hits 4 of 5 in the bronze shoot-off."},
+  q:{sl:"Ali se prištejejo k njegovemu seštevku finala?",en:"Are they added to his Final total?"},o:[{sl:"Da",en:"Yes"},{sl:"Ne, samo razrešijo izenačenje",en:"No, they only break the tie"},{sl:"Polovica",en:"Half of them"},{sl:"Samo če zmaga",en:"Only if he wins"}],a:1,
+  e:{sl:"Dodatno streljanje samo razvrsti izenačene tekmovalce; razvrstitev v finalu temelji na skupnem seštevku zadetkov iz serij.",en:"The shoot-off only orders the tied athletes; the Final ranking is built on the cumulative series hits."},r:"6.17.4 d, k"},
+ {h:{sl:"Prva okvara, dovoljena",en:"First malfunction, allowable"},x:{sl:"V 2. seriji ima tekmovalec prvo okvaro, ki jo sodnik na strelišču razglasi za DOVOLJENO.",en:"In series 2 the athlete has his first malfunction, ruled ALLOWABLE by the Range Officer."},
+  q:{sl:"Kaj se zgodi?",en:"What happens?"},o:[{sl:"Ponovi jo na koncu 2. serije",en:"He repeats it at the end of series 2"},{sl:"Ponovi jo takoj, z 20 sekundami za pripravo; šteje ponovitev",en:"He repeats it at once with 20 seconds to be ready; the repeat counts"},{sl:"Štejejo prikazani zadetki",en:"Displayed hits count"},{sl:"−2 zadetka",en:"−2 hits"}],a:1,
+  e:{sl:"V tekmi samo eno uveljavljanje: če je DOVOLJENA, se serija takoj ponovi, medtem ko drugi čakajo, in šteje rezultat ponovitve.",en:"One claim only in the match: if ALLOWABLE the series is repeated at once while the others stand by, and the repeat score counts."},r:"6.17.4 o"},
+ {h:{sl:"Druga okvara, dovoljena",en:"Second malfunction, allowable"},x:{sl:"Isti tekmovalec ima v 6. seriji še eno okvaro, razglašeno za DOVOLJENO.",en:"The same athlete has another malfunction in series 6, ruled ALLOWABLE."},
+  q:{sl:"Kaj se zgodi?",en:"What happens?"},o:[{sl:"Ponovitev serije",en:"Repeat the series"},{sl:"Brez ponovitve; štejejo prikazani zadetki",en:"No repeat; the displayed hits count"},{sl:"−2 zadetka",en:"−2 hits"},{sl:"Diskvalifikacija",en:"Disqualification"}],a:1,
+  e:{sl:"Pri nadaljnjih okvarah ni ponovitve. DOVOLJENA: štejejo prikazani zadetki; NEDOVOLJENA: −2 zadetka.",en:"No repeat for any further malfunction. ALLOWABLE: the displayed hits count; NON-ALLOWABLE: −2 hits."},r:"6.17.4 o"},
+ {h:{sl:"Okvara v poskusni seriji",en:"Malfunction in sighting"},x:{sl:"Tekmovalcu se med poskusno serijo pištola ustavi.",en:"The athlete's pistol stops during the sighting series."},
+  q:{sl:"Ali jo lahko uveljavlja in ponovi?",en:"Can he claim it and refire?"},o:[{sl:"Da",en:"Yes"},{sl:"Ne, v poskusni seriji ni uveljavljanja ne ponovitve",en:"No, no claim or refire in sighting"},{sl:"Ponovi za vsemi",en:"He refires after everyone"},{sl:"S soglasjem trenerja",en:"With the coach's agreement"}],a:1,
+  e:{sl:"Okvar med poskusno serijo ni mogoče uveljavljati ne ponoviti.",en:"Malfunctions during the sighting series may not be claimed or refired."},r:"6.17.4 o"},
+ {h:{sl:"Prezgodaj dvignjena roka",en:"Arm raised too early"},x:{sl:"Dva člana žirije signalizirata, da je tekmovalec prezgodaj dvignil roko. To je njegova prva kršitev.",en:"Two Jury members signal that the athlete raised his arm too early. It is his first violation."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Opozorilo",en:"A warning"},{sl:"−2 zadetka (zeleni karton)",en:"−2 hits (green card)"},{sl:"−1 zadetek",en:"−1 hit"},{sl:"Diskvalifikacija",en:"Disqualification"}],a:1,
+  e:{sl:"V finalu ni opozorila: −2 zadetka v tej seriji; ponovitev je rdeči karton. Signalizirati morata najmanj dva člana žirije.",en:"No warning in a Final: −2 hits in that series; a repeat is a red card. At least two Jury members must signal."},r:"6.17.4 n"},
+ {h:{sl:"Kršitev pred prvim strelom",en:"Violation before the first shot"},x:{sl:"V poskusni seriji je tekmovalec kaznovan zaradi položaja READY.",en:"In the sighting series the athlete is penalised for the READY position."},
+  q:{sl:"Kje se uporabi odbitek?",en:"Where is the deduction applied?"},o:[{sl:"Razveljavi se, poskusna serija se ne šteje",en:"Cancelled, sighting does not count"},{sl:"Od prvih zadetkov finala",en:"From the first hits of the Final"},{sl:"Od zadnje serije",en:"From the last series"},{sl:"Od seštevka na koncu",en:"From the total at the end"}],a:1,
+  e:{sl:"Odbitki za kršitve pred prvim tekmovalnim strelom se odštejejo od prvih zadetkov; drugi v seriji, v kateri so nastali.",en:"Deductions for violations before the first match shot come off the first hits; others off the series where they occurred."},r:"6.17.4 d"},
+ {h:{sl:"Trener v prostoru za strelivo",en:"Coach in the Ammunition Area"},x:{sl:"Trener med finalom v prostoru za strelivo napolni nabojnik za svojega tekmovalca.",en:"A coach loads a magazine for his athlete in the Ammunition Area during the Final."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Dovoljeno med polnjenjem",en:"Allowed during loading"},{sl:"Opozorilo trenerju",en:"A warning to the coach"},{sl:"−2 prva zadetka tekmovalcu",en:"−2 first hits from the athlete"},{sl:"Tekmovalec diskvalificiran",en:"Athlete disqualified"}],a:2,
+  e:{sl:"Trenerji ne smejo pomagati pri polnjenju. Polnjenje nabojnika ali dotikanje streliva ali opreme: −2 prva zadetka.",en:"Coaches may not assist with loading. Loading a magazine or touching ammunition or equipment: −2 first hits."},r:"6.17.4 p"},
+ {h:{sl:"Ustno svetovanje",en:"Verbal coaching"},x:{sl:"Trener govori s tekmovalcem, ko je ta na strelskem mestu in čaka na READY.",en:"A coach talks to his athlete while he is at the firing point waiting for READY."},
+  q:{sl:"Je to dovoljeno?",en:"Is this allowed?"},o:[{sl:"Da, kadar koli",en:"Yes, at any time"},{sl:"Ne, na strelskem mestu samo neverbalno svetovanje",en:"No, only non-verbal coaching at the firing point"},{sl:"Da, med serijami",en:"Yes, between series"},{sl:"Da, potiho",en:"Yes, quietly"}],a:1,
+  e:{sl:"Neverbalno svetovanje je na strelskem mestu dovoljeno; ustno samo med polnjenjem v prostoru za strelivo, brez motenja drugih.",en:"Non-verbal coaching is allowed at the firing point; verbal only during loading in the Ammunition Area, without disturbing others."},r:"6.17.4 p"},
+ {h:{sl:"Tekmovalec na desni po READY",en:"The right-side athlete after READY"},x:{sl:"Po READY za tekmovalca 1 tekmovalec 2 (B) na mestu dviguje roko in suho proži.",en:"After READY for athlete 1, athlete 2 (B) does arm lifts and dry firing at the point."},
+  q:{sl:"Je to dovoljeno?",en:"Is this allowed?"},o:[{sl:"Da, med čakanjem",en:"Yes, while waiting"},{sl:"Ne; sme le vzeti pištolo v roko za pripravo",en:"No; he may only take the pistol in his hand to prepare"},{sl:"Da, če je pištola prazna",en:"Yes, if the pistol is empty"},{sl:"Samo v poskusni seriji",en:"Only in sighting"}],a:1,
+  e:{sl:"Vaje merjenja, dviganje roke in suho proženje na mestu so samo za čas priprave; dviganje roke je dovoljeno v prostoru za strelivo.",en:"Aiming exercises, arm lifts and dry firing at the point are only for preparation time; arm lifts are allowed in the Ammunition Area."},r:"6.17.4 h, q"},
+ {h:{sl:"Preizkus hitrosti izstrelka",en:"Velocity test"},x:{sl:"Finalist se pred finalom ni javil na preizkus hitrosti izstrelka.",en:"A finalist did not present himself for the velocity test before the Final."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Preizkus opravi med pripravo",en:"He tests during preparation"},{sl:"Začne z −2 zadetkoma",en:"He starts with −2 hits"},{sl:"Ne sme začeti: 8. mesto, DNS",en:"He may not start: 8th, DNS"},{sl:"Finale se preloži",en:"The Final is delayed"}],a:2,
+  e:{sl:"Preizkus je v 20 minutah po kvalifikacijah in pred prijavo; brez njega ne sme začeti, uvrsti se na 8. mesto in je označen DNS.",en:"The test is within 20 minutes after qualification and before reporting; without it he cannot start, ranks 8th and is marked DNS."},r:"6.17.4 e, f"},
+ {h:{sl:"Strelivo na mestu",en:"Ammunition at the point"},x:{sl:"Pred poskusno serijo tekmovalec položi tri napolnjene nabojnike na strelsko mesto.",en:"Before sighting an athlete places three loaded magazines at the firing point."},
+  q:{sl:"Kaj je na mestu dovoljeno?",en:"What is allowed at the point?"},o:[{sl:"Dva nabojnika",en:"Two magazines"},{sl:"En nabojnik in 5 nabojev, samo za poskusno serijo",en:"One magazine and 5 cartridges, for sighting only"},{sl:"Vse strelivo",en:"All the ammunition"},{sl:"Nič",en:"Nothing"}],a:1,
+  e:{sl:"Strelivo in nabojniki ostanejo v prostoru za strelivo, razen enega nabojnika in 5 nabojev na mestu za poskusno serijo, ki se nato prenesejo nazaj.",en:"Ammunition and magazines stay in the Ammunition Area, except one magazine and 5 cartridges at the point for sighting, then moved back."},r:"6.17.4 f"},
+ {h:{sl:"Nabojniki po poskusni seriji",en:"Magazines after sighting"},x:{sl:"Tekmovalci 1, 2, 3, 4 so končali poskusno serijo in so nazaj v prostoru za strelivo.",en:"Athletes 1, 2, 3, 4 have finished sighting and are back in the Ammunition Area."},
+  q:{sl:"Koliko nabojnikov smejo napolniti?",en:"How many magazines may they load?"},o:[{sl:"Enega",en:"One"},{sl:"Do dva, brez nadaljnjega ukaza LOAD",en:"Up to two, with no further LOAD command"},{sl:"Osem",en:"Eight"},{sl:"Po ukazu LOAD pred vsako serijo",en:"After a LOAD command each series"}],a:1,
+  e:{sl:"Po poskusni seriji smejo napolniti do dva nabojnika; nadaljnjega ukaza LOAD ni, nabojniki se polnijo po potrebi.",en:"After sighting they may load up to two magazines; there is no further LOAD command, magazines are loaded as needed."},r:"6.17.4 h"},
+ {h:{sl:"Strel pred zeleno lučjo",en:"Shot before the green light"},x:{sl:"Po ATTENTION, a pred zeleno lučjo, gre strel iz tekmovalčeve pištole.",en:"After ATTENTION but before the green light, a shot leaves the athlete's pistol."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Ponovitev serije, brez kazni",en:"Repeat the series, no penalty"},{sl:"Oceni se na podlagi štirih preostalih strelov, plus −1 zadetek",en:"Scored on the four remaining shots, plus −1 hit"},{sl:"Diskvalifikacija",en:"Disqualification"},{sl:"Strel je samo zgrešek",en:"The shot is a miss only"}],a:1,
+  e:{sl:"Serija se začne z ATTENTION. Strel pred zeleno lučjo po tem: serija se oceni na podlagi štirih preostalih strelov s kaznijo 1 zadetka.",en:"The series starts at ATTENTION. A shot before the green light after that: the series is scored on the four remaining shots with a 1-hit penalty."},r:"6.17.1.14 j"},
+ {h:{sl:"Šesti strel",en:"A sixth shot"},x:{sl:"Tekmovalec v eni seriji izstreli šest strelov.",en:"The athlete fires six shots in one series."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Razveljavi se samo dodatni strel",en:"Only the extra shot is nullified"},{sl:"Dodatni strel se razveljavi in −2 zadetka",en:"The extra shot is nullified and −2 hits"},{sl:"−1 zadetek",en:"−1 hit"},{sl:"Diskvalifikacija",en:"Disqualification"}],a:1,
+  e:{sl:"Dodatni strel se razveljavi, od zadnje pravilne serije se odštejeta 2 zadetka.",en:"The extra shot is nullified and 2 hits are deducted from the last correct series."},r:"6.17.1.14 l"},
+ {h:{sl:"Suho proženje med serijami",en:"Dry firing between series"},x:{sl:"Med 4. in 5. serijo tekmovalec na strelskem mestu suho proži.",en:"Between series 4 and 5 the athlete dry fires at the firing point."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Dovoljeno",en:"Allowed"},{sl:"−1 zadetek",en:"−1 hit"},{sl:"−2 zadetka",en:"−2 hits"},{sl:"Opozorilo",en:"A warning"}],a:1,
+  e:{sl:"Suho proženje je dovoljeno samo v času priprave; kadar koli drugače stane 1 zadetek v finalih pištole 25 m.",en:"Dry firing is allowed only in Preparation time; at any other time it costs 1 hit in 25m Pistol Finals."},r:"6.17.1.14 e · 6.17.4 q"},
+ {h:{sl:"Prepozna prijava",en:"Late reporting"},x:{sl:"Tekmovalec prispe v pripravljalni prostor pet minut po času prijave.",en:"The athlete reaches the Preparation Area five minutes after the Reporting Time."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"DNS",en:"May not start, DNS"},{sl:"Začne, −2 od prvih dveh zadetkov",en:"He starts, −2 from his first two hits"},{sl:"Opozorilo",en:"A warning"},{sl:"Brez kazni",en:"No penalty"}],a:1,
+  e:{sl:"Neprijava ob pravem času: v 25 m 2 zadetka od prvih dveh zadetkov. Več kot 10 minut po času prijave morda ne sme začeti (DNS).",en:"Not reporting on time: in 25m, 2 hits off his first two hits. More than 10 minutes after the Reporting Time, he may not start (DNS)."},r:"6.17.1.3, 6.17.1.4"},
+ {h:{sl:"Protest ni sprejet",en:"Protest not upheld"},x:{sl:"Trener med finalom dvigne roko v protest; žirija za proteste v finalu ga zavrne.",en:"A coach raises his hand to protest during the Final; the Finals Protest Jury rejects it."},
+  q:{sl:"Kakšna je kazen?",en:"What is the penalty?"},o:[{sl:"Nič",en:"None"},{sl:"−2 zadetka v zadevni seriji",en:"−2 hits from the series concerned"},{sl:"Pristojbina za protest",en:"A protest fee"},{sl:"Trenerja odstranijo",en:"The coach is removed"}],a:1,
+  e:{sl:"V finalu ni pristojbine za protest, a če protest ni sprejet, se v povezani seriji odštejeta 2 zadetka. Odločitev žirije za proteste v finalu je dokončna.",en:"No protest fee in a Final, but if not upheld, 2 hits come off the related series. The Finals Protest Jury's decision is final."},r:"6.17.1.13 b, c, d"},
+ {h:{sl:"Streljanje pred ukazom LOAD",en:"Firing before the LOAD command"},x:{sl:"Med pripravo tekmovalec 3 napolni in ustreli pred FOR THE SIGHTING SERIES … LOAD.",en:"During preparation athlete 3 loads and fires a shot before FOR THE SIGHTING SERIES … LOAD."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"−2 od prvih zadetkov",en:"−2 from the first hits"},{sl:"Brez kazni, ker je pred poskusno serijo",en:"No penalty, it is before sighting"},{sl:"−1 zadetek",en:"−1 hit"},{sl:"Diskvalifikacija",en:"Disqualification"}],a:3,
+  e:{sl:"Polnjenje in streljanje pred FOR THE SIGHTING SERIES … LOAD pomeni diskvalifikacijo.",en:"Loading and firing before FOR THE SIGHTING SERIES … LOAD means disqualification."},r:"6.17.1.14 h"},
+ {h:{sl:"Strel pred ATTENTION",en:"A shot before ATTENTION"},x:{sl:"Po READY, a pred ATTENTION, gre strel iz pištole tekmovalca 2.",en:"After READY but before ATTENTION, a shot leaves athlete 2's pistol."},
+  q:{sl:"Kaj mora tekmovalec storiti in kakšna je kazen?",en:"What must the athlete do, and what is the penalty?"},o:[{sl:"Nadaljuje; strel je zgrešek",en:"He carries on; the shot is a miss"},{sl:"Preneha, javi sodniku na strelišču kot pri okvari, nato ponovi serijo z −1 zadetkom",en:"He stops, reports to the RO as for a malfunction, then repeats the series with −1 hit"},{sl:"Diskvalifikacija",en:"Disqualification"},{sl:"Ponovi serijo, brez kazni",en:"He repeats the series, no penalty"}],a:1,
+  e:{sl:"Serija se še ni začela (začne se z ATTENTION). Strel ne šteje, v ponovljeni seriji se odšteje 1 zadetek. Če nadaljuje prvotno serijo, se oceni, kot da se je začela.",en:"The series has not started (it starts at ATTENTION). The shot does not count and 1 hit comes off the repeated series. If he continues the original series it is scored as if it had started."},r:"6.17.1.14 j · 8.8.2.3"},
+ {h:{sl:"Strel izpadlega tekmovalca",en:"A shot from an eliminated athlete"},x:{sl:"Med dodatnim streljanjem za bron finalist, ki ne sodeluje v njem, napolni in ustreli.",en:"During the bronze shoot-off, a finalist not in the shoot-off loads and fires a shot."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"−2 zadetka",en:"−2 hits"},{sl:"Diskvalifikacija",en:"Disqualification"},{sl:"Strel se razveljavi, brez kazni",en:"The shot is nullified, no penalty"},{sl:"Opozorilo",en:"A warning"}],a:2,
+  e:{sl:"Strel finalista, ki ne sodeluje v dodatnem streljanju ali ponovitvi zaradi okvare, se razveljavi, za nenamerno napako ni kazni.",en:"A shot by a finalist not involved in a shoot-off or malfunction refire is nullified, with no penalty for the inadvertent mistake."},r:"6.17.1.14 m"},
+ {h:{sl:"Nepričakovana ničla",en:"An unexpected zero"},x:{sl:"V 5. seriji tekmovalčev monitor kaže 4 zadetke in en strel, ki sploh ni zabeležen; pravi, da je izstrelil pet.",en:"In series 5 the athlete's monitor shows 4 hits and one shot that did not register at all; he says he fired five."},shots:"hhuhh",
+  q:{sl:"Kakšen je postopek?",en:"What is the procedure?"},o:[{sl:"Štejejo 4 zadetki; v finalu ni protestov",en:"4 hits count; no protests in a Final"},{sl:"Žirija preveri; razen če je strel očitno zgrešil, strelja ponovitveno serijo, ki nadomesti prvotno",en:"The Jury checks; unless the shot clearly missed, he fires a repeat series that replaces the original"},{sl:"Zadetek se doda samodejno",en:"A hit is added automatically"},{sl:"5. serijo ponovijo vsi",en:"Series 5 is refired by everyone"}],a:1,
+  e:{sl:"Odloči žirija (odgovorni član, drugi član in član RTS). Razen če obstaja verodostojen dokaz o zgrešku, tekmovalec strelja ponovitveno serijo, katere rezultat nadomesti prvotnega.",en:"The Jury (Member-in-Charge, a second member and an RTS member) decides. Unless there is credible evidence of a miss, the athlete fires a repeat series, whose score replaces the original."},r:"6.17.1.8 b"},
+ {h:{sl:"Tarča spet odpove",en:"The target fails again"},x:{sl:"V ponovitveni seriji zaradi nepričakovane ničle tarča spet ne zabeleži strela.",en:"In the repeat series for an unexpected zero, the target again fails to register a shot."},
+  q:{sl:"Kaj se zgodi?",en:"What happens?"},o:[{sl:"Štejejo prikazani zadetki",en:"The displayed hits count"},{sl:"Premakne se na drugo skupino tarč in ponovi serijo, preden se streljanje nadaljuje",en:"He moves to the other target group and refires the series before firing resumes"},{sl:"−2 zadetka",en:"−2 hits"},{sl:"Finale se ustavi",en:"The Final is stopped"}],a:1,
+  e:{sl:"Če tarča spet odpove, se pri hitrostrelni pištoli tekmovalec premakne na drugo skupino tarč in na ukaz ponovi serijo, preden se streljanje nadaljuje za vse.",en:"If the target still fails, in RFP the athlete moves to the other target group and refires the series on command before firing continues for all."},r:"6.17.1.8 c"},
+ {h:{sl:"Prva okvara, nedovoljena",en:"First malfunction, non-allowable"},x:{sl:"V 3. seriji se pištola ustavi; sodnik na strelišču odloči NEDOVOLJENA. Prikazani so trije zadetki.",en:"In series 3 the pistol stops; the Range Officer rules NON-ALLOWABLE. Three hits are displayed."},shots:"hhhuu",
+  q:{sl:"Koliko zadetkov šteje v seriji?",en:"How many hits count for the series?"},o:[{sl:"3",en:"3"},{sl:"1",en:"1"},{sl:"0",en:"0"},{sl:"Serija se ponovi",en:"The series is repeated"}],a:1,
+  e:{sl:"NEDOVOLJENA: −2 zadetka v tej seriji brez ponovitve: 3 − 2 = 1. Njegovo edino uveljavljanje okvare je porabljeno.",en:"NON-ALLOWABLE: −2 hits from that series with no repeat: 3 − 2 = 1. His one malfunction claim is used."},r:"6.17.4 o"},
+ {h:{sl:"Kazen večja od rezultata",en:"Penalty larger than the score"},x:{sl:"Tekmovalec v seriji zadene le eno tarčo in dobi kazen −2 zadetka za položaj READY.",en:"The athlete hits only one target in the series and gets a −2 hit READY position penalty."},shots:"hmmmm",
+  q:{sl:"Kakšen je rezultat serije?",en:"What is the series score?"},o:[{sl:"−1",en:"−1"},{sl:"0",en:"0"},{sl:"1, preostanek se odšteje v naslednji seriji",en:"1, with the rest taken from the next series"},{sl:"1",en:"1"}],a:1,
+  e:{sl:"Odbitek velja za serijo, v kateri je nastala kršitev, rezultat pod nič pa se ne beleži.",en:"The deduction applies to the series where the violation occurred, and no score below zero is recorded."},r:"6.17.1.5 · 6.17.4 n"},
+ {h:{sl:"Signalizira samo en član žirije",en:"Only one Jury member signals"},x:{sl:"Samo en član tekmovalne žirije dvigne roko in signalizira prezgodnje dviganje roke.",en:"Only one Competition Jury member raises a hand to signal an early arm lift."},
+  q:{sl:"Ali se kazen izreče?",en:"Is the penalty imposed?"},o:[{sl:"Da, −2 zadetka",en:"Yes, −2 hits"},{sl:"Da, opozorilo",en:"Yes, a warning"},{sl:"Ne; signalizirati morata najmanj dva člana",en:"No; at least two members must signal"},{sl:"Odloči glavni sodnik (CRO)",en:"The CRO decides"}],a:2,
+  e:{sl:"Najmanj dva člana tekmovalne žirije morata signalizirati, preden se izreče kazen ali diskvalifikacija zaradi položaja READY.",en:"At least two Competition Jury members must signal before a READY position penalty or disqualification is imposed."},r:"6.17.4 n"},
+ {h:{sl:"Druga kršitev READY",en:"Second READY violation"},x:{sl:"Tekmovalec je bil v 2. seriji kaznovan zaradi prezgodnjega dviganja roke in to ponovi v 5. seriji.",en:"The athlete was penalised for an early arm lift in series 2 and does it again in series 5."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Spet −2 zadetka",en:"−2 hits again"},{sl:"Diskvalifikacija (rdeči karton)",en:"Disqualification (red card)"},{sl:"−4 zadetki",en:"−4 hits"},{sl:"Zadnje opozorilo",en:"A final warning"}],a:1,
+  e:{sl:"V finalu je prva kršitev −2 zadetka (zeleni karton); ponovitev je diskvalifikacija (rdeči karton).",en:"In a Final the first violation is −2 hits (green card); a repeat is disqualification (red card)."},r:"6.17.4 n"},
+ {h:{sl:"Ni ga v 10 minutah",en:"Not there within 10 minutes"},x:{sl:"Tekmovalec 7 prispe v pripravljalni prostor 12 minut po času prijave.",en:"Athlete 7 reaches the Preparation Area 12 minutes after the Reporting Time."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Začne z −2 prvima zadetkoma",en:"He starts with −2 first hits"},{sl:"Začne, brez kazni",en:"He starts, no penalty"},{sl:"Morda ne sme začeti; zabeležen kot prvi izpadli (DNS), prvo izpadanje se začne s 7. mestom",en:"He may not start; recorded as the first eliminated (DNS), and the first elimination begins with 7th place"},{sl:"Finale se preloži",en:"The Final is delayed"}],a:2,
+  e:{sl:"Več kot 10 minut po času prijave morda ne sme začeti in je DNS, prvi izpadli. Krajša zamuda stane 2 zadetka od prvih dveh zadetkov.",en:"More than 10 minutes after the Reporting Time he may not start and is DNS, the first eliminated. A shorter delay costs 2 hits from his first two hits."},r:"6.17.1.4 · 6.17.1.3"},
+ {h:{sl:"Protest glede vrednosti strela",en:"Protest on a shot value"},x:{sl:"Trener protestira, da bi moral biti strel z 9,6 zadetek.",en:"A coach protests that a shot scored 9.6 should have been a hit."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Žirija pregleda tarčo",en:"The Jury examines the target"},{sl:"Protesti glede vrednosti strela v finalu niso dovoljeni",en:"Protests on shot value are not permitted in a Final"},{sl:"Serija se ponovi",en:"The series is repeated"},{sl:"Šteje kot zadetek",en:"It counts as a hit"}],a:1,
+  e:{sl:"Protesti glede vrednosti ali števila strelov v finalih niso dovoljeni; zadetek je 9,7 ali več.",en:"Protests about the value or number of shots are not permitted in Finals; a hit is 9.7 or higher."},r:"6.17.1.7 · 6.17.4 d"},
+ {h:{sl:"Varnostna zastavica po izpadu",en:"Safety flag after elimination"},x:{sl:"Tekmovalec 8 izpade po 3. seriji in po pomoti odloži pištolo brez varnostne zastavice.",en:"Athlete 8 is eliminated after series 3 and puts his pistol down without the safety flag by mistake."},
+  q:{sl:"Kakšen je postopek?",en:"What is the procedure?"},o:[{sl:"−2 zadetka od njegovega seštevka",en:"−2 hits from his total"},{sl:"Diskvalifikacija",en:"Disqualification"},{sl:"Opozorilo",en:"A warning"},{sl:"Sodnik na strelišču popravi napako in vstavi zastavico",en:"The Range Officer corrects it and inserts the flag"}],a:3,
+  e:{sl:"Če tekmovalec nenamerno ne vstavi varnostne zastavice, je sodnik na strelišču pooblaščen, da napako popravi in jo vstavi.",en:"If an athlete inadvertently fails to insert a safety flag, a Range Officer is authorised to correct it and insert one."},r:"6.17.1.14 n"},
+ {h:{sl:"Pištola v kovčku brez pregleda",en:"Pistol boxed without a check"},x:{sl:"Po finalu tekmovalec pospravi pištolo v kovček in jo odnese z linije brez pregleda sodnika na strelišču.",en:"After the Final the athlete boxes his pistol and takes it off the line without a Range Officer check."},
+  q:{sl:"Kakšna je odločitev?",en:"What is the ruling?"},o:[{sl:"Nič, finale je končan",en:"Nothing, the Final is over"},{sl:"−2 zadetka",en:"−2 hits"},{sl:"Lahko je diskvalificiran, če žirija ugotovi resno varnostno kršitev",en:"He may be disqualified if the Jury finds a significant safety violation"},{sl:"Denarna kazen",en:"A fine"}],a:2,
+  e:{sl:"Preden katera koli pištola zapusti linijo, jo sodnik na strelišču preveri: zaklep odprt, zastavica vstavljena, nabojnik odstranjen in nabojniki prazni. Odnos brez pregleda lahko pomeni DSQ, če gre za resno varnostno kršitev.",en:"Before any pistol leaves the line a Range Officer checks it: action open, flag in, magazine out and magazines empty. Removing it unchecked may mean DSQ if it is a significant safety violation."},r:"6.17.4 l · 6.2.2.5"},
+ {h:{sl:"Uteži v prostoru za strelivo",en:"Dumbbells in the Ammunition Area"},x:{sl:"Med čakanjem v prostoru za strelivo tekmovalec dviguje roko z utežjo.",en:"While waiting his turn in the Ammunition Area, the athlete does arm lifts with a dumbbell."},
+  q:{sl:"Je to dovoljeno?",en:"Is this allowed?"},o:[{sl:"Da, v prostoru za strelivo je dovoljeno",en:"Yes, allowed in the Ammunition Area"},{sl:"Ne, samo med pripravo",en:"No, only during preparation"},{sl:"Da, a brez uteži",en:"Yes, but without weights"},{sl:"−1 zadetek",en:"−1 hit"}],a:0,
+  e:{sl:"Dviganje roke in vaje, z utežmi ali brez, so med čakanjem v prostoru za strelivo dovoljeni. Na strelskem mestu samo med pripravo.",en:"Arm lifts and exercises, with or without dumbbells, are allowed while waiting in the Ammunition Area. At the firing point, only during preparation."},r:"6.17.4 q"},
+ {h:{sl:"Vrstni red streljanja v 4. seriji",en:"Firing order in series 4"},x:{sl:"Po 3. seriji izpadeta tekmovalca 6 in 8.",en:"After series 3, athletes 6 and 8 are eliminated."},
+  q:{sl:"Kako se strelja 4. serija?",en:"How is series 4 fired?"},o:[{sl:"V parih: 1 in 3, 2 in 4, 5 in 7",en:"Pairs: 1&3, 2&4, 5&7"},{sl:"Posamezno po vrsti 1, 2, 3, 4, 5, 7 na istih mestih",en:"Individually in order 1, 2, 3, 4, 5, 7 on the same points"},{sl:"Posamezno po seštevku, najvišji prvi",en:"Individually by total, highest first"},{sl:"Strelska mesta se prerazporedijo",en:"Firing points are re-allocated"}],a:1,
+  e:{sl:"Od 4. serije vsak tekmovalec strelja sam od leve proti desni (1 do 8), strelska mesta se ne spreminjajo.",en:"From series 4 each athlete fires alone from left to right (1 to 8), and the firing points do not change."},r:"6.17.4 i, j"},
+ {h:{sl:"Merjenje ob postavljanju opreme",en:"Aiming while setting up"},x:{sl:"20 minut pred začetkom, med postavljanjem opreme na mesto, tekmovalec izvaja vaje merjenja.",en:"20 minutes before the start, while placing his equipment at the point, the athlete does aiming exercises."},
+  q:{sl:"Je to dovoljeno?",en:"Is this allowed?"},o:[{sl:"Da",en:"Yes"},{sl:"Ne, v tem času ni dovoljeno",en:"No, not permitted at this time"},{sl:"Da, če je pištola prazna",en:"Yes, if the pistol is empty"},{sl:"Da, brez suhega proženja",en:"Yes, without dry firing"}],a:1,
+  e:{sl:"Ko se oprema postavlja na mesta (najmanj 20 min pred začetkom), vaje merjenja niso dovoljene; tekmovalci se nato vrnejo v pripravljalni prostor.",en:"When equipment is placed on the points (at least 20 min before the start), aiming exercises are not permitted; athletes then return to the Preparation Area."},r:"6.17.1.14 b"},
+ {h:{sl:"Ukaz za konec",en:"End command"},x:{sl:"8. serija je končana, ni izenačenja in ni protesta.",en:"Series 8 is over with no tie and no protest."},
+  q:{sl:"Kaj reče glavni sodnik (CRO)?",en:"What does the CRO say?"},o:[{sl:"Samo UNLOAD",en:"UNLOAD only"},{sl:"STOP … UNLOAD, nato RESULTS ARE FINAL",en:"STOP … UNLOAD, then RESULTS ARE FINAL"},{sl:"END OF MATCH",en:"END OF MATCH"},{sl:"Nič, govori napovedovalec",en:"Nothing, the Announcer speaks"}],a:1,
+  e:{sl:"Po 8. seriji brez izenačenja ali protesta: STOP… UNLOAD, nato RESULTS ARE FINAL; pištole se preverijo, preden zapustijo linijo.",en:"After series 8 with no tie or protest: STOP… UNLOAD, then RESULTS ARE FINAL; pistols are checked before they leave the line."},r:"6.17.4 l"}
+];
+let CI=0, CANS={}; const CORD={};
+function caseOrder(i){ if(!CORD[i]){ const a=CASES[i].o.map((_,k)=>k); for(let j=a.length-1;j>0;j--){const r=Math.floor(Math.random()*(j+1)); [a[j],a[r]]=[a[r],a[j]];} CORD[i]=a; } return CORD[i]; }
+function renderCase(){
+  const tt=t(), c=CASES[CI];
+  $("caseno").innerHTML=`${tt.caseNo} <b>${CI+1}</b> ${tt.of} ${CASES.length}`; $("casetag").textContent=tt.caseTag;
+  $("casetitle").textContent=L(c.h); $("casetext").textContent=L(c.x); $("caseq").textContent=L(c.q);
+  $("caseshots").innerHTML=c.shots?[...c.shots].map((s,k)=>`<span class="shot"><b class="${s}"></b>${k+1}</span>`).join(""):"";
+  const box=$("caseopts"); box.innerHTML=""; const ans=CANS[CI];
+  caseOrder(CI).forEach((k,pos)=>{const o=c.o[k]; const b=document.createElement("button");b.className="opt";b.textContent=(pos+1)+". "+L(o);
+    if(ans!=null){b.disabled=true; if(k===c.a)b.classList.add("right"); else if(k===ans)b.classList.add("wrong");}
+    b.onclick=()=>{CANS[CI]=k;renderCase();}; box.appendChild(b);});
+  $("caseex").innerHTML=ans!=null?`<b>${ans===c.a?tt.right:(lang==="sl"?"Ni povsem prav.":"Not quite.")}</b> ${esc(L(c.e))} <span class="ref">ISSF ${c.r}</span>`:"";
+  $("cprev").textContent=tt.cprev; $("cnext").textContent=tt.cnext; $("crestart").textContent=tt.crestart; $("clisten").textContent=tt.clisten;
+  $("cprev").disabled=CI===0; $("cnext").disabled=CI===CASES.length-1; $("clisten").disabled=!synth;
+  const right=Object.entries(CANS).filter(([i,a])=>CASES[i].a===a).length;
+  $("cscore").textContent=`${tt.cscore} ${right} / ${Object.keys(CANS).length}`;
+}
+$("cprev").onclick=()=>{CI--;renderCase()}; $("cnext").onclick=()=>{CI++;renderCase()};
+$("crestart").onclick=()=>{CI=0;CANS={};for(const k in CORD)delete CORD[k];renderCase()};
+$("clisten").onclick=()=>{ if(!SOUND){ SOUND=true; try{localStorage.setItem("rfpm2-sound","1")}catch(e){} render(false); renderCase(); } const c=CASES[CI]; speak(L(c.h)+". "+L(c.x)+" "+L(c.q)+" "+caseOrder(CI).map((k,pos)=>(pos+1)+": "+L(c.o[k])).join(". "));};
+
+/* ================= wiring ================= */
+function setTab(k){ ["sim","cases","pen"].forEach(x=>{ $("tab-"+x).setAttribute("aria-selected",k===x); $("view-"+x).hidden=k!==x; }); if(k!=="sim"){stopPlay();closeTrainer();} try{synth&&synth.cancel()}catch(e){} if(k==="cases") renderCase(); if(k==="pen") renderPen(); }
+$("tab-sim").onclick=()=>setTab("sim"); $("tab-cases").onclick=()=>setTab("cases"); $("tab-pen").onclick=()=>setTab("pen");
+$("langbtn").onclick=()=>{ lang=lang==="sl"?"en":"sl"; try{localStorage.setItem("rfpm2-lang-ensl",lang)}catch(e){} render(false); renderCase(); renderNames(); renderPen(); };
+$("bnext").onclick=()=>{stopPlay(); nextStep();};
+$("bprev").onclick=()=>{stopPlay(); $("gate").hidden=true; go(I-1,false);};
+$("bplay").onclick=play; $("bpause").onclick=pauseAll;
+$("seek").oninput=e=>{stopPlay(); $("gate").hidden=true; go(+e.target.value,false);};
+$("sp1").onclick=()=>{SPEED=1;render(false)}; $("sp2").onclick=()=>{SPEED=2;render(false)};
+$("scen").onchange=e=>newScenario(+e.target.value);
+function restart(){ if(PAUSE.on) clearPause(); stopPlay(); closeTrainer(); $("gate").hidden=true; GATE_OK=false; try{synth&&synth.cancel()}catch(e){} go(0,false); }
+$("bstart").onclick=restart;
+$("vmode").onchange=()=>speakStep(); $("vvoice").onchange=e=>{ VOICE_PREF=e.target.value; try{localStorage.setItem("rfpm2-voice",VOICE_PREF)}catch(x){} speak("ATTENTION"); }; $("vrate").onchange=()=>speakStep();
+function applyNames(){ computeNames(); saveNames(); rebuild(true); render(false); }
+function renderNames(){ const tt=t(); const box=$("names"); box.innerHTML="";
+  $("usenames").checked=USE_NAMES; $("usenamesl").textContent=tt.usenames; $("namespanel").hidden=!USE_NAMES;
+  $("nameshelp").textContent=tt.nameshelp; $("namespaste").placeholder=tt.pasteph; $("bfill").textContent=tt.fill; $("bclear").textContent=tt.clearn;
+  for(let n=1;n<=8;n++){const l=document.createElement("label"); l.innerHTML=`<span class="chip" style="background:${COLORS[n]};color:${INK[n]}">${n}</span>`;
+    const i=document.createElement("input"); i.type="text"; i.id="nm"+n; i.value=ENTRIES[n-1].name; i.maxLength=24; i.placeholder=tt.famph+" "+n; i.setAttribute("aria-label",tt.famph+" "+n); i.autocomplete="off";
+    i.oninput=()=>{ENTRIES[n-1].name=i.value;}; i.onchange=()=>{ENTRIES[n-1].name=i.value.trim(); applyNames();};
+    const c=document.createElement("input"); c.type="text"; c.className="noc"; c.id="noc"+n; c.value=ENTRIES[n-1].noc; c.maxLength=3; c.placeholder=tt.nocph; c.setAttribute("aria-label",tt.nocph+" "+n); c.autocomplete="off";
+    c.onchange=()=>{ENTRIES[n-1].noc=c.value.trim().toUpperCase().slice(0,3); c.value=ENTRIES[n-1].noc; applyNames();};
+    l.appendChild(i); l.appendChild(c); box.appendChild(l);} }
+$("usenames").onchange=e=>{ USE_NAMES=e.target.checked; $("namespanel").hidden=!USE_NAMES; applyNames(); };
+$("bfill").onclick=()=>{ const lines=$("namespaste").value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).slice(0,8);
+  lines.forEach((ln,k)=>{ let parts=ln.replace(/^\d+[\.\)\-:]?\s*/,"").split(/[,;\t]+|\s+/).filter(Boolean); let noc="";
+    if(parts.length>1&&/^[A-Z]{3}$/.test(parts[parts.length-1])){ noc=parts.pop(); }
+    ENTRIES[k]={name:parts.join(" ").slice(0,24),noc:noc}; });
+  if(lines.length){ USE_NAMES=true; $("namespaste").value=""; renderNames(); applyNames(); } };
+$("bclear").onclick=()=>{ ENTRIES=Array.from({length:8},()=>({name:"",noc:""})); renderNames(); applyNames(); };
+
+/* ================= save for offline ================= */
+let DL_DONE=false;
+const DL_NAME="RFPM-Final-Simulator-offline.html";
+async function saveOffline(){
+  const blob=new Blob([SRC],{type:"text/html;charset=utf-8"});
+  const done=()=>{ DL_DONE=true; render(false); setTimeout(()=>{DL_DONE=false; render(false);},6000); };
+  // Phones/tablets: the share sheet lets the user "Save to Files" / "Save to device"
+  const touch=matchMedia("(hover:none)").matches;
+  if(touch && navigator.canShare){
+    try{ const f=new File([blob],DL_NAME,{type:"text/html"});
+      if(navigator.canShare({files:[f]})){ await navigator.share({files:[f],title:"RFPM Final Simulator"}); done(); return; } }
+    catch(e){ if(e&&e.name==="AbortError") return; }
+  }
+  try{ const url=URL.createObjectURL(blob); const a=document.createElement("a");
+    a.href=url; a.download=DL_NAME; a.rel="noopener"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),4000); done(); }
+  catch(e){ window.open(URL.createObjectURL(blob),"_blank"); }
+}
+$("dlbtn").onclick=saveOffline;
+const FS_OK=!!(document.documentElement.requestFullscreen&&document.fullscreenEnabled!==false);
+if(FS_OK) $("fsbtn").hidden=false;
+function toggleFS(){ try{ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(()=>{}); }catch(e){} }
+$("fsbtn").onclick=toggleFS;
+function toggleSound(){ SOUND=!SOUND; try{localStorage.setItem("rfpm2-sound",SOUND?"1":"0")}catch(e){}
+  if(!SOUND){ VOICE_ON=false; try{synth&&synth.cancel()}catch(e){} }
+  else { VOICE_ON=true; beep(880,.08); if(!$("view-cases").hidden){ const c=CASES[CI]; speak(L(c.h)+". "+L(c.x)+" "+L(c.q)); } else speakStep(); }
+  render(false); renderCase(); }
+$("sndbtn").onclick=toggleSound;
+document.addEventListener("fullscreenchange",()=>{ $("fsbtn").textContent=document.fullscreenElement?t().fsx:t().fs; setTimeout(()=>renderField(false),120); });
+document.addEventListener("keydown",e=>{
+  if(e.ctrlKey||e.metaKey||e.altKey) return;
+  const tg=e.target; if(tg&&(/^(INPUT|SELECT|TEXTAREA)$/.test(tg.tagName)||tg.isContentEditable)) return;
+  if(!$("view-sim").hidden){
+    const fwd="ArrowRight", back="ArrowLeft";
+    if(e.key===fwd||e.key==="PageDown"||e.key==="n"||e.key==="N"){ e.preventDefault(); if(!$("gate").hidden) return; stopPlay(); nextStep(); return; }
+    if(e.key===back||e.key==="PageUp"||e.key==="p"||e.key==="P"){ e.preventDefault(); stopPlay(); $("gate").hidden=true; go(I-1,false); return; }
+    if(e.key===" "&&!(tg&&tg.tagName==="BUTTON")){ e.preventDefault(); play(); render(false); return; }
+    if(e.key==="k"||e.key==="K"){ e.preventDefault(); pauseAll(); return; }
+    if(e.key==="t"||e.key==="T"){ e.preventDefault(); TR?closeTrainer():openTrainer(); return; }
+    if(e.key==="Home"||e.key==="r"||e.key==="R"){ e.preventDefault(); restart(); return; }
+  } else if(!$("view-cases").hidden){
+    const fwd="ArrowRight", back="ArrowLeft";
+    if(e.key===fwd&&CI<CASES.length-1){ e.preventDefault(); CI++; renderCase(); return; }
+    if(e.key===back&&CI>0){ e.preventDefault(); CI--; renderCase(); return; }
+    if(/^[1-4]$/.test(e.key)&&CANS[CI]==null){ const ord=caseOrder(CI); if(+e.key<=ord.length){ CANS[CI]=ord[+e.key-1]; renderCase(); } return; }
+  }
+  if(e.key==="f"||e.key==="F"){ if(FS_OK){ e.preventDefault(); toggleFS(); } return; }
+  if(e.key==="s"||e.key==="S"){ e.preventDefault(); saveOffline(); return; }
+  if(e.key==="m"||e.key==="M"){ e.preventDefault(); toggleSound(); return; }
+  if(e.key==="l"||e.key==="L"){ e.preventDefault(); $("langbtn").click(); return; }
+});
+let rzT=null; window.addEventListener("resize",()=>{clearTimeout(rzT); rzT=setTimeout(()=>renderField(false),150);});
+VOICE_ON=SOUND;
+drawField(); renderNames(); PLAN=planFor(0); rebuild(false); render(false); renderCase(); renderPen();
+requestAnimationFrame(()=>requestAnimationFrame(()=>{for(const k in TOK) TOK[k].style.transition="";}));
+})();
+</script>
+
+<script>
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}
+</script>
+</body>
+</html>
