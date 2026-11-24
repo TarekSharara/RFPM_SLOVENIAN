@@ -1,5 +1,5 @@
 /* RFPM Final – offline service worker. Change VERSION after every update of index.html */
-const VERSION = "rfpm-final-en-sl-v1";
+const VERSION = "rfpm-final-en-sl-v7";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {

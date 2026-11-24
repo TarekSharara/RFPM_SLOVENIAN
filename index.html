@@ -81,6 +81,8 @@ nav.tabs button[aria-selected="true"]{color:var(--ink); border-bottom-color:var(
 .steptitle{font-family:var(--f-disp); font-size:22px; font-weight:700; margin:6px 0 10px; line-height:1.35}
 .cmdbox{background:var(--navy); color:var(--navy-ink); border-radius:10px; padding:10px 14px; margin-bottom:10px}
 .cmdbox .cap{font-size:12px; opacity:.8; margin-bottom:4px}
+.cmdrow.rep{opacity:.55}
+.cmdrow.rep.now{opacity:1; background:var(--accent); color:var(--accent-ink); border-radius:8px; padding:6px 8px; margin:2px -8px 0}
 .cmdrow{display:grid; grid-template-columns:1fr auto; gap:2px 12px; padding:5px 0; border-top:1px solid rgba(255,255,255,.12)}
 .cmdrow:first-of-type{border-top:0}
 .cmdrow .c{font-family:var(--f-mono); font-weight:600; font-size:14px; direction:ltr; text-align:start; overflow-wrap:anywhere}
@@ -151,6 +153,14 @@ th{font-size:12px; color:var(--muted); font-weight:500; padding:6px; border-bott
 td{padding:6px; border-bottom:1px solid var(--line); white-space:nowrap}
 tr.shoot td{background:color-mix(in srgb, var(--accent) 12%, transparent)}
 tr.out td{color:var(--muted)}
+#results tr.elim td{background:color-mix(in srgb,var(--miss) 13%,var(--panel)); color:var(--muted)}
+#results tr.elim td:first-child{box-shadow:inset 4px 0 0 var(--miss)}
+#results tr.mg td{background:color-mix(in srgb,#E8B923 26%,var(--panel)); color:var(--ink)}
+#results tr.ms td{background:color-mix(in srgb,#9AA4AE 26%,var(--panel)); color:var(--ink)}
+#results tr.mb td{background:color-mix(in srgb,#C27C3A 24%,var(--panel)); color:var(--ink)}
+@keyframes tieblink{0%,100%{background:var(--panel)}50%{background:#FFD84D}}
+#results tr.tie td,#board tr.tie td{animation:tieblink 1s ease-in-out infinite; font-weight:700}
+#results tr.tie.short td,#board tr.tie.short td{animation-iteration-count:4}
 .dots{display:inline-flex; gap:3px; direction:ltr}
 .dots i{width:10px; height:10px; border-radius:50%; border:1.5px solid var(--line); display:inline-block}
 .dots i.h{background:var(--hit); border-color:var(--hit)}
@@ -425,9 +435,6 @@ body[dir="rtl"] .resrow .boardcard{order:0}
 
   <div class="infos" id="infos"></div>
   <p class="src" id="src"></p>
-  <p class="src byline-foot" id="bylinefoot"></p>
-  <p class="src" id="designerfoot" style="margin-top:-12px; white-space:pre-line">First design by: Ahmed MURAD
-Finalized by: Tarek SHARARA</p>
 </div>
 
 <script>
@@ -515,7 +522,7 @@ const cnt=h=>h?h.filter(Boolean).length:0;
 const WORDS=["ZERO","ONE","TWO","THREE","FOUR","FIVE"];
 function simulate(plan,names,quick){
   const A={}; for(let n=1;n<=8;n++) A[n]={no:n,status:"active",ser:{},so:[],soIdx:0,place:null,medal:null,last:null,elimOrder:null};
-  const steps=[], events=[]; let elimCount=0;
+  const steps=[], events=[]; let elimCount=0, TIE=[], TIE85=[];
   const nm=n=>names[n-1];
   const act=()=>Object.values(A).filter(a=>a.status==="active");
   const total=a=>Object.values(a.ser).reduce((x,h)=>x+cnt(h),0);
@@ -524,19 +531,20 @@ function simulate(plan,names,quick){
     if(quick){steps.push(0);return}
     const board={},res={};
     for(let n=1;n<=8;n++){const a=A[n]; board[n]={status:a.status,place:a.place,medal:a.medal,last:a.last?a.last.slice():null,total:total(a),elimOrder:a.elimOrder};
-      res[n]={ser:Object.fromEntries(Object.entries(a.ser).map(([k,h])=>[k,cnt(h)])),so:a.so.map(cnt),total:total(a),place:a.place,status:a.status};}
+      res[n]={ser:Object.fromEntries(Object.entries(a.ser).map(([k,h])=>[k,cnt(h)])),so:a.so.map(cnt),total:total(a),place:a.place,status:a.status,medal:a.medal};}
+    if(!o.tie){ if(TIE85.length){o.tie=TIE85.slice(); o.tieShort=true;} else o.tie=TIE.slice(); }
     o.board=board; o.res=res; steps.push(o);
   }
   const names2=sh=>sh.map(nm).join(", ");
-  const report=(sh,get)=>sh.map(n=>{const v=cnt(get(n));return `${nm(n)} – ${WORDS[v]} ${v===1?"HIT":"HITS"}`}).join(". ");
+  const report=(sh,get)=>sh.map(n=>{const v=cnt(get(n));return `${nm(n)} … ${WORDS[v]} ${v===1?"HIT":"HITS"}`}).join(", ");
   const fireStages=(sh,get,firstWait,firstLbl,noReport)=>[
-    {lbl:firstLbl||{sl:"Tarče pripravljene",en:"Targets ready"},secs:firstWait,say:names2(sh)+" – READY",hint:firstWait===30?{sl:"30 sekund po ukazu LOAD, nato pokliči priimke.",en:"30 seconds after LOAD, then call the family names."}:{sl:"Počakaj na znak tehničnega vodje, da so tarče pripravljene, nato pokliči tekmovalce.",en:"Wait for the Technical Officer's signal that the targets are ready, then call the athletes."}},
+    {lbl:firstLbl||{sl:"Tarče pripravljene",en:"Targets ready"},secs:firstWait,say:names2(sh)+" … READY",hint:firstWait===30?{sl:"30 sekund po ukazu LOAD, nato pokliči priimke.",en:"30 seconds after LOAD, then call the family names."}:{sl:"Počakaj na znak tehničnega vodje, da so tarče pripravljene, nato pokliči tekmovalce.",en:"Wait for the Technical Officer's signal that the targets are ready, then call the athletes."}},
     {lbl:{sl:"Priprava na strel",en:"Getting ready"},secs:20,say:"ATTENTION",hint:{sl:"Po READY tekmovalec vstavi nabojnik in se pripravi. Po 20 sekundah: ATTENTION, prižgejo se rdeče luči.",en:"After READY the athlete inserts the magazine and prepares. After 20 seconds: ATTENTION, red lights on."}},
     {lbl:{sl:"Rdeče luči",en:"Red lights"},secs:7,say:null,light:"red",hint:{sl:"Tekmovalec v položaju READY. Zelene luči po 7 sekundah.",en:"Athlete in the READY position. Green lights after 7 seconds."}},
     {lbl:{sl:"Streljanje",en:"Firing"},secs:4,say:null,light:"green",hint:{sl:"5 strelov v 4 sekundah.",en:"5 shots in 4 seconds."}},
     noReport
       ?{lbl:{sl:"Ponastavitev tarč",en:"Target recycling"},secs:4,say:null,light:"red",hint:{sl:"Rezultat poskusne serije se ne razglasi.",en:"The sighting series score is not announced."}}
-      :{lbl:{sl:"Ponastavitev tarč",en:"Target recycling"},secs:4,say:report(sh,get),light:"red",hint:{sl:"V 10–14 sekundah rdeče luči razglasi rezultat serije.",en:"During the 10–14 seconds of red light, report the score."}}
+      :{lbl:{sl:"Ponastavitev tarč",en:"Target recycling"},secs:3,say:report(sh,get),light:"red",hint:{sl:"V 10–14 sekundah rdeče luči razglasi rezultat serije.",en:"During the 10–14 seconds of red light, report the score."}}
   ];
   const cmdsFrom=stages=>stages.filter(s=>s.say).map(s=>({c:s.say,at:"+"+s.secs+"s"}));
   const BEFORE={sl:"Pred tekmo",en:"Before the match"};
@@ -545,19 +553,19 @@ function simulate(plan,names,quick){
   const sightGet=n=>plan.hits[n][0];
   push({ph:0,tag:BEFORE,title:{sl:"Poziv na linijo in predstavitev",en:"Call to the line and introductions"},
     desc:{sl:"Približno 11 minut pred začetkom tekmovalce pokličejo enega za drugim in jih predstavijo ob vstopu na tekmovališče (FOP). Obrnjeni proti gledalcem ostanejo do ukaza TAKE YOUR POSITIONS. Vsako strelsko mesto ima za seboj svoj prostor za strelivo za svoje štiri tekmovalce.",en:"About 11 minutes before the start, athletes are called one by one and introduced as they enter the FOP. They keep facing the audience until TAKE YOUR POSITIONS. Each firing point has its Ammunition Area behind it for its four athletes."},
-    ref:"6.17.4 c, g",pos:pm(()=>"ammo"),stages:[{lbl:{sl:"Predstavitev",en:"Introductions"},secs:10,say:null,hint:{sl:"Napovedovalec predstavi tekmovalce.",en:"The Announcer introduces the athletes."}}],cmds:[]});
-  const typ=(grp,wait,title,desc,ref)=>{const stg=[{lbl:{sl:"Zavzemite položaje",en:"Take positions"},secs:wait,say:"TAKE YOUR POSITIONS",hint:{sl:"Ukaz za zavzetje položajev.",en:"Command to take positions."}}];
+    ref:"6.17.4 c, g",pos:pm(()=>"ammo"),stages:[{lbl:{sl:"Poziv na linijo",en:"Call to the line"},secs:5,say:"ATHLETES TO THE LINE",hint:{sl:"Približno 11 min 30 s pred začetkom. Finalisti vstopajo eden za drugim.",en:"About 11:30 minutes before the start. The finalists walk in one at a time."}},{lbl:{sl:"Predstavitev",en:"Introductions"},secs:200,say:null,hint:{sl:"Napovedovalec predstavi tekmovalce.",en:"The Announcer introduces the athletes."}}],cmds:[{c:"ATHLETES TO THE LINE",at:"+5s"}]});
+  const typ=(grp,wait,title,desc,ref)=>{const stg=[{lbl:{sl:"Zavzemite položaje",en:"Take positions"},secs:wait,say:grp[0]===5?"FOR FINALISTS NO. 5, 6, 7 AND 8: TAKE YOUR POSITIONS":"TAKE YOUR POSITIONS",hint:{sl:"Ukaz za zavzetje položajev.",en:"Command to take positions."}}];
     push({ph:0,tag:BEFORE,title,desc,ref,pos:pm(n=>grp.includes(n)?"fp":"ammo"),stages:stg,cmds:cmdsFrom(stg)});};
   const prep=(grp,wait)=>{const la=grp.join(", "), le=grp.join(", ");const stg=[
       {lbl:{sl:"Začetek priprave",en:"Preparation starts"},secs:wait,say:"PREPARATION BEGINS NOW",hint:{sl:wait+" s po zavzetju položajev.",en:wait+" seconds after taking positions."}},
       {lbl:{sl:"Priprava",en:"Preparation"},secs:60,say:"END OF PREPARATION",hint:{sl:"Ena minuta. Vaje merjenja, dviganje roke in suho proženje na strelskem mestu so dovoljeni samo zdaj.",en:"One minute. Aiming exercises, arm lifts and dry firing at the firing point are allowed only now."}},
-      {lbl:{sl:"Polnjenje",en:"Loading"},secs:2,say:"FOR THE SIGHTING SERIES … LOAD",hint:{sl:"Takoj po koncu priprave.",en:"Right after the end of preparation."}}];
+      {lbl:{sl:"Polnjenje",en:"Loading"},secs:15,say:"FOR THE SIGHTING SERIES … LOAD",hint:{sl:"15 sekund po END OF PREPARATION.",en:"15 seconds after END OF PREPARATION."}}];
     push({ph:0,tag:BEFORE,title:{sl:"Priprava, nato polnjenje za poskusno serijo · "+la,en:"Preparation, then loading for sighting · "+le},
       desc:{sl:"Ena minuta priprave za tekmovalce "+la+". Vaje merjenja, dviganje roke in suho proženje na strelskem mestu so dovoljeni samo med pripravo. Nato napolnijo en nabojnik s petimi naboji, ki so na strelskem mestu.",en:"One minute of preparation for athletes "+le+". Aiming exercises, arm lifts and dry firing at the firing point are allowed only during preparation. Then they load the one magazine and five cartridges kept at the firing point."},
       ref:"6.17.4 f, h, q",pos:pm(n=>grp.includes(n)?"fp":"ammo"),stages:stg,cmds:cmdsFrom(stg)});};
   const sight=(pair,grp,first)=>{
     pair.forEach(n=>{A[n].last=sightGet(n)});
-    const stg=fireStages(pair,sightGet,first?30:20,null,true);
+    const stg=fireStages(pair,sightGet,first?30:5,null,true);
     const desc=first
       ?{sl:`{${pair[0]}} in {${pair[1]}} na levi strani vsakega mesta streljata prva. {${pair[0]+1}} in {${pair[1]+1}} na desni smeta po READY vzeti pištolo za pripravo, vendar brez vaj merjenja, dviganja roke ali suhega proženja. Poskusna serija se ne šteje, njen rezultat se ne razglasi in okvare ni mogoče uveljavljati.`,
         en:`{${pair[0]}} and {${pair[1]}} on the left of each point fire first. {${pair[0]+1}} and {${pair[1]+1}} on the right may take the pistol to prepare after READY, but no aiming exercises, arm lifts or dry firing. Sighting does not count, its score is not announced, and no malfunction may be claimed.`}
@@ -570,11 +578,11 @@ function simulate(plan,names,quick){
     {sl:"{1} in {2} skupaj na mestu 1 (levo A, desno B), {3} in {4} na mestu 2 (C in D). Na vsakem mestu sta en nabojnik in 5 nabojev samo za poskusno serijo.",en:"{1} and {2} together on point 1 (left A, right B), {3} and {4} on point 2 (C and D). Each point holds one magazine and 5 cartridges for the sighting series only."},"6.17.4 b, f, g");
   prep([1,2,3,4],10);
   sight([1,3],[1,2,3,4],true); sight([2,4],[1,2,3,4],false);
-  typ([5,6,7,8],5,{sl:"1, 2, 3, 4 v prostor za strelivo, 5, 6, 7, 8 na strelska mesta",en:"1, 2, 3, 4 to the Ammunition Area, 5, 6, 7, 8 to the firing points"},
+  typ([5,6,7,8],15,{sl:"1, 2, 3, 4 v prostor za strelivo, 5, 6, 7, 8 na strelska mesta",en:"1, 2, 3, 4 to the Ammunition Area, 5, 6, 7, 8 to the firing points"},
     {sl:"Štirje so končali poskusno serijo: vrnejo se v prostor za strelivo in smejo napolniti do dva nabojnika. Nadaljnjega ukaza LOAD v finalu ni. {5} in {6} gresta na mesto 1, {7} in {8} na mesto 2.",en:"The four have finished sighting: they return to the Ammunition Area and may load up to two magazines. There is no further LOAD command in the Final. {5} and {6} go to point 1, {7} and {8} to point 2."},"6.17.4 h");
   prep([5,6,7,8],20);
   sight([5,7],[5,6,7,8],true); sight([6,8],[5,6,7,8],false);
-  {const stg=[{lbl:{sl:"Položaji za tekmo",en:"Match positions"},secs:20,say:null,hint:{sl:"Po 20 sekundah se pokliče prvi par.",en:"After 20 seconds the first pair is called."}}];
+  {const stg=[{lbl:{sl:"Kratka razlaga finala",en:"Brief explanation of the Final"},secs:55,say:null,hint:{sl:"Napovedovalec na kratko razloži finale, nato se pokliče prvi par.",en:"The Announcer gives a brief explanation of the Final; then the first pair is called."}}];
    push({ph:1,tag:{sl:"Tekma",en:"Match"},title:{sl:"Položaji za 1. serijo: levi na mestu, desni korak zadaj",en:"Series 1 positions: left on the point, right one step back"},
     desc:{sl:"5, 6, 7, 8 prenesejo preostalo strelivo za poskusno serijo v prostor za strelivo. {1} in {3} (A in C) stojita na strelskem mestu; {2} in {4} (B in D) čakata korak zadaj v prostoru za čakanje. Tekmovalno streljanje se začne ob 0:00.",en:"5, 6, 7, 8 move their remaining sighting ammunition to the Ammunition Area. {1} and {3} (A and C) stand at the firing point; {2} and {4} (B and D) wait one step back in the Waiting Area. Competition firing starts at 0:00."},
     ref:"6.17.4 i",pos:pm(n=>[1,3].includes(n)?"fp":[2,4].includes(n)?"wait":"ammo"),stages:stg,cmds:[]});}
@@ -589,7 +597,7 @@ function simulate(plan,names,quick){
       const nx=groups[gi+1]||[];
       g.forEach(n=>{A[n].ser[s]=plan.hits[n][s]; A[n].last=plan.hits[n][s];});
       const get=n=>plan.hits[n][s];
-      const stg=fireStages(g,get,20,gi===0&&s===1?{sl:"Po zavzetju položajev",en:"After positions"}:null);
+      const stg=fireStages(g,get,gi===0?5:9,gi===0&&s===1?{sl:"Po zavzetju položajev",en:"After positions"}:null);
       const nxtTxt=nx.length?{sl:` Naslednji: ${nx.map(n=>"{"+n+"}").join(" in ")} v prostoru za čakanje.`,en:` Next: ${nx.map(n=>"{"+n+"}").join(" and ")} in the Waiting Area.`}:{sl:" Zadnji strelja v tej seriji.",en:" Last to fire in this series."};
       push({ph:s<=3?1:2,tag:{sl:"Serija "+s,en:"Series "+s},
         title:g.length>1?{sl:`Serija ${s}: ${g.join(" in ")} skupaj`,en:`Series ${s}: ${g.join(" & ")} together`}:{sl:`Serija ${s}: tekmovalec ${g[0]} sam`,en:`Series ${s}: athlete ${g[0]} alone`},
@@ -608,15 +616,15 @@ function simulate(plan,names,quick){
       while(act().length>TARGET[s]){
         const AA=act().sort((x,y)=>total(x)-total(y)||y.no-x.no); const low=total(AA[0]); const tied=AA.filter(a=>total(a)===low); const need=AA.length-TARGET[s];
         if(tied.length<=need){tied.forEach(a=>{const p=elim(a.no);notes.sl.push(`{${a.no}} izpade (${p}. mesto).`);notes.en.push(`{${a.no}} is out (place ${p}).`);});continue;}
-        if(s<=5){tied.sort((x,y)=>y.no-x.no).slice(0,need).forEach(a=>{const p=elim(a.no);events.push({t:"t85",s});notes.sl.push(`Izenačenje pri ${low}, odloči startna številka: {${a.no}} izpade (${p}. mesto).`);notes.en.push(`Tie on ${low} decided by start number: {${a.no}} is out (place ${p}).`);});continue;}
+        if(s<=5){tied.forEach(a=>{if(!TIE85.includes(a.no))TIE85.push(a.no)}); tied.sort((x,y)=>y.no-x.no).slice(0,need).forEach(a=>{const p=elim(a.no);events.push({t:"t85",s});notes.sl.push(`Izenačenje pri ${low}, odloči startna številka: {${a.no}} izpade (${p}. mesto).`);notes.en.push(`Tie on ${low} decided by start number: {${a.no}} is out (place ${p}).`);});continue;}
         const pl=AA.length===2?1:AA.length; events.push({t:"so",place:pl,s});
         notes.sl.push(`Izenačenje pri ${low} med ${tied.map(a=>"{"+a.no+"}").join(" in ")} za ${PLACE[pl]?.sl||pl+". mesto"}: dodatno streljanje.`);
         notes.en.push(`Tie on ${low} between ${tied.map(a=>"{"+a.no+"}").join(" and ")} for ${PLACE[pl]?.en||pl+"th"}: shoot-off.`);
-        pushResults(s,notes,true,rl);
+        TIE=tied.map(a=>a.no); pushResults(s,notes,true,rl); TIE85=[];
         shootoff(s,tied.map(a=>a.no),need,pl); return;
       }
     }
-    pushResults(s,notes,false,rl); after(s);
+    pushResults(s,notes,false,rl); TIE85=[]; after(s);
   }
   function pushResults(s,notes,so,rl){
     const stg=[{lbl:{sl:"Premor in komentar",en:"Pause and commentary"},secs:18,say:null,hint:{sl:"Premor 15–20 sekund; napovedovalec komentira razvrstitev in izpadle.",en:"15–20 second pause; the Announcer comments on the ranking and eliminations."}}];
@@ -629,7 +637,7 @@ function simulate(plan,names,quick){
     const order=tied.slice().sort((x,y)=>x-y);
     order.forEach((n,i)=>{
       const h=plan.so[n][A[n].soIdx++]||[true,true,true,true,false]; A[n].so.push(h); A[n].last=h;
-      const stg=fireStages([n],()=>h,20,{sl:"Dodatno streljanje",en:"Shoot-off"});
+      const stg=(i===0?[{lbl:{sl:"Napoved izenačenja",en:"Tie announcement"},secs:10,say:"THERE IS A TIE FOR THE LOWEST RANKING FINALIST TO BE ELIMINATED.",hint:{sl:"Napovedovalec največ 10 sekund komentira izenačenje, nato CRO napove izenačenje in pokliče prvega izenačenega tekmovalca.",en:"The Announcer gives max. 10 seconds of comments on the tie, then the CRO announces the tie and starts to call the first tied athlete."}}]:[]).concat(fireStages([n],()=>h,i===0?5:9,{sl:"Dodatno streljanje",en:"Shoot-off"}));
       push({ph:2,tag:{sl:"Dodatno streljanje",en:"Shoot-off"},title:{sl:`Dodatno streljanje: tekmovalec ${n}`,en:`Shoot-off: athlete ${n}`},
         desc:{sl:`Dodatno streljanje za ${PLACE[pl]?.sl||pl+". mesto"}. Vsak tekmovalec strelja posebej, začne najnižja startna številka. Zadetki iz dodatnega streljanja se ne prištejejo k skupnemu seštevku.`,en:`Shoot-off for ${PLACE[pl]?.en||pl+"th"}. Each athlete fires separately, starting with the lowest start number. Shoot-off hits are not added to the total.`},
         ref:"6.17.4 k",pos:pm(m=>m===n?"fp":m===order[i+1]?"wait":"ammo"),fire:{shooters:[n],hits:{[n]:h},kind:"so"},stages:stg,cmds:cmdsFrom(stg)});
@@ -642,10 +650,10 @@ function simulate(plan,names,quick){
     const rem=need-below.length;
     if(rem>0&&at.length>rem){
       notes.sl.push("Še vedno izenačeno: nova serija dodatnega streljanja."); notes.en.push("Still tied: another shoot-off series.");
-      pushSO(notes); shootoff(s,at,rem,pl); return;
+      TIE=at.slice(); pushSO(notes); shootoff(s,at,rem,pl); return;
     }
     at.slice(0,rem).forEach(n=>{const p=elim(n);notes.sl.push(`{${n}} zasede ${p}. mesto.`);notes.en.push(`{${n}} takes place ${p}.`);});
-    pushSO(notes); after(s);
+    TIE=[]; pushSO(notes); after(s);
   }
   function pushSO(notes){
     push({ph:2,tag:{sl:"Dodatno streljanje",en:"Shoot-off"},title:{sl:"Rezultat dodatnega streljanja",en:"Shoot-off result"},desc:{sl:notes.sl.join(" "),en:notes.en.join(" ")},ref:"6.17.4 k",pos:pm(()=>"ammo"),
@@ -653,8 +661,8 @@ function simulate(plan,names,quick){
   }
   function finalStep(){
     const w=act()[0]; if(w){w.place=1;w.medal="g";}
-    const stg=[{lbl:{sl:"Konec finala",en:"End of the Final"},secs:3,say:"STOP … UNLOAD",hint:{sl:"Po zadnji seriji, če ni izenačenja ali protesta.",en:"After the last series, if there is no tie or protest."}},{lbl:{sl:"Rezultati",en:"Results"},secs:3,say:"RESULTS ARE FINAL",hint:{sl:"Nato se dobitniki medalj zberejo na tekmovališču (FOP).",en:"Then the medallists are assembled on the FOP."}}];
-    push({ph:2,tag:{sl:"Konec",en:"End"},title:{sl:"STOP … UNLOAD — rezultati so dokončni",en:"STOP … UNLOAD — results are final"},
+    const stg=[{lbl:{sl:"Konec finala",en:"End of the Final"},secs:3,say:"UNLOAD",hint:{sl:"Po zadnji seriji, če ni izenačenja ali protesta.",en:"After the last series, if there is no tie or protest."}},{lbl:{sl:"Rezultati",en:"Results"},secs:3,say:"RESULTS ARE FINAL",hint:{sl:"Nato se dobitniki medalj zberejo na tekmovališču (FOP).",en:"Then the medallists are assembled on the FOP."}}];
+    push({ph:2,tag:{sl:"Konec",en:"End"},title:{sl:"UNLOAD — rezultati so dokončni",en:"UNLOAD — results are final"},
       desc:{sl:"Ni izenačenja ali protesta. Žirija zbere prve tri na tekmovališču, napovedovalec razglasi bron, srebro in zlato. Preden katera koli pištola zapusti linijo, sodnik na strelišču preveri: zaklep odprt, varnostna zastavica vstavljena, nabojnik odstranjen in nabojniki prazni, pištola v kovčku.",en:"No tie or protest. The Jury assembles the top three on the FOP and the Announcer recognises bronze, silver and gold. Before any pistol leaves the line a Range Officer checks: action open, safety flag in, magazine removed and magazines unloaded, pistol boxed."},
       ref:"6.17.4 l",pos:pm(()=>"ammo"),stages:stg,cmds:cmdsFrom(stg)});
   }
@@ -716,7 +724,7 @@ function tokXY(n,zone,b){
   if(zone==="wait") return WAIT[sd];
   const ax=AMMOX[sd]; return [ax+(n<=4?-36:36),496];
 }
-let anim=null; const ANIM={t0:0,loop:null,pausedAt:0};
+let anim=null, FIRE_VIEW=null; const ANIM={t0:0,loop:null,pausedAt:0,step:-1};
 function renderField(animate){
   const st=STEPS[I]; const tt=t();
   const W=$("field").getBoundingClientRect().width||1000; const narrow=W<600; const k=narrow?Math.min(2.2,560/W*1.25):1; const kS=narrow?Math.min(1.6,k):1;
@@ -729,27 +737,73 @@ function renderField(animate){
   for(let n=1;n<=8;n++){ const tn=TOK[n].querySelector(".tname"); const nmv=hasName(n)?NAMES[n-1]:""; tn.textContent=nmv.length>11?nmv.slice(0,10)+"…":nmv; tn.setAttribute("font-size",narrow?20:11.5); tn.setAttribute("y",narrow?46:35); }
   const sh=st.fire?st.fire.shooters:[];
   for(let n=1;n<=8;n++){const b=st.board[n]; const [x,y]=tokXY(n,st.pos[n],b); TOK[n].style.transform=`translate(${x}px,${y}px)`; TOK[n].style.opacity=b.status==="active"?1:.3; TOK[n].querySelector(".ring").setAttribute("opacity",sh.includes(n)?1:0);}
-  if(anim){cancelAnimationFrame(anim);anim=null}
-  const show=(prog,light)=>{
-    [1,2].forEach(b=>{
-      const n=sh.find(m=>BANK[SIDE[m]]===b); const h=n?st.fire.hits[n]:null;
-      BANKR[b].setAttribute("stroke",n&&light?(light==="green"?"var(--hit)":"var(--miss)"):"transparent");
-      TGT[b].forEach((c,k)=>{
-        const fired=h && prog>(k+0.6)/5;
-        c.setAttribute("fill",fired&&h[k]?"var(--hit)":"var(--target)");
-        c.setAttribute("stroke",fired&&!h[k]?"var(--miss)":"#000"); c.setAttribute("stroke-width",fired&&!h[k]?4:1.5);
-      });
-    });
-    $("timerbar").style.width=(prog*100)+"%"; $("timert").textContent=(4-prog*4).toFixed(1)+"s";
-  };
-  if(st.fire && animate){
-    const red=900/SPEED, green=4000/SPEED; ANIM.t0=performance.now();
-    const loop=ANIM.loop=now=>{const e=now-ANIM.t0;
-      if(e<red){show(0,"red");} else if(e<red+green){show((e-red)/green,"green");} else {show(1,"red");anim=null;return;}
-      anim=requestAnimationFrame(loop);};
-    anim=requestAnimationFrame(loop);
-  } else show(st.fire?1:0, st.fire?"red":null);
+  const sameAnim=ANIM.step===I&&(anim||PAUSE.anim||(FIRE_VIEW&&FIRE_VIEW.i===I&&FIRE_VIEW.wait));
+  if(!animate&&sameAnim) return;
+  if(anim){cancelAnimationFrame(anim);anim=null} PAUSE.anim=false; ANIM.step=-1;
+  if(st.fire&&animate){ if(TR){ FIRE_VIEW={i:I,k:0,done:false,wait:true}; ANIM.step=I; fieldShow(0,null); } else startFire(false); }
+  else fieldShow(st.fire?1:0, st.fire?"red":null);
 }
+/* targets, lights and series timer. redLeft = seconds of red light left after ATTENTION */
+function fieldShow(prog,light,redLeft){
+  const st=STEPS[I]; const sh=st.fire?st.fire.shooters:[];
+  [1,2].forEach(b=>{
+    const n=sh.find(m=>BANK[SIDE[m]]===b); const h=n?st.fire.hits[n]:null;
+    BANKR[b].setAttribute("stroke",n&&light?(light==="green"?"var(--hit)":"var(--miss)"):"transparent");
+    TGT[b].forEach((c,k)=>{
+      const fired=h && prog>(k+0.6)/5;
+      c.setAttribute("fill",fired&&h[k]?"var(--hit)":"var(--target)");
+      c.setAttribute("stroke",fired&&!h[k]?"var(--miss)":"#000"); c.setAttribute("stroke-width",fired&&!h[k]?4:1.5);
+    });
+  });
+  const bar=$("timerbar"), stg=st.stages||[]; const sr=stg.find(x=>x.light==="red"), sg=stg.find(x=>x.light==="green");
+  if(redLeft!=null){ bar.style.background="var(--miss)"; bar.style.width=((1-redLeft/7)*100)+"%"; $("timert").textContent=Math.max(0,redLeft).toFixed(1)+"s"; $("timerlbl").textContent="ATTENTION · "+(sr?L(sr.lbl):""); }
+  else { bar.style.background=""; bar.style.width=(prog*100)+"%"; $("timert").textContent=(4-prog*4).toFixed(1)+"s"; $("timerlbl").textContent=(light==="green"&&prog<1&&sg)?L(sg.lbl):t().timer; }
+}
+/* one series: ATTENTION -> red 7 s -> green 4 s (5 shots with sound) -> results */
+function startFire(real){
+  const st=STEPS[I]; if(!st.fire) return; const f=real?1:SPEED;
+  if(anim){cancelAnimationFrame(anim);anim=null}
+  FIRE_VIEW={i:I,k:0,done:false}; ANIM.step=I; renderBoard(); renderResults();
+  const red=7000/f, green=4000/f; ANIM.t0=performance.now();
+  const loop=ANIM.loop=now=>{ if(ANIM.step!==I||!FIRE_VIEW){anim=null;return;} const e=now-ANIM.t0;
+    if(e<red){ fieldShow(0,"red",(red-e)*f/1000); }
+    else if(e<red+green){ const pr=(e-red)/green; fieldShow(pr,"green"); const k=[0,1,2,3,4].filter(j=>pr>(j+0.6)/5).length;
+      if(k>FIRE_VIEW.k){ for(let j=FIRE_VIEW.k;j<k;j++) shotSound(st.fire.shooters.length); FIRE_VIEW.k=k; renderBoard(); } }
+    else { fieldShow(1,"red"); FIRE_VIEW.k=5; FIRE_VIEW.done=true; anim=null; renderBoard(); renderResults(); updPause();
+      if(!real){ const fi=FIRE_VIEW; setTimeout(()=>{ if(FIRE_VIEW===fi&&ANIM.step===I) announceResult(); },700/f); } return; }
+    anim=requestAnimationFrame(loop); };
+  anim=requestAnimationFrame(loop);
+}
+function reportSay(st){ const r=st&&st.fire&&(st.stages||[]).filter(x=>x.light==="red"&&x.say).pop(); return r?r.say:null; }
+function announceResult(){ const st=STEPS[I]; const r=reportSay(st); if(!r||!FIRE_VIEW||FIRE_VIEW.i!==I) return;
+  FIRE_VIEW.said=true; const row=document.querySelector("#cmdlist .cmdrow.rep"); if(row) row.classList.add("now");
+  if(SOUND) speak(r); }
+/* gunshot as a short WAV played through a media element: works on phones even with the iPhone silent switch on */
+let SHOT_URL=null;
+function shotUrl(){ if(SHOT_URL) return SHOT_URL;
+  const sr=22050, len=Math.floor(sr*0.32), buf=new ArrayBuffer(44+len*2), v=new DataView(buf);
+  const w=(o,str)=>{for(let i=0;i<str.length;i++)v.setUint8(o+i,str.charCodeAt(i))};
+  w(0,"RIFF"); v.setUint32(4,36+len*2,true); w(8,"WAVE"); w(12,"fmt "); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true);
+  v.setUint32(24,sr,true); v.setUint32(28,sr*2,true); v.setUint16(32,2,true); v.setUint16(34,16,true); w(36,"data"); v.setUint32(40,len*2,true);
+  let lp=0;
+  for(let i=0;i<len;i++){ const tt=i/sr; const n=Math.random()*2-1;
+    const crack=n*Math.exp(-tt*90);                 // sharp crack
+    lp+=0.18*(n-lp); const body=lp*3.2*Math.exp(-tt*14); // low boom
+    const thump=Math.sin(2*Math.PI*70*tt)*Math.exp(-tt*25)*0.8;
+    const x=Math.max(-1,Math.min(1,(crack*0.9+body+thump)));
+    v.setInt16(44+i*2,x*32000,true); }
+  SHOT_URL=URL.createObjectURL(new Blob([buf],{type:"audio/wav"})); return SHOT_URL; }
+const SHOT_POOL=[]; let SHOT_I=0;
+function shotSound(n){ if(!SOUND) return;
+  try{ if(!SHOT_POOL.length){ for(let k=0;k<6;k++){ const au=new Audio(shotUrl()); au.preload="auto"; SHOT_POOL.push(au); } }
+    for(let q=0;q<(n||1);q++){ setTimeout(()=>{ try{ const au=SHOT_POOL[SHOT_I++%SHOT_POOL.length]; au.currentTime=0; au.volume=1; const pr=au.play(); if(pr&&pr.catch) pr.catch(()=>{}); }catch(e){} }, q*45); } }catch(e){} }
+/* unlock audio on the first tap / key (phones only allow sound after a user action) */
+function unlockAudio(){ try{ if(navigator.audioSession) navigator.audioSession.type="playback"; }catch(e){}
+  try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); }catch(e){}
+  try{ if(!SHOT_POOL.length){ for(let k=0;k<6;k++){ const au=new Audio(shotUrl()); au.preload="auto"; SHOT_POOL.push(au); } }
+    SHOT_POOL.forEach(au=>{ au.muted=true; const pr=au.play(); const done=()=>{ try{au.pause(); au.currentTime=0; au.muted=false;}catch(e){} }; if(pr&&pr.then) pr.then(done,done); else done(); }); }catch(e){}
+  ["pointerdown","touchend","keydown"].forEach(ev=>document.removeEventListener(ev,unlockAudio,true)); }
+["pointerdown","touchend","keydown"].forEach(ev=>document.addEventListener(ev,unlockAudio,true));
 
 /* ================= render ================= */
 function btnLbl(txt){ const m=String(txt).match(/^(\S+)\s+(.*)$/); return m?`${esc(m[1])} <span class="bt">${esc(m[2])}</span>`:esc(txt); }
@@ -757,7 +811,7 @@ function chipify(s){return esc(s).replace(/\{(\d)\}/g,(m,n)=>`<span class="chip"
 function render(animate){
   const tt=t(); const st=STEPS[I];
   document.documentElement.lang=lang; document.documentElement.dir=document.body.dir="ltr";
-  $("eyebrow").textContent=tt.eyebrow; $("h1").textContent=tt.h1; $("lead").textContent=tt.lead; $("byline").textContent=tt.by; $("bylinefoot").textContent=tt.byf; $("designer").textContent=tt.des; $("designerfoot").textContent=tt.des; $("langbtn").textContent=tt.lang;
+  $("eyebrow").textContent=tt.eyebrow; $("h1").textContent=tt.h1; $("lead").textContent=tt.lead; $("byline").textContent=tt.by; $("designer").textContent=tt.des; $("langbtn").textContent=tt.lang;
   $("tab-sim").textContent=tt.tabSim; $("tab-cases").textContent=tt.tabCases;
   const pc=$("phasechips"); pc.innerHTML="";
   tt.ph.forEach((p,k)=>{const b=document.createElement("button");b.className="pchip";b.textContent=p;b.setAttribute("aria-pressed",st.ph===k);b.onclick=()=>{const j=STEPS.findIndex(x=>x.ph===k);if(j>=0){stopPlay();$("gate").hidden=true;go(j,true);}};pc.appendChild(b);});
@@ -765,7 +819,7 @@ function render(animate){
   $("steptag").textContent=L(st.tag); $("steptitle").textContent=L(st.title);
   $("cmdcap").textContent=tt.cmdcap;
   const cl=$("cmdlist"); cl.innerHTML="";
-  if(st.cmds&&st.cmds.length) st.cmds.forEach(c=>{const d=document.createElement("div");d.className="cmdrow";d.innerHTML=`<span class="c">${esc(c.c)}</span><span class="at">${esc(c.at)}</span>`;cl.appendChild(d);});
+  const repSay=reportSay(st); if(st.cmds&&st.cmds.length) st.cmds.forEach(c=>{const d=document.createElement("div");d.className="cmdrow"+(repSay&&c.c===repSay?" rep"+(FIRE_VIEW&&FIRE_VIEW.i===I&&FIRE_VIEW.said?" now":""):"");d.innerHTML=`<span class="c">${esc(c.c)}</span><span class="at">${esc(c.at)}</span>`;cl.appendChild(d);});
   else cl.innerHTML=`<div class="cmdrow"><span class="c" style="font-family:var(--f-body);font-weight:500;opacity:.85">${esc(tt.nocmd)}</span></div>`;
   $("stepdesc").innerHTML=chipify(L(st.desc)); $("stepref").textContent="ISSF "+st.ref;
   $("trainbtn").textContent=tt.train;
@@ -784,6 +838,7 @@ function render(animate){
   $("timerlbl").textContent=tt.timer;
   $("legend").innerHTML=`<span><i class="sw" style="background:var(--fp)"></i>${tt.lg[0]}</span><span><i class="sw" style="background:var(--wait)"></i>${tt.lg[1]}</span><span><i class="sw" style="background:var(--ammo)"></i>${tt.lg[2]}</span><span><i class="sw c" style="background:var(--hit)"></i>${tt.lg[3]}</span><span><i class="sw c" style="border:2px solid var(--miss)"></i>${tt.lg[4]}</span>`;
   $("boardh").textContent=tt.board; $("boardsub").textContent=tt.boardsub; $("resh").textContent=tt.res; $("ressub").textContent=tt.ressub;
+  if(animate&&st.fire) FIRE_VIEW={i:I,k:0,done:false,wait:!!TR}; else if(FIRE_VIEW&&FIRE_VIEW.i!==I) FIRE_VIEW=null;
   renderBoard(); renderResults(); renderField(animate); renderInfos(); $("src").textContent=tt.src;
   if(TR) renderTrainer();
 }
@@ -795,24 +850,36 @@ function statusOf(st,n){const b=st.board[n];
   return {k:"",txt:t().st[st.pos[n]]||""};
 }
 const nameTag=n=>hasName(n)?" "+esc(NAMES[n-1])+(ENTRIES[n-1].noc?` <span class="small">${esc(ENTRIES[n-1].noc.toUpperCase())}</span>`:""):"";
+function viewStep(){ const st=STEPS[I];
+  if(!(FIRE_VIEW&&FIRE_VIEW.i===I&&!FIRE_VIEW.done&&I>0&&st.fire)) return {st,live:false};
+  const pv=STEPS[I-1]; const board={};
+  for(let n=1;n<=8;n++){ const b=Object.assign({},pv.board[n]); if(st.fire.shooters.includes(n)) b.last=st.fire.hits[n].map((x,k)=>k<FIRE_VIEW.k?x:null); board[n]=b; }
+  return {st:Object.assign({},st,{board,res:pv.res}),live:true}; }
 function renderBoard(){
-  const st=STEPS[I]; const tt=t();
+  const {st,live}=viewStep(); const tt=t();
   const rows=[1,2,3,4,5,6,7,8].map(n=>({n,b:st.board[n]}));
-  const started=STEPS.slice(0,I+1).some(x=>x.fire&&x.fire.kind==="match");
+  const started=STEPS.slice(0,I+(live?0:1)).some(x=>x.fire&&x.fire.kind==="match");
   rows.sort((x,y)=>{const ax=x.b.status==="active",ay=y.b.status==="active"; if(ax!==ay) return ax?-1:1; if(!ax) return x.b.place-y.b.place; return started?(y.b.total-x.b.total||x.n-y.n):x.n-y.n;});
   let h=`<thead><tr><th>${tt.col.rk}</th><th>${tt.col.sh}</th><th>${tt.col.last}</th><th>${tt.col.tot}</th><th>${tt.col.st}</th></tr></thead><tbody>`;
   rows.forEach((r,i)=>{const s=statusOf(st,r.n); const rk=r.b.status!=="active"?r.b.place:(started?i+1:"–");
-    const dots=r.b.last?r.b.last.map(x=>`<i class="${x?"h":"m"}"></i>`).join(""):"<i></i><i></i><i></i><i></i><i></i>";
-    h+=`<tr class="${s.k==="shoot"?"shoot":""} ${r.b.status!=="active"?"out":""}"><td>${rk}</td><td>${SIDE[r.n]} <span class="chip" style="background:${COLORS[r.n]};color:${INK[r.n]}">${r.n}</span>${nameTag(r.n)}</td><td><span class="dots">${dots}</span></td><td class="tot">${started?r.b.total:"–"}</td><td><span class="pill ${s.k}">${esc(s.txt)}</span></td></tr>`;});
+    const dots=r.b.last?r.b.last.map(x=>`<i class="${x==null?"":(x?"h":"m")}"></i>`).join(""):"<i></i><i></i><i></i><i></i><i></i>";
+    h+=`<tr class="${s.k==="shoot"?"shoot":""} ${r.b.status!=="active"?"out":""} ${(st.tie||[]).includes(r.n)?"tie"+(st.tieShort?" short":""):""}"><td>${rk}</td><td>${SIDE[r.n]} <span class="chip" style="background:${COLORS[r.n]};color:${INK[r.n]}">${r.n}</span>${nameTag(r.n)}</td><td><span class="dots">${dots}</span></td><td class="tot">${started?r.b.total:"–"}</td><td><span class="pill ${s.k}">${esc(s.txt)}</span></td></tr>`;});
   $("board").innerHTML=h+"</tbody>";
 }
 function renderResults(){
-  const st=STEPS[I]; const tt=t(); const cs=st.fire&&st.fire.kind==="match"?st.fire.series:null;
+  const {st,live}=viewStep(); const tt=t(); const started=STEPS.slice(0,I+(live?0:1)).some(x=>x.fire&&x.fire.kind==="match");
+  const actv=[1,2,3,4,5,6,7,8].filter(n=>st.res[n].status==="active").sort((a,b)=>st.res[b].total-st.res[a].total||a-b);
+  const rankOf=n=>st.res[n].place||(started?actv.indexOf(n)+1:"–"); const cs=st.fire&&st.fire.kind==="match"?st.fire.series:null;
   let h=`<thead><tr><th>${tt.col.sh}</th>`; for(let s=1;s<=8;s++) h+=`<th class="${cs===s?"cur":""}">${s}</th>`; h+=`<th>${tt.col.so}</th><th>${tt.col.tot}</th><th>${tt.col.rk}</th></tr></thead><tbody>`;
-  for(let n=1;n<=8;n++){const r=st.res[n];
-    h+=`<tr class="${r.status!=="active"?"out":""}"><td><span class="chip" style="background:${COLORS[n]};color:${INK[n]}">${n}</span>${nameTag(n)}</td>`;
+  const tie=st.tie||[], tshort=!!st.tieShort;
+  const order=[1,2,3,4,5,6,7,8].sort((a,b)=>{const ra=st.res[a],rb=st.res[b];
+    const pa=ra.status==="active"?(started?actv.indexOf(a):a):100+(ra.place||9), pb=rb.status==="active"?(started?actv.indexOf(b):b):100+(rb.place||9);
+    if(ra.medal==="g") return -1; if(rb.medal==="g") return 1; return pa-pb;});
+  for(const n of order){const r=st.res[n];
+    const cls=[r.medal?("m"+r.medal):(r.status!=="active"?"out elim":""), tie.includes(n)?"tie"+(tshort?" short":""):""].join(" ");
+    h+=`<tr class="${cls}"><td><span class="chip" style="background:${COLORS[n]};color:${INK[n]}">${n}</span>${nameTag(n)}</td>`;
     for(let s=1;s<=8;s++) h+=`<td class="${cs===s?"cur":""}">${r.ser[s]!=null?r.ser[s]:""}</td>`;
-    h+=`<td>${r.so.join(" / ")}</td><td class="tot">${Object.keys(r.ser).length?r.total:"–"}</td><td>${r.place||"–"}</td></tr>`;}
+    h+=`<td>${r.so.join(" / ")}</td><td class="tot">${Object.keys(r.ser).length?r.total:"–"}</td><td>${rankOf(n)}</td></tr>`;}
   $("results").innerHTML=h+"</tbody>";
 }
 
@@ -822,7 +889,7 @@ function nextStep(){ if(I>=STEPS.length-1){stopPlay();return false;}
   if($("quizme").checked && !GATE_OK){ openGate(); return false; }
   GATE_OK=false; go(I+1,true); return true; }
 function stopPlay(){ if(playT){clearTimeout(playT);playT=null;} PAUSE.play=false; $("bplay").innerHTML=btnLbl(t().play); $("bplay").title=t().play; updPause(); }
-function playTick(){ if(!nextStep()){stopPlay();return} const d=(STEPS[I].fire?6200:3800)/SPEED; PLAY_DUE=performance.now()+d; playT=setTimeout(playTick,d); }
+function playTick(){ if(!nextStep()){stopPlay();return} const d=STEPS[I].fire?(11000/SPEED+(SOUND&&reportSay(STEPS[I])?6000:2500)):3800/SPEED; PLAY_DUE=performance.now()+d; playT=setTimeout(playTick,d); }
 let PLAY_DUE=0;
 function play(){ if(playT||PAUSE.play){ if(PAUSE.on) clearPause(); stopPlay(); return }
   if(PAUSE.on) clearPause();
@@ -876,8 +943,8 @@ let WAKE=null;
 async function keepAwake(on){ try{ if(on&&navigator.wakeLock&&!WAKE){ WAKE=await navigator.wakeLock.request("screen"); } else if(!on&&WAKE){ await WAKE.release(); WAKE=null; } }catch(e){WAKE=null} }
 document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible"&&TR) keepAwake(true); });
 function beep(f,d){ if(!SOUND||!$("tbeep").checked) return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); const o=actx.createOscillator(), g=actx.createGain(); o.frequency.value=f||880; g.gain.value=.08; o.connect(g); g.connect(actx.destination); o.start(); o.stop(actx.currentTime+(d||.18)); }catch(e){} }
-function openTrainer(){ keepAwake(true); stopPlay(); $("gate").hidden=true; $("trainer").hidden=false; const id=++TRID; TR={id,k:0,left:STEPS[I].stages[0].secs,paused:false,said:false,last:performance.now(),hold:0}; beep(660,.08); renderTrainer(); requestAnimationFrame(()=>loopTrainer(id)); }
-function closeTrainer(){ TR=null; $("trainer").hidden=true; keepAwake(false); }
+function openTrainer(){ keepAwake(true); stopPlay(); $("gate").hidden=true; $("trainer").hidden=false; const id=++TRID; TR={id,k:0,left:STEPS[I].stages[0].secs,paused:false,said:false,last:performance.now(),hold:0}; if(STEPS[I].fire){ if(anim){cancelAnimationFrame(anim);anim=null} FIRE_VIEW={i:I,k:0,done:false,wait:true}; ANIM.step=I; fieldShow(0,null); renderBoard(); renderResults(); } beep(660,.08); renderTrainer(); requestAnimationFrame(()=>loopTrainer(id)); }
+function closeTrainer(){ TR=null; $("trainer").hidden=true; keepAwake(false); if(FIRE_VIEW&&FIRE_VIEW.wait&&STEPS[I]){ FIRE_VIEW=null; ANIM.step=-1; fieldShow(STEPS[I].fire?1:0,STEPS[I].fire?"red":null); renderBoard(); renderResults(); } }
 function renderTrainer(){
   if(!TR) return; const tt=t(); const st=STEPS[I]; const sg=st.stages[TR.k];
   $("tcount").textContent=Math.max(0,Math.ceil(TR.left));
@@ -890,7 +957,8 @@ function renderTrainer(){
 }
 function advanceStage(){
   const st=STEPS[I];
-  if(TR.k<st.stages.length-1){ TR.k++; TR.left=st.stages[TR.k].secs; TR.said=false; TR.hold=0; renderTrainer(); return; }
+  if(TR.k<st.stages.length-1){ TR.k++; TR.left=st.stages[TR.k].secs; TR.said=false; TR.hold=0; renderTrainer();
+    const ns=st.stages[TR.k], nx=st.stages[TR.k+1]; if(st.fire&&ns.light==="red"&&nx&&nx.light==="green") startFire(true); return; }
   if($("tauto").checked && I<STEPS.length-1){ go(I+1,true); TR.k=0; TR.left=STEPS[I].stages[0].secs; TR.said=false; TR.hold=0; renderTrainer(); }
   else { TR.paused=true; TR.left=0; renderTrainer(); }
 }
@@ -899,14 +967,16 @@ function loopTrainer(id){
   if(!TR.paused){
     const sg=STEPS[I].stages[TR.k];
     if(TR.left>0){ const before=Math.ceil(TR.left); TR.left-=dt; if(TR.left<=3&&TR.left>0&&Math.ceil(TR.left)<before) beep(520,.06);
-      if(TR.left<=0){ TR.left=0; if(sg.say){TR.said=true; beep(990,.25); TR.hold=2.2; if(VOICE_ON&&SOUND) speak(sg.say);} else TR.hold=0.4; renderTrainer(); } }
+      if(TR.left<=0){ TR.left=0; if(sg.say){TR.said=true; beep(990,.25); TR.hold=2.2; if(sg.say===reportSay(STEPS[I])&&FIRE_VIEW&&FIRE_VIEW.i===I){ FIRE_VIEW.said=true; const row=document.querySelector("#cmdlist .cmdrow.rep"); if(row) row.classList.add("now"); } if(VOICE_ON&&SOUND) speak(sg.say);} else TR.hold=0.4; renderTrainer(); } }
     else { TR.hold-=dt; if(TR.hold<=0) advanceStage(); }
     $("tcount").textContent=Math.max(0,Math.ceil(TR.left));
   }
   requestAnimationFrame(()=>loopTrainer(id));
 }
 $("trainbtn").onclick=openTrainer; $("tclose").onclick=closeTrainer;
-$("tpause").onclick=()=>{ if(!TR)return; TR.paused=!TR.paused; TR.last=performance.now(); renderTrainer(); };
+$("tpause").onclick=()=>{ if(!TR)return; TR.paused=!TR.paused; const now=performance.now(); TR.last=now;
+  if(TR.paused&&anim){ cancelAnimationFrame(anim); anim=null; ANIM.pausedAt=now; TR.animP=true; } else if(!TR.paused&&TR.animP&&ANIM.loop){ ANIM.t0+=now-ANIM.pausedAt; anim=requestAnimationFrame(ANIM.loop); TR.animP=false; }
+  renderTrainer(); };
 $("tnext").onclick=()=>{ if(!TR)return; TR.paused=false; TR.left=0; TR.hold=0; TR.said=false; TR.last=performance.now(); advanceStage(); };
 
 /* ================= voice ================= */
@@ -937,7 +1007,7 @@ function speak(text,force){
       if(v){u.voice=v;u.lang=v.lang;} else u.lang=slov?"sl-SI":"en-GB"; if(slov&&!v) u.lang="sl-SI"; u.rate=rate; u.volume=1; window.__rfpmU.push(u); synth.speak(u); }); if(synth.paused&&synth.resume) synth.resume(); }catch(e){} };
   try{ if(synth.speaking||synth.pending){ synth.cancel(); setTimeout(go,80); } else go(); }catch(e){}
 }
-function speakStep(){ if(!VOICE_ON||!SOUND) return; const st=STEPS[I]; const cmds=(st.cmds||[]).map(c=>c.c).join(". ");
+function speakStep(){ if(!VOICE_ON||!SOUND) return; const st=STEPS[I]; const rs=reportSay(st); const cmds=(st.cmds||[]).map(c=>c.c).filter(c=>c!==rs).join(". ");
   const txt=$("vmode").selectedIndex===1?(cmds||L(st.title)):(L(st.title)+". "+L(st.desc).replace(/\{(\d)\}/g,"$1")+(cmds?". "+cmds:"")); speak(txt); }
 $("bvoice").onclick=()=>{ if(!SOUND){ toggleSound(); return; } VOICE_ON=!VOICE_ON; if(VOICE_ON) speakStep(); else {try{synth&&synth.cancel()}catch(e){}} render(false); };
 if(!synth){ $("bvoice").disabled=true; }
@@ -1163,8 +1233,8 @@ const CASES=[
   q:{sl:"Je to dovoljeno?",en:"Is this allowed?"},o:[{sl:"Da",en:"Yes"},{sl:"Ne, v tem času ni dovoljeno",en:"No, not permitted at this time"},{sl:"Da, če je pištola prazna",en:"Yes, if the pistol is empty"},{sl:"Da, brez suhega proženja",en:"Yes, without dry firing"}],a:1,
   e:{sl:"Ko se oprema postavlja na mesta (najmanj 20 min pred začetkom), vaje merjenja niso dovoljene; tekmovalci se nato vrnejo v pripravljalni prostor.",en:"When equipment is placed on the points (at least 20 min before the start), aiming exercises are not permitted; athletes then return to the Preparation Area."},r:"6.17.1.14 b"},
  {h:{sl:"Ukaz za konec",en:"End command"},x:{sl:"8. serija je končana, ni izenačenja in ni protesta.",en:"Series 8 is over with no tie and no protest."},
-  q:{sl:"Kaj reče glavni sodnik (CRO)?",en:"What does the CRO say?"},o:[{sl:"Samo UNLOAD",en:"UNLOAD only"},{sl:"STOP … UNLOAD, nato RESULTS ARE FINAL",en:"STOP … UNLOAD, then RESULTS ARE FINAL"},{sl:"END OF MATCH",en:"END OF MATCH"},{sl:"Nič, govori napovedovalec",en:"Nothing, the Announcer speaks"}],a:1,
-  e:{sl:"Po 8. seriji brez izenačenja ali protesta: STOP… UNLOAD, nato RESULTS ARE FINAL; pištole se preverijo, preden zapustijo linijo.",en:"After series 8 with no tie or protest: STOP… UNLOAD, then RESULTS ARE FINAL; pistols are checked before they leave the line."},r:"6.17.4 l"}
+  q:{sl:"Kaj reče glavni sodnik (CRO)?",en:"What does the CRO say?"},o:[{sl:"Samo UNLOAD",en:"UNLOAD only"},{sl:"UNLOAD, nato RESULTS ARE FINAL",en:"UNLOAD, then RESULTS ARE FINAL"},{sl:"END OF MATCH",en:"END OF MATCH"},{sl:"Nič, govori napovedovalec",en:"Nothing, the Announcer speaks"}],a:1,
+  e:{sl:"Po 8. seriji brez izenačenja ali protesta: UNLOAD, nato RESULTS ARE FINAL; pištole se preverijo, preden zapustijo linijo.",en:"After series 8 with no tie or protest: UNLOAD, then RESULTS ARE FINAL; pistols are checked before they leave the line."},r:"6.17.4 l"}
 ];
 let CI=0, CANS={}; const CORD={};
 function caseOrder(i){ if(!CORD[i]){ const a=CASES[i].o.map((_,k)=>k); for(let j=a.length-1;j>0;j--){const r=Math.floor(Math.random()*(j+1)); [a[j],a[r]]=[a[r],a[j]];} CORD[i]=a; } return CORD[i]; }
